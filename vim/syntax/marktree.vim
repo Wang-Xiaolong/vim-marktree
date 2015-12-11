@@ -16,12 +16,16 @@ syn match MtTabAfterSpace " \+\t\+" contained
 syn match MtSign "^\t*[\*+\-] " contains=MtIndent
 syn match MtNumSign "^\t*\d\+\. " contains=MtIndent
 syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$" contains=@MtLinet
+syn match MtUrl "[a-z]\{3,6}:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*"
+syn match MtEmail "[a-z0-9_\.-]\+@[\da-z\.-]\+\.[a-z\.]\{2,6}"
 
 syn cluster MtLinet contains=MtIndent,MtWhiteTail
+syn cluster MtAutoLink contains=MtUrl,MtEmail
 
 hi default link MtTabAfterSpace MtWhiteTail
 hi default link MtNumSign MtSign
 hi default link MtSeparator MtSign
+hi default link MtEmail MtUrl
 
 " == Titles ==
 " Title0 is the head block from the beginning of file to the first empty line;
@@ -43,7 +47,7 @@ hi default link MtSeparator MtSign
 "   It has the same level of the text it decorates.
 " Keywords, Questions and Tags can be marked inside a Title.
 
-syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMarks,@MtLinet
+syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMarks,@MtLinet,@MtAutoLink
 syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle "^\t*#.\+#\s*$\|^\t*#.\+#  " contains=@MtTitleMarks,@MtLinet
@@ -75,7 +79,7 @@ syn region MtSolved start="</?" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]
 syn region MtTodo start="<!" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,MtKey
 syn region MtDone start="</!" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,MtKey
 syn region MtTag start="</\=#" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
-syn region MtLink start="<[~]" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet
+syn region MtLink start="<[~]" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,@MtAutoLink
 syn region MtRef start="<:" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
 syn region MtCode start="<{" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="}>" oneline
 syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet
@@ -86,7 +90,7 @@ syn region MtIssueS start="<<?"  end="?>>" contains=@MtLinet,MtKey
 syn region MtSolvedS start="<</?" end="?>>" contains=@MtLinet,MtKey
 syn region MtTodoS start="<<!"  end="!>>" contains=@MtLinet,MtKey
 syn region MtDoneS start="<</!" end="!>>" contains=@MtLinet,MtKey
-syn region MtLinkS start="<<[~]"  end="[~]>>" contains=@MtLinet
+syn region MtLinkS start="<<[~]"  end="[~]>>" contains=@MtLinet,@MtAutoLink
 syn region MtNullS start="<<\\" end="\\>>" contains=@MtLinet
 
 hi default link MtMeatS MtMeat
@@ -97,9 +101,10 @@ hi default link MtDoneS MtDone
 hi default link MtLinkS MtLink
 hi default link MtNullS MtNull
 
-syn cluster MtCommentMark contains=MtKey,MtTag,MtMeat,MtIssue,MtSolved,MtTodo,MtDone,MtLink,MtMeatS,MtIssueS,MtSolvedS,MtTodoS,MtDoneS,MtLinkS
-syn cluster MtMeatMark contains=MtComment,MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone,MtIssueS,MtSolvedS,MtTodoS,MtDoneS,MtSolvedS
-syn cluster MtRefMark contains=MtComment,MtKey,MtTag,MtMeat,MtIssue,MtSolved,MtTodo,MtDone,MtLink,MtNull,MtMeatS,MtIssueS,MtSolvedS,MtTodoS,MtDoneS,MtLinkS,MtNullS
+syn cluster MtGerneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone,MtIssueS,MtSolvedS,MtTodoS,MtDoneS
+syn cluster MtCommentMark contains=@MtGeneralMark,MtMeat,MtLink,MtMeatS,@MtAutoLink
+syn cluster MtMeatMark contains=@MtGeneralMark,MtComment
+syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtMeat,MtLink,MtNull,MtMeatS,MtDoneS,MtLinkS,MtNullS,@MtAutoLink
 
 " == Lines ==
 " Lines are effective marks for you only need to mark the beginning of it.
@@ -111,7 +116,7 @@ syn match MtTodoLine "^\s*! .*$" contains=@MtLinet,MtKey
 syn match MtDoneLine "^\s*/! .*$" contains=@MtLinet,MtKey
 syn match MtRefLine "^\t*>\s.*$" contains=@MtLinet,@MtRefMark
 syn match MtCodeLine "^\t*|\s.*$" contains=@MtLinet
-syn match MtLinkLine "^\s*\~ .*$" contains=@MtLinet
+syn match MtLinkLine "^\s*\~ .*$" contains=@MtLinet,@MtAutoLink
 syn match MtNullLine "^\s*\\\\ .*$" contains=@MtLinet
 
 hi default link MtCommentLine MtComment
