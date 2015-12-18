@@ -9,7 +9,7 @@ if &background == "dark" " compatible to 8bit console
   hi MtIssue guibg=Red guifg=White ctermfg=White ctermbg=DarkRed
   hi MtSolved guifg=LightRed ctermfg=Red
   hi MtTodo guibg=Yellow guifg=Black ctermfg=Black ctermbg=DarkYellow
-  hi MtDone guifg=DarkYellowa ctermfg=Yellow
+  hi MtDone guifg=DarkYellow ctermfg=Yellow
   hi MtTag guifg=Magenta ctermfg=Magenta
   hi MtLink guifg=Cyan ctermfg=Cyan
   hi MtUrl gui=underline guifg=DarkCyan ctermfg=Cyan
