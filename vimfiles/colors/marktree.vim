@@ -1,43 +1,40 @@
 " color/marktree.vim to highlight marktree leaves
 " xiaolong.wang@intel.com from Dec.2015
 
-" no syntax clear or reset
-let g:colors_name += " + marktree"
-
-if &background == "dark"
-  hi MtTitle gui=bold guifg=LightMagenta
-  hi MtComment guifg=LightGreen
-  hi MtMeat gui=underline guifg=LightCyan
-  hi MtKey gui=underline,bold guifg=Orange
-  hi MtIssue guibg=Red guifg=White
-  hi MtSolved guifg=LightRed
-  hi MtTodo guibg=Yellow guifg=Black
-  hi MtDone guifg=DarkYellow
-  hi MtTag guifg=Magenta
-  hi MtLink guifg=Cyan
-  hi MtUrl gui=underline guifg=DarkCyan
-  hi MtSign guifg=Yellow
-  hi MtRef gui=italic guifg=LightBlue
-  hi MtCode guifg=LightYellow
-  hi MtNull guifg=Grey30
-  hi MtIndentTab guibg=Grey10
-  hi MtWhiteTail guibg=Blue
-else
-  hi MtTitle gui=bold guifg=DarkMagenta
-  hi MtComment guifg=DarkGreen
-  hi MtMeat gui=underline
-  hi MtKey gui=underline,bold guifg=Orange
-  hi MtIssue guibg=Red guifg=White
-  hi MtSolved guifg=Red
-  hi MtTodo guibg=Yellow guifg=Black
-  hi MtDone guifg=DarkYellow
-  hi MtTag guifg=Magenta
-  hi MtLink guifg=Blue
-  hi MtUrl gui=underline guifg=DarkCyan
-  hi MtSign guifg=DarkYellow
-  hi MtRef gui=italic guifg=DarkBlue
-  hi MtCode guifg=Brown
-  hi MtNull guifg=Grey
-  hi MtIndentTab guibg=Grey90
-  hi MtWhiteTail guibg=Blue
+if &background == "dark" " compatible to 8bit console
+  hi MtTitle gui=bold guifg=LightMagenta ctermfg=Magenta
+  hi MtComment guifg=LightGreen ctermfg=Green
+  hi MtMeat gui=underline guifg=LightCyan ctermfg=Cyan
+  hi MtKey gui=underline,bold guifg=Orange ctermfg=White ctermbg=DarkCyan
+  hi MtIssue guibg=Red guifg=White ctermfg=White ctermbg=DarkRed
+  hi MtSolved guifg=LightRed ctermfg=Red
+  hi MtTodo guibg=Yellow guifg=Black ctermfg=Black ctermbg=DarkYellow
+  hi MtDone guifg=DarkYellowa ctermfg=Yellow
+  hi MtTag guifg=Magenta ctermfg=Magenta
+  hi MtLink guifg=Cyan ctermfg=Cyan
+  hi MtUrl gui=underline guifg=DarkCyan ctermfg=Cyan
+  hi MtSign guifg=Yellow ctermfg=Yellow
+  hi MtRef gui=italic guifg=LightBlue ctermfg=White
+  hi MtCode guifg=LightYellow ctermfg=White
+  hi MtNull guifg=Grey30 ctermfg=DarkGray
+  hi MtIndentTab guibg=Grey10 ctermbg=DarkBlue
+  hi MtWhiteTail guibg=Blue ctermbg=DarkRed
+else " light background, console should be at least 16 color
+  hi MtTitle gui=bold guifg=DarkMagenta ctermfg=DarkMagenta
+  hi MtComment guifg=DarkGreen ctermfg=DarkGreen
+  hi MtMeat gui=underline ctermfg=DarkCyan
+  hi MtKey gui=underline,bold guifg=Orange ctermbg=Cyan
+  hi MtIssue guibg=Red guifg=White ctermfg=White ctermbg=Red
+  hi MtSolved guifg=Red ctermfg=DarkRed
+  hi MtTodo guibg=Yellow guifg=Black ctermbg=Yellow
+  hi MtDone guifg=DarkYellow ctermfg=DarkYellow
+  hi MtTag guifg=Magenta ctermfg=DarkMagenta
+  hi MtLink guifg=Blue ctermfg=Blue
+  hi MtUrl gui=underline guifg=DarkCyan ctermfg=Blue
+  hi MtSign guifg=DarkYellow ctermfg=DarkYellow
+  hi MtRef gui=italic guifg=DarkBlue ctermfg=DarkBlue
+  hi MtCode guifg=Brown ctermfg=DarkBlue
+  hi MtNull guifg=Grey ctermfg=LightGray
+  hi MtIndentTab guibg=Grey90 ctermbg=LightGray
+  hi MtWhiteTail guibg=Blue ctermbg=Blue
 endif
