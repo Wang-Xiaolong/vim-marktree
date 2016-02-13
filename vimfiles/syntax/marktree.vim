@@ -59,7 +59,7 @@ syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle "^\t*#.\+#\s*$\|^\t*#.\+#  " contains=@MtTitleMarks,@MtLinet
 syn match MtTitleEx "^\\=\+.\+==\+\|^\\-\+.\+--\+" contains=@MtTitleMarks,MtWhiteTail
 
-syn cluster MtTitleMarks contains=MtKey,MtIssue,MtSolved,MtTag,MtLink
+syn cluster MtTitleMarks contains=MtKey,MtIssue,MtSolved,MtTag,MtLink,MtComment,MtKeyW,MtIssueW,MtSolvedW
 
 hi default link MtTitle0 MtTitle
 hi default link MtTitle1 MtTitle
@@ -67,6 +67,21 @@ hi default link MtTitle2 MtTitle
 hi default link MtTitleEx MtTitle
 
 " == Marks ==
+" -- Word Marks --
+" Very light marks that mark only 1 word.
+syn match MtKeyW "\*\S*\>"
+syn match MtIssueW "?\S*\>"
+syn match MtSolvedW "/?\S*\>"
+syn match MtTodoW "!\S*\>"
+syn match MtDoneW "/!\S*\>"
+
+hi default link MtKeyW MtKey
+hi default link MtIssueW MtIssue
+hi default link MtSolvedW MtSolved
+hi default link MtTodoW MtTodo
+hi default link MtDoneW MtDone
+
+" -- Normal Marks --
 " Small marks within one line
 "   Comment: </Explanations or remarks, beyond the original text>
 "   Meat: <_Important sentences, usually underlined on paper>
@@ -77,7 +92,6 @@ hi default link MtTitleEx MtTitle
 "   Done: </!Now it's done>
 "   Tag: <#Important words or phrases> that could be </#referenced elsewhere>
 "   Link: <~Reference tags or external content>
-" List (*, + or -) and number (1. 2. 3. ...) signs are also rendered here.
 
 syn region MtComment start="</" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,@MtCommentMark
 syn region MtMeat start="<_" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,@MtMeatMark
@@ -109,7 +123,7 @@ hi default link MtDoneS MtDone
 hi default link MtLinkS MtLink
 hi default link MtNullS MtNull
 
-syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone,MtIssueS,MtSolvedS,MtTodoS,MtDoneS
+syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone,MtIssueS,MtSolvedS,MtTodoS,MtDoneS,MtKeyW,MtIssueW,MtSolvedW,MtTodoW,MtDoneW
 syn cluster MtCommentMark contains=@MtGeneralMark,MtMeat,MtLink,MtMeatS,@MtAutoLink
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment
 syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtMeat,MtLink,MtNull,MtMeatS,MtDoneS,MtLinkS,MtNullS,@MtAutoLink

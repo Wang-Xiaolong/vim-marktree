@@ -2,13 +2,14 @@
 " xiaolong.wang@intel.com from Dec.2015
 
 if &background == "dark" " compatible to 8bit console
+  hi Normal guifg=Gray ctermfg=Gray
   hi MtTitle gui=bold guifg=LightMagenta ctermfg=Magenta
   hi MtComment guifg=LightGreen ctermfg=Green
-  hi MtMeat gui=underline guifg=LightCyan ctermfg=Cyan
-  hi MtKey gui=underline,bold guifg=Orange ctermfg=White ctermbg=DarkCyan
-  hi MtIssue guibg=Red guifg=White ctermfg=White ctermbg=DarkRed
+  hi MtMeat gui=underline guifg=White ctermfg=White
+  hi MtKey gui=underline,bold guifg=Black guibg=Orange ctermfg=White ctermbg=DarkCyan
+  hi MtIssue guibg=DarkRed guifg=White ctermfg=White ctermbg=DarkRed
   hi MtSolved guifg=LightRed ctermfg=Red
-  hi MtTodo guibg=Yellow guifg=Black ctermfg=Black ctermbg=DarkYellow
+  hi MtTodo guibg=DarkYellow guifg=Black ctermfg=Black ctermbg=DarkYellow
   hi MtDone guifg=DarkYellow ctermfg=Yellow
   hi MtTag guifg=Magenta ctermfg=Magenta
   hi MtLink guifg=Cyan ctermfg=Cyan
@@ -16,8 +17,8 @@ if &background == "dark" " compatible to 8bit console
   hi MtSign guifg=Yellow ctermfg=Yellow
   hi MtRef gui=italic guifg=LightBlue ctermfg=White
   hi MtCode guifg=LightYellow ctermfg=White
-  hi MtNull guifg=Grey30 ctermfg=DarkGray
-  hi MtIndentTab guibg=Grey10 ctermbg=DarkBlue
+  hi MtNull guifg=Gray30 ctermfg=DarkGray
+  hi MtIndentTab guibg=Gray10 ctermbg=DarkBlue
   hi MtWhiteTail guibg=Blue ctermbg=DarkRed
 else " light background, console should be at least 16 color
   hi MtTitle gui=bold guifg=DarkMagenta ctermfg=DarkMagenta
