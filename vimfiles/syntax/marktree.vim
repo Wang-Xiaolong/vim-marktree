@@ -47,7 +47,7 @@ hi default link MtEmail MtUrl
 "   It has the same level of the text it decorates.
 " Keywords, Questions and Tags can be marked inside a Title.
 
-syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMarks,@MtLinet,@MtAutoLink
+syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMarks,@MtLinet,@MtAutoLink,MtCommentLine
 syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle "^\t*#.\+#\s*$\|^\t*#.\+#  " contains=@MtTitleMarks,@MtLinet
