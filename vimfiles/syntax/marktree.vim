@@ -114,7 +114,8 @@ syn match MtIssueLine "^\s*? .*$" contains=@MtLinet,MtKey
 syn match MtSolvedLine "^\s*/? .*$" contains=@MtLinet,MtKey
 syn match MtTodoLine "^\s*! .*$" contains=@MtLinet,MtKey
 syn match MtDoneLine "^\s*/! .*$" contains=@MtLinet,MtKey
-syn match MtRefLine "^\t*>\s.*$" contains=@MtLinet,@MtRefMark
+syn match MtRefLine "^\s*: .*$" contains=@MtLinet,@MtRefMark
+syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtRefMark
 syn match MtCodeLine "^\t*|\s.*$" contains=@MtLinet
 syn match MtLinkLine "^\s*\~ .*$" contains=@MtLinet,@MtAutoLink
 syn match MtNullLine "^\s*\\\\ .*$" contains=@MtLinet
@@ -127,6 +128,7 @@ hi default link MtTodoLine MtTodo
 hi default link MtDoneLine MtDone
 hi default link MtLinkLine MtLink
 hi default link MtRefLine MtRef
+hi default link MtMdRefLine MtRef
 hi default link MtCodeLine MtCode
 hi default link MtNullLine MtNull
 
