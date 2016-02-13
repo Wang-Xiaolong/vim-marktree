@@ -51,12 +51,14 @@ syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMarks,@MtLinet,@MtA
 syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle "^\t*#.\+#\s*$\|^\t*#.\+#  " contains=@MtTitleMarks,@MtLinet
+syn match MtTitleEx "^\\=\+.\+==\+\|^\\-\+.\+--\+" contains=@MtTitleMarks,MtWhiteTail
 
 syn cluster MtTitleMarks contains=MtKey,MtIssue,MtSolved,MtTag,MtLink
 
 hi default link MtTitle0 MtTitle
 hi default link MtTitle1 MtTitle
 hi default link MtTitle2 MtTitle
+hi default link MtTitleEx MtTitle
 
 " == Marks ==
 " Small marks within one line

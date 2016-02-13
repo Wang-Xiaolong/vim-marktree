@@ -43,6 +43,8 @@ function! MtFold(lnum)
 			let b:Title2LevelCnt = idx
 		endif
 		return b:Title1LevelCnt + idx - 1
+	elseif synstack[0] == hlID("MtTitleEx")
+		return '='
 	else "block or ordinary line
 		let blkval = MtInBlock(a:lnum, line, "MtCodeBlock", "<<.*|", synstack[0])
 		if blkval == 0
