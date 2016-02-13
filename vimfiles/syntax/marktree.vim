@@ -13,8 +13,11 @@ syn match MtIndent "^\s\+" contains=MtIndentTab,MtTabAfterSpace
 syn match MtIndentTab "^\t\+" contained
 syn match MtWhiteTail "\s\+$"
 syn match MtTabAfterSpace " \+\t\+" contained
-syn match MtSign "^\t*[\*+\-] " contains=MtIndent
-syn match MtNumSign "^\t*\d\+\. " contains=MtIndent
+syn match MtSign "^\t*[\*+\-] \(\[.\?\]\)\?" contains=MtIndent,MtSignIssue,MtSignTodo
+syn match MtNumSign "^\t*\d\+\. \(\[.\?\]\)\?" contains=MtIndent,MtSignIssue,MtSignTodo
+syn match MtLetterSign "^\t*[a-zA-Z]\. \(\[.\?\]\)\?" contains=MtIndent,MtSignIssue,MtSignTodo
+syn match MtSignTodo "\[ \?\]" contained
+syn match MtSignIssue "\[?\]" contained
 syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$" contains=@MtLinet
 syn match MtUrl "[a-z]\{3,6}:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*"
 syn match MtEmail "[a-z0-9_\.-]\+@[\da-z\.-]\+\.[a-z\.]\{2,6}"
@@ -24,8 +27,11 @@ syn cluster MtAutoLink contains=MtUrl,MtEmail
 
 hi default link MtTabAfterSpace MtWhiteTail
 hi default link MtNumSign MtSign
+hi default link MtLetterSign MtSign
 hi default link MtSeparator MtSign
 hi default link MtEmail MtUrl
+hi default link MtSignTodo MtTodo
+hi default link MtSignIssue MtIssue
 
 " == Titles ==
 " Title0 is the head block from the beginning of file to the first empty line;
