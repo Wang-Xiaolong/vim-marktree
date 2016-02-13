@@ -44,7 +44,10 @@ function! MtFold(lnum)
 		endif
 		return b:Title1LevelCnt + idx - 1
 	else "block or ordinary line
-		let blkval = MtInBlock(a:lnum, line, "MtCodeBlock", "<<.*{", synstack[0])
+		let blkval = MtInBlock(a:lnum, line, "MtCodeBlock", "<<.*|", synstack[0])
+		if blkval == 0
+			let blkval = MtInBlock(a:lnum, line, "MtGhCodeBlock", "```", synstack[0])
+		endif
 		if blkval == 0
 			let blkval = MtInBlock(a:lnum, line, "MtRefBlock", "<<:", synstack[0])
 		endif

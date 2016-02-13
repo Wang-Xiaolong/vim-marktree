@@ -81,7 +81,7 @@ syn region MtDone start="</!" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\
 syn region MtTag start="</\=#" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
 syn region MtLink start="<[~]" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,@MtAutoLink
 syn region MtRef start="<:" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
-syn region MtCode start="<{" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="}>" oneline
+syn region MtCode start="<|" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
 syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet
 
 " -- Strict Marks --
@@ -142,10 +142,12 @@ syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolve
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
 syn region MtCommentBlock start="<</[^?!]" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtRefBlock start="<<:"  end=":>>" contains=@MtLinet,@MtRefMark,@MtRefBlockLine
-syn region MtCodeBlock start="<<\p\{-}{" end="}>>" contains=@MtLinet,MtCodeComment
+syn region MtCodeBlock start="<<\p\{-}|" end="|>>" contains=@MtLinet,MtCodeComment
+syn region MtGhCodeBlock start="```" end="```" contains=@MtLinet,MtCodeComment
 syn match MtCodeComment "^>>[^>].*$" contained contains=MtWhiteTail,@MtCommentMark
 
 hi default link MtCommentBlock MtComment
 hi default link MtRefBlock MtRef
 hi default link MtCodeBlock MtCode
+hi default link MtGhCodeBlock MtCode
 hi default link MtCodeComment MtComment
