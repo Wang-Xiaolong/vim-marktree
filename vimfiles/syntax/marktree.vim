@@ -40,7 +40,7 @@ hi default link MtEmail MtUrl
 "     '====== Title 1.1.1 ================================================='
 " Title2 is as '-- Title 2 --'
 "   Start with 2 minus signs at the start-of-line,
-"   End with at least 2 equal signs, that could also be extend to a separator.
+"   End with at least 2 minus signs, that could also be extend to a separator.
 "   The level is just lower than the lowest Title1.
 " Title3 is as '#Title 3#'
 "   Start with a sharp sign, tab indented, end also with a sharp sign. 
