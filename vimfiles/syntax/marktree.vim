@@ -140,7 +140,7 @@ syn match MtRefLine "^\s*: .*$" contains=@MtLinet,@MtRefMark
 syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtRefMark
 syn match MtCodeLine "^\t*|\s.*$" contains=@MtLinet
 syn match MtLinkLine "^\s*\~ .*$" contains=@MtLinet,@MtAutoLink
-syn match MtNullLine "^\s*\\\\ .*$" contains=@MtLinet
+syn match MtNullLine "^\s*\\\\.*$" contains=@MtLinet
 
 hi default link MtCommentLine MtComment
 hi default link MtMeatLine MtMeat
