@@ -71,7 +71,6 @@ hi default link MtSignIssue MtIssue
 " Title3 is as '#Title 3#'
 "   Start with a sharp sign, tab indented, end also with a sharp sign. 
 "   It has the same level of the text it decorates.
-" Keywords, Questions and Tags can be marked inside a Title.
 
 syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMarks,@MtLinet,@MtAutoLink,MtCommentLine
 syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMarks,MtWhiteTail
