@@ -15,8 +15,6 @@ colorscheme marktree
 setlocal foldmethod=expr
 setlocal foldexpr=MtFold(v:lnum)
 setlocal foldlevel=10
-let b:Title1LevelCnt = 0
-let b:Title2LevelCnt = 0
 
 function! MtFold(lnum)
 	let line = getline(a:lnum)

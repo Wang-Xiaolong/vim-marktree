@@ -5,6 +5,26 @@
 syn sync fromstart
 syn sync maxlines=100
 
+" init
+function! MtSyntaxInit()
+	let s:optstr = matchstr(getline(1), '^<mt\S*>')
+	if s:optstr == ""
+		let b:T1LvlCnt = 0
+		let b:T2LvlCnt = 0
+		let b:MtQwEn = 0
+		let b:MtKwEn = 0
+		let b:MtDwEn = 0
+		return
+	endif
+	let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
+	let b:T2LvlCnt = strlen(substitute(s:optstr, "[^-]", "", "g"))
+	let b:MtQwEn = strlen(substitute(s:optstr, "[^?]", "", "g"))
+	let b:MtKwEn = strlen(substitute(s:optstr, "[^*]", "", "g"))
+	let b:MtDwEn = strlen(substitute(s:optstr, "[^!]", "", "g"))
+endfunction
+
+call MtSyntaxInit()
+
 " == Small Stuff ==
 " It is here before the Lines and Regions because if not so,
 " Lines and Regions may can't be recognized.
@@ -59,7 +79,7 @@ syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle "^\t*#.\+#\s*$\|^\t*#.\+#  " contains=@MtTitleMarks,@MtLinet
 syn match MtTitleEx "^\\=\+.\+==\+\|^\\-\+.\+--\+" contains=@MtTitleMarks,MtWhiteTail
 
-syn cluster MtTitleMarks contains=MtKey,MtIssue,MtSolved,MtTag,MtLink,MtComment,MtKeyW,MtIssueW,MtSolvedW
+syn cluster MtTitleMarks contains=MtKey,MtIssue,MtSolved,MtTag,MtLink,MtComment
 
 hi default link MtTitle0 MtTitle
 hi default link MtTitle1 MtTitle
@@ -68,31 +88,31 @@ hi default link MtTitleEx MtTitle
 
 " == Marks ==
 " -- Word Marks --
-" Very light marks that mark only 1 word.
-syn match MtKeyW "\*\S*\>"
-syn match MtIssueW "?\S*\>"
-syn match MtSolvedW "/?\S*\>"
-syn match MtTodoW "!\S*\>"
-syn match MtDoneW "/!\S*\>"
+" Very light marks that mark only 1 word. All optional:
+if b:MtKwEn
+	syn match MtKeyW "\*\S*\>"
+	hi default link MtKeyW MtKey
+	syn cluster MtTitleMarks add=MtKeyW
+	syn cluster MtGeneralMark add=MtKeyW
+endif
+if b:MtQwEn
+	syn match MtIssueW "?\S*\>"
+	syn match MtSolvedW "/?\S*\>"
+	hi default link MtIssueW MtIssue
+	hi default link MtSolvedW MtSolved
+	syn cluster MtTitleMarks add=MtIssueW,MtSolvedW
+	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW
+endif
+if b:MtDwEn
+	syn match MtTodoW "!\S*\>"
+	syn match MtDoneW "/!\S*\>"
+	hi default link MtTodoW MtTodo
+	hi default link MtDoneW MtDone
+	syn cluster MtTitleMarks add=MtTodoW,MtDoneW
+	syn cluster MtGeneralMark add=MtTodoW,MtDoneW
+endif
 
-hi default link MtKeyW MtKey
-hi default link MtIssueW MtIssue
-hi default link MtSolvedW MtSolved
-hi default link MtTodoW MtTodo
-hi default link MtDoneW MtDone
-
-" -- Normal Marks --
-" Small marks within one line
-"   Comment: </Explanations or remarks, beyond the original text>
-"   Meat: <_Important sentences, usually underlined on paper>
-"   Keyword: <*Words that can hook>
-"   Question: <?Things that I'm not quite sure>
-"   Solved: </?Now I'm sure>
-"   Todo: <!Words that push me to do something>
-"   Done: </!Now it's done>
-"   Tag: <#Important words or phrases> that could be </#referenced elsewhere>
-"   Link: <~Reference tags or external content>
-
+" -- Standard Marks --
 syn region MtComment start="</" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,@MtCommentMark
 syn region MtMeat start="<_" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,@MtMeatMark
 syn region MtKey start="<\*" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
@@ -123,7 +143,7 @@ hi default link MtDoneS MtDone
 hi default link MtLinkS MtLink
 hi default link MtNullS MtNull
 
-syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone,MtIssueS,MtSolvedS,MtTodoS,MtDoneS,MtKeyW,MtIssueW,MtSolvedW,MtTodoW,MtDoneW
+syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone,MtIssueS,MtSolvedS,MtTodoS,MtDoneS,MtKeyW
 syn cluster MtCommentMark contains=@MtGeneralMark,MtMeat,MtLink,MtMeatS,@MtAutoLink
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment
 syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtMeat,MtLink,MtNull,MtMeatS,MtDoneS,MtLinkS,MtNullS,@MtAutoLink
