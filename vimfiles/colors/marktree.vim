@@ -2,7 +2,6 @@
 " xiaolong.wang@intel.com from Dec.2015
 
 if &background == "dark" " compatible to 8bit console
-  hi Normal guifg=Gray ctermfg=Gray
   hi MtTitle gui=bold guifg=LightMagenta ctermfg=Magenta
   hi MtComment guifg=LightGreen ctermfg=Green
   hi MtMeat gui=underline guifg=White ctermfg=White
@@ -16,7 +15,7 @@ if &background == "dark" " compatible to 8bit console
   hi MtUrl gui=underline guifg=DarkCyan ctermfg=Cyan
   hi MtSign guifg=Yellow ctermfg=Yellow
   hi MtRef gui=italic guifg=LightBlue ctermfg=White
-  hi MtCode guifg=LightYellow ctermfg=White
+  hi MtCode guifg=LightBlue ctermfg=White
   hi MtNull guifg=Gray30 ctermfg=DarkGray
   hi MtIndentTab guibg=Gray10 ctermbg=DarkBlue
   hi MtWhiteTail guibg=Blue ctermbg=DarkRed
