@@ -7,7 +7,7 @@ syn sync maxlines=100
 
 " init
 function! MtSyntaxInit()
-	let s:optstr = matchstr(getline(1), '^<mt\S*>')
+	let s:optstr = matchstr(getline(1), '<mt\S*>')
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
 		let b:T2LvlCnt = 0
