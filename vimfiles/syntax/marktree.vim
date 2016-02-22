@@ -14,6 +14,12 @@ function! MtSyntaxInit()
 		let b:MtQwEn = 0
 		let b:MtKwEn = 0
 		let b:MtDwEn = 0
+		let b:MtTwEn = 0
+		let b:MtLwEn = 0
+		let b:MtRwEn = 0
+		let b:MtRSingleEn = 0
+		let b:MtRDoubleEn = 0
+		let b:MtESingleEn = 0
 		return
 	endif
 	let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
@@ -21,6 +27,12 @@ function! MtSyntaxInit()
 	let b:MtQwEn = strlen(substitute(s:optstr, "[^?]", "", "g"))
 	let b:MtKwEn = strlen(substitute(s:optstr, "[^*]", "", "g"))
 	let b:MtDwEn = strlen(substitute(s:optstr, "[^!]", "", "g"))
+	let b:MtTwEn = strlen(substitute(s:optstr, "[^#]", "", "g"))
+	let b:MtLwEn = strlen(substitute(s:optstr, "[^~]", "", "g"))
+	let b:MtRwEn = strlen(substitute(s:optstr, "[^:]", "", "g"))
+	let b:MtRSingleEn = strlen(substitute(s:optstr, "[^']", "", "g"))
+	let b:MtRDoubleEn = strlen(substitute(s:optstr, "[^\"]", "", "g"))
+	let b:MtESingleEn = strlen(substitute(s:optstr, "[^`]", "", "g"))
 endfunction
 
 call MtSyntaxInit()
@@ -41,6 +53,7 @@ syn match MtSignIssue "\[?\]" contained
 syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$" contains=@MtLinet
 syn match MtUrl "[a-z]\{3,6}:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*"
 syn match MtEmail "[a-z0-9_\.-]\+@[\da-z\.-]\+\.[a-z\.]\{2,6}"
+syn match MtOption "<mt\S*>" contained
 
 syn cluster MtLinet contains=MtIndent,MtWhiteTail
 syn cluster MtAutoLink contains=MtUrl,MtEmail
@@ -72,7 +85,7 @@ hi default link MtSignIssue MtIssue
 "   Start with a sharp sign, tab indented, end also with a sharp sign. 
 "   It has the same level of the text it decorates.
 
-syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMarks,@MtLinet,@MtAutoLink,MtCommentLine
+syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMarks,@MtLinet,@MtAutoLink,MtCommentLine,MtOption
 syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMarks,MtWhiteTail
 syn match MtTitle "^\t*#.\+#\s*$\|^\t*#.\+#  " contains=@MtTitleMarks,@MtLinet
@@ -128,6 +141,34 @@ if b:MtDwEn
 	hi default link MtDoneW MtDone
 	syn cluster MtTitleMarks add=MtTodoW,MtDoneW
 	syn cluster MtGeneralMark add=MtTodoW,MtDoneW
+endif
+if b:MtTwEn
+	syn match MtTagW "/\=#\S*\>"
+	hi default link MtTagW MtTag
+	syn cluster MtTitleMarks add=MtTagW
+	syn cluster MtGeneralMark add=MtTagW
+endif
+if b:MtLwEn
+	syn match MtLinkW "[~]\S*\>"
+	hi default link MtLinkW MtLink
+	syn cluster MtCommentMark add=MtLinkW
+	syn cluster MtRefMark add=MtLinkW
+endif
+if b:MtRwEn
+	syn match MtRefW ":\S*\>"
+	hi default link MtRefW MtRef
+endif
+if b:MtRSingleEn
+	syn match MtRefSingle +'\S*'+
+	hi default link MtRefSingle MtRef
+endif
+if b:MtRDoubleEn
+	syn match MtRefDouble +".*"+
+	hi default link MtRefDouble MtRef
+endif
+if b:MtESingleEn
+	syn match MtCodeSingle +`.*`+
+	hi default link MtCodeSingle MtCode
 endif
 
 " -- Standard Marks --
