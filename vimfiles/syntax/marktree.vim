@@ -65,6 +65,7 @@ hi default link MtSeparator MtSign
 hi default link MtEmail MtUrl
 hi default link MtSignTodo MtTodo
 hi default link MtSignIssue MtIssue
+hi default link MtOption MtSign
 
 " == Titles ==
 " Title0 is the head block from the beginning of file to the first empty line;
