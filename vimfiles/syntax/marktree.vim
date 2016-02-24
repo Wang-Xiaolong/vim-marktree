@@ -102,7 +102,7 @@ syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMark,@MtLinet,@MtAu
 syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMark,MtWhiteTail
 syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMark,MtWhiteTail
 syn match MtTitle "^\t*#.\+#\s*$\|^\t*#.\+#  " contains=@MtTitleMark,@MtLinet
-syn match MtTitleEx "^\\=\+.\+==\+\|^\\-\+.\+--\+" contains=@MtTitleMark,MtWhiteTail
+syn match MtTitleEx "^\s*|_.\{-}\(_|\|$\)" contains=@MtTitleMark,MtWhiteTail
 
 hi default link MtTitle0 MtTitle
 hi default link MtTitle1 MtTitle
