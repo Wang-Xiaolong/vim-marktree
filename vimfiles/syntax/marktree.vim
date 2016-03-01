@@ -131,48 +131,48 @@ hi default link MtTitleEx MtTitle
 
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
-syn match MtWordSign "\(^\s*\|\s\)/\=[_*?!#~:]" contained contains=MtIndent
+syn match MtWordSign "[*~:]\|\<_\|/\=[?!#]" contained
 hi default link MtWordSign MtSign
 if b:MtMwEn
-	syn match MtMeatW "\(^\s*\|\s\)_\S*\>" contains=MtWordSign 
+	syn match MtMeatW "\<_\S\{-1,}\>" contains=MtWordSign 
 	hi default link MtMeatW MtMeat
 	syn cluster MtMeats add=MtMeatW
 endif
 if b:MtKwEn
-	syn match MtKeyW "\(^\s*\|\s\)\*[^ \t=]\S*\>" contains=MtWordSign
+	syn match MtKeyW "\*[^ \t=]\S\{-}\>" contains=MtWordSign
 	hi default link MtKeyW MtKey
 	syn cluster MtKeys add=MtKeyW
 endif
 if b:MtQwEn
-	syn match MtIssueW "\(^\s*\| \)?\S*\>" contains=MtWordSign
-	syn match MtSolvedW "\(^\s*\| \)/?\S*\>" contains=MtWordSign
+	syn match MtIssueW "?\S\{-}\>" contains=MtWordSign
+	syn match MtSolvedW "/?\S\{-}\>" contains=MtWordSign
 	hi default link MtIssueW MtIssue
 	hi default link MtSolvedW MtSolved
 	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW
 endif
 if b:MtDwEn
-	syn match MtTodoW "\(^\s*\| \)![^ \t=]\S*\>" contains=MtWordSign
-	syn match MtDoneW "\(^\s*\| \)/![^ \t=]\S*\>" contains=MtWordSign
+	syn match MtTodoW "![^ \t=]\S\{-}\>" contains=MtWordSign
+	syn match MtDoneW "/![^ \t=]\S\{-}\>" contains=MtWordSign
 	hi default link MtTodoW MtTodo
 	hi default link MtDoneW MtDone
 	syn cluster MtGeneralMark add=MtTodoW,MtDoneW
 endif
 if b:MtTwEn
-	syn match MtTagW "\(^\s*\| \)/\=#[^ \t\d]\S*\>" contains=MtWordSign
+	syn match MtTagW "#[^ \t\d]\S\{-}\>" contains=MtWordSign
 	hi default link MtTagW MtTag
 	syn cluster MtGeneralMark add=MtTagW
 endif
 if b:MtLwEn
-	syn match MtLinkW "\(^\s*\| \)[~][^ \t\d>~]\S*\>" contains=MtWordSign
+	syn match MtLinkW "[~][^ \t\d>~]\S\{-}\>" contains=MtWordSign
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
 endif
 if b:MtRwEn
-	syn match MtRefW "\(^\s*\| \):[^ \t-()]\S*\>" contains=MtWordSign
+	syn match MtRefW ":[^ \t-():]\S\{-}\>" contains=MtWordSign
 	hi default link MtRefW MtRef
 endif
 if b:MtRSingleEn
-	syn match MtRefSingle +'\S*'+
+	syn match MtRefSingle +'\S\{-}'+
 	hi default link MtRefSingle MtRef
 endif
 if b:MtRDoubleEn
