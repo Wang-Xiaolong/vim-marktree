@@ -9,6 +9,7 @@ setlocal shiftwidth=8
 setlocal softtabstop=0
 setlocal noexpandtab
 setlocal nosmarttab
+setlocal textwidth=0
 colorscheme marktree_dark
 
 " folding
