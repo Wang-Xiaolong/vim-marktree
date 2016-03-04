@@ -42,3 +42,14 @@ hi MtCode     guifg=LightBlue
 hi MtNull     guifg=Gray30                      ctermfg=DarkGray
 hi MtIndentTab            guibg=Gray10                        ctermbg=DarkBlue
 hi MtWhiteTail            guibg=DarkRed                       ctermbg=DarkRed
+hi MtCodeBlock            guibg=DarkCyan                      ctermbg=DarkCyan
+
+" Extension files
+if exists("b:MtExtList")
+	for s:filestr in b:MtExtList
+		let s:filestrfull = g:mtpath . '\colors\marktree_extension\' . s:filestr . '.vim'
+		if filereadable(s:filestrfull)
+			execute 'source '.s:filestrfull
+		endif
+	endfor
+endif

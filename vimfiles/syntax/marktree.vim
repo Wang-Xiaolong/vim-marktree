@@ -5,9 +5,23 @@
 syn sync fromstart
 syn sync maxlines=100
 
+" == Clusters ==
+syn cluster MtKeys contains=MtKey
+syn cluster MtMeats contains=MtMeat,MtMeatSt
+syn cluster MtLinks contains=MtLink,MtLinkSt,@MtAutoLink
+syn cluster MtGeneralMark contains=@MtKeys,MtTag,MtIssue,MtSolved,MtTodo,MtDone,MtIssueSt,MtSolvedSt,MtTodoSt,MtDoneSt
+syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
+syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
+syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtNull,MtNullSt
+syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock
+syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
+syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
+syn cluster MtCodeExtension contains=MtCodeDefault
+
 " init
 function! MtSyntaxInit()
 	let s:optstr = matchstr(getline(1), '<mt\S*>')
+	let b:MtExtList = []
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
 		let b:T2LvlCnt = 0
@@ -23,6 +37,22 @@ function! MtSyntaxInit()
 		let b:MtESingleEn = 0
 		return
 	endif
+	let s:idx = 1
+	while 1
+		let s:filestr = matchstr(s:optstr, '+\zs\w\+', 0, s:idx)
+		if s:filestr == ""
+			break
+		endif
+		let s:filestrfull = g:mtpath . '\syntax\marktree_extension\' . s:filestr . '.vim'
+		if filereadable(s:filestrfull)
+			execute 'source '.s:filestrfull
+			call add(b:MtExtList, s:filestr)
+		else
+			echo "File not found: " . s:filestrfull
+		endif
+		let s:idx = s:idx + 1
+	endwhile
+	let s:optstr = substitute(s:optstr, '+\w\+', '', 'g')
 	let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
 	let b:T2LvlCnt = strlen(substitute(s:optstr, "[^-]", "", "g"))
 	let b:MtMwEn = strlen(substitute(s:optstr, "[^_]", "", "g"))
@@ -37,17 +67,8 @@ function! MtSyntaxInit()
 	let b:MtESingleEn = strlen(substitute(s:optstr, "[^`]", "", "g"))
 endfunction
 
+let g:mtpath = expand('<sfile>:p:h:h')
 call MtSyntaxInit()
-
-" == Clusters ==
-syn cluster MtKeys contains=MtKey
-syn cluster MtMeats contains=MtMeat,MtMeatSt
-syn cluster MtLinks contains=MtLink,MtLinkSt,@MtAutoLink
-syn cluster MtGeneralMark contains=@MtKeys,MtTag,MtIssue,MtSolved,MtTodo,MtDone,MtIssueSt,MtSolvedSt,MtTodoSt,MtDoneSt
-syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
-syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
-syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtNull,MtNullSt
-syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock
 
 " == Small Stuff ==
 " It is here before the Lines and Regions because if not so,
@@ -243,9 +264,6 @@ hi default link MtCodeLine MtCode
 hi default link MtNullLine MtNull
 hi default link MtLineSign MtSign
 
-syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
-syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
-
 " == Blocks ==
 " Blocks are special "strict marks" for multi-line comment, ref and code.
 " A block is treated as one paragraph in folding, even without any indentation.
@@ -253,12 +271,13 @@ syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolve
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
 syn region MtCommentBlock start="<</[^?!]" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtRefBlock start="<<:"  end=":>>" contains=@MtLinet,@MtRefMark,@MtRefBlockLine
-syn region MtCodeBlock start="<<\p\{-}|" end="|>>" contains=@MtLinet,MtCodeComment
+syn region MtCodeBlock start="<<\w\{-}|" end="|>>" contains=@MtCodeExtension
 syn region MtGhCodeBlock start="```" end="```" contains=@MtLinet,MtCodeComment
 syn match MtCodeComment "^>>[^>].*$" contained contains=MtWhiteTail,@MtCommentMark
+syn region MtCodeDefault start="<<|\zs" end="\ze|>>" contained contains=@MtLinet,MtCodeComment
 
 hi default link MtCommentBlock MtComment
 hi default link MtRefBlock MtRef
-hi default link MtCodeBlock MtCode
+hi default link MtCodeDefault MtCode
 hi default link MtGhCodeBlock MtCode
 hi default link MtCodeComment MtComment
