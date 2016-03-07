@@ -42,7 +42,7 @@ function! MtSyntaxInit()
 		if s:filestr == ""
 			break
 		endif
-		let s:filestrfull = g:mtpath . '\syntax\marktree_extension\' . s:filestr . '.vim'
+		let s:filestrfull = g:mtpath . '/syntax/marktree_extension/' . s:filestr . '.vim'
 		if filereadable(s:filestrfull)
 			execute 'source '.s:filestrfull
 			call add(b:MtExtList, s:filestr)
