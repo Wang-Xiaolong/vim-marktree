@@ -46,7 +46,7 @@ function! MtFold(lnum)
 		return b:T1LvlCnt + s:idx - 1
 	elseif s:synroot == "MtTitleEx"
 		return '='
-	elseif s:synroot == "MtBlockMark"  "tailing mark of a block
+	elseif s:synroot == "MtBlockFence"  "tailing mark of a block
 		return '='
 	elseif s:synroot !~ 'Mt\w\+Block$'  "ordinary line (not start in block)
 		return b:T1LvlCnt + b:T2LvlCnt + MtIndentLevel(s:line)
@@ -60,7 +60,7 @@ function! MtFold(lnum)
 		if len(s:last_synstack) > 0
 			if s:last_synstack[0] == s:synstack[0] "a consequence line
 				if len(s:last_synstack) > 1
-					if s:last_synstack[1] == hlID("MtBlockMark") "last line is 1st block line
+					if s:last_synstack[1] == hlID("MtBlockFence") "last line is 1st block line
 						return 'a1'
 					endif
 				endif
@@ -71,7 +71,7 @@ function! MtFold(lnum)
 		"The first line start-in-block, should be the 2nd block line,
 		"except in one case
 		if len(s:synstack) > 1
-			if s:synstack[1] == hlID("MtBlockMark") "The 1st block line
+			if s:synstack[1] == hlID("MtBlockFence") "The 1st block line
 				return b:T1LvlCnt + b:T2LvlCnt + 1
 			endif
 		endif

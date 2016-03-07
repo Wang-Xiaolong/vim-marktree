@@ -1,4 +1,4 @@
-syn region MtCbarBlock matchgroup=MtBlockMark start="<<cbar|" end="|>>" contains=@MtLinet,MtCodeComment,@MtCbarMarks
+syn region MtCbarBlock matchgroup=MtBlockFence start="<<cbar|" end="|>>" contains=@MtLinet,MtCodeComment,@MtCbarMarks
 syn cluster MtCbarMarks contains=MtCbarRed,MtCbarGreen,MtCbarBlue,MtCbarMagenta,MtCbarYellow,MtCbarCyan
 
 syn match MtCbarRed "{[^}]\{-}{" contained contains=MtCbarRedSign,MtCbarGreen,MtCbarBlue,MtCbarYellow,MtCbarCyan
