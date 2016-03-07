@@ -28,69 +28,60 @@ function! MtFold(lnum)
 	let s:synstack = synstack(a:lnum, 1)
 	if len(s:synstack) == 0 "very plain text
 		return b:T1LvlCnt + b:T2LvlCnt + MtIndentLevel(s:line)
-	elseif s:synstack[0] == hlID("MtTitle0")
+	endif
+	let s:synroot = synIDattr(s:synstack[0], "name")
+	if s:synroot == "MtTitle0"
 		return 0
-	elseif s:synstack[0] == hlID("MtTitle1")
+	elseif s:synroot == "MtTitle1"
 		let s:idx = match(s:line, '[^=]') / 2
 		if b:T1LvlCnt < s:idx
 			let b:T1LvlCnt = s:idx
 		endif
 		return s:idx - 1
-	elseif s:synstack[0] == hlID("MtTitle2")
+	elseif s:synroot == "MtTitle2"
 		let s:idx = match(s:line, '[^-]') / 2
 		if b:T2LvlCnt < s:idx
 			let b:T2LvlCnt = s:idx
 		endif
 		return b:T1LvlCnt + s:idx - 1
-	elseif s:synstack[0] == hlID("MtTitleEx")
+	elseif s:synroot == "MtTitleEx"
 		return '='
-	else "block or ordinary line
-		let s:blkval = MtInBlock(a:lnum, s:line, "MtCodeBlock", "<<.*|", s:synstack[0])
-		if s:blkval == 0
-			let s:blkval = MtInBlock(a:lnum, s:line, "MtGhCodeBlock", "```", s:synstack[0])
-		endif
-		if s:blkval == 0
-			let s:blkval = MtInBlock(a:lnum, s:line, "MtRefBlock", "<<:", s:synstack[0])
-		endif
-		if s:blkval == 0
-			let s:blkval = MtInBlock(a:lnum, s:line, "MtCommentBlock", "<</[^?!]", s:synstack[0])
-		endif
-		if s:blkval == 2
+	elseif s:synroot == "MtBlockMark"  "tailing mark of a block
+		return '='
+	elseif s:synroot !~ 'Mt\w\+Block$'  "ordinary line (not start in block)
+		return b:T1LvlCnt + b:T2LvlCnt + MtIndentLevel(s:line)
+	else "start in block
+		try
+			let s:last_synstack = synstack(a:lnum - 1, 1)
+		catch "maybe last line is an empty one
 			return '='
-		elseif s:blkval == 1
-			return 'a1'
-		else
-			return b:T1LvlCnt + b:T2LvlCnt + MtIndentLevel(s:line)
+		endtry
+	
+		if len(s:last_synstack) > 0
+			if s:last_synstack[0] == s:synstack[0] "a consequence line
+				if len(s:last_synstack) > 1
+					if s:last_synstack[1] == hlID("MtBlockMark") "last line is 1st block line
+						return 'a1'
+					endif
+				endif
+				return '='
+			endif
 		endif
+		
+		"The first line start-in-block, should be the 2nd block line,
+		"except in one case
+		if len(s:synstack) > 1
+			if s:synstack[1] == hlID("MtBlockMark") "The 1st block line
+				return b:T1LvlCnt + b:T2LvlCnt + 1
+			endif
+		endif
+		
+		"2nd block line
+		return 'a1'
 	endif
 endfunction
 
 function! MtIndentLevel(line)
 	let s:n_tab_idx = match(a:line, '[^\t]')
 	return s:n_tab_idx + (a:line[s:n_tab_idx] == ' ')
-endfunction
-
-function! MtFirstBlockLine(ln, line, name, start)
-	let s:start_idx = match(a:line, a:start)
-	if s:start_idx == -1
-		return 0
-	endif
-	let synstart = s:synstack(a:ln, s:start_idx)
-	if synstart[0] != hlID(a:name)
-		return 0
-	endif
-	return 1
-endfunction
-
-function! MtInBlock(ln, line, name, start, synbase)
-	if a:synbase == hlID(a:name)
-		if MtFirstBlockLine(a:ln, a:line, a:name, a:start)
-			return 0 "we don't care the 1st block line
-		endif
-		if MtFirstBlockLine(a:ln - 1, getline(a:ln - 1), a:name, a:start)
-			return 1 "the 2nd block line
-		endif
-		return 2 "3rd+ lines
-	endif
-	return 0 "not in block
 endfunction

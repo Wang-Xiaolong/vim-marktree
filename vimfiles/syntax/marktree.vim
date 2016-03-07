@@ -16,7 +16,6 @@ syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@
 syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
 syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
-syn cluster MtCodeExtension contains=MtCodeDefault
 
 " init
 function! MtSyntaxInit()
@@ -269,15 +268,15 @@ hi default link MtLineSign MtSign
 " A block is treated as one paragraph in folding, even without any indentation.
 " The level is determined by its heading line.
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
-syn region MtCommentBlock start="<</[^?!]" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
-syn region MtRefBlock start="<<:"  end=":>>" contains=@MtLinet,@MtRefMark,@MtRefBlockLine
-syn region MtCodeBlock start="<<\w\{-}|" end="|>>" contains=@MtCodeExtension
-syn region MtGhCodeBlock start="```" end="```" contains=@MtLinet,MtCodeComment
+syn region MtCommentBlock matchgroup=MtBlockMark start="<</\ze[^?!]" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
+syn region MtRefBlock matchgroup=MtBlockMark start="<<:"  end=":>>" contains=@MtLinet,@MtRefMark,@MtRefBlockLine
+syn region MtCodeBlock matchgroup=MtBlockMark start="<<|" end="|>>" contains=@MtLinet,MtCodeComment
+syn region MtGhCodeBlock matchgroup=MtBlockMark start="```" end="```" contains=@MtLinet,MtCodeComment
 syn match MtCodeComment "^>>[^>].*$" contained contains=MtWhiteTail,@MtCommentMark
-syn region MtCodeDefault start="<<|\zs" end="\ze|>>" contained contains=@MtLinet,MtCodeComment
 
 hi default link MtCommentBlock MtComment
 hi default link MtRefBlock MtRef
-hi default link MtCodeDefault MtCode
+hi default link MtCodeBlock MtCode
 hi default link MtGhCodeBlock MtCode
 hi default link MtCodeComment MtComment
+hi default link MtBlockMark MtSign
