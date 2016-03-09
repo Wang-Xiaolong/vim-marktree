@@ -14,4 +14,3 @@ syn match MtCbarYellowSign "[\[\]]" contained
 syn match MtCbarCyan ")[^(]\{-})" contained contains=MtCbarCyanSign,MtCbarRed,MtCbarGreen,MtCbarMagenta,MtCbarYellow
 syn match MtCbarCyanSign "[()]" contained
 
-hi default link MtCbarBlock Normal
