@@ -29,7 +29,7 @@ hi MtDone     guifg=DarkYellow                  ctermfg=DarkYellow
 hi MtTag      guifg=Magenta                     ctermfg=Magenta
 hi MtLink     guifg=DarkCyan                    ctermfg=DarkCyan
 hi MtUrl      guifg=DarkCyan      gui=underline ctermfg=DarkCyan
-hi MtSign     guifg=Brown                       ctermfg=Brown
+hi MtSign     guifg=DarkYellow                  ctermfg=DarkYellow
 hi MtRef      guifg=DarkBlue         gui=italic ctermfg=DarkBlue
 hi MtCode     guifg=DarkBlue                    ctermfg=DarkBlue
 hi MtNull     guifg=lightGrey                   ctermfg=LightGrey
