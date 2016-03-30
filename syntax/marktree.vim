@@ -114,14 +114,14 @@ hi default link MtOption MtSign
 "   Start with 2 minus signs at the start-of-line,
 "   End with at least 2 minus signs, that could also be extend to a separator.
 "   The level is just lower than the lowest Title1.
-" Title3 is as '#Title 3#'
+" Title3 is as '# Title 3 #'
 "   Start with a sharp sign, tab indented, end also with a sharp sign. 
 "   It has the same level of the text it decorates.
 
 syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMark,@MtLinet,@MtAutoLink,MtCommentLine,MtOption
 syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMark,MtWhiteTail
 syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMark,MtWhiteTail
-syn match MtTitle "^\t*#.\+#\s*$\|^\t*#.\+#  " contains=@MtTitleMark,@MtLinet
+syn match MtTitle "^\t*# .\+ #\(\s\|$\)" contains=@MtTitleMark,@MtLinet
 syn match MtTitleEx "^\s*|_.\{-}\(_|\|$\)" contains=@MtTitleMark,MtWhiteTail
 
 hi default link MtTitle0 MtTitle
