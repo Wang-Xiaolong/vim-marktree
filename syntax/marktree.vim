@@ -30,7 +30,6 @@ function! MtSyntaxInit()
 		let b:MtTodoWEn = 0
 		let b:MtTagWEn = 0
 		let b:MtLinkWEn = 0
-		let b:MtRefWEn = 0
 		let b:MtRefSingleEn = 0
 		let b:MtRefDoubleEn = 0
 		let b:MtCodeSingleEn = 0
@@ -60,7 +59,6 @@ function! MtSyntaxInit()
 	let b:MtTodoWEn = strlen(substitute(s:optstr, "[^!]", "", "g"))
 	let b:MtTagWEn = strlen(substitute(s:optstr, "[^#]", "", "g"))
 	let b:MtLinkWEn = strlen(substitute(s:optstr, "[^~]", "", "g"))
-	let b:MtRefWEn = strlen(substitute(s:optstr, "[^:]", "", "g"))
 	let b:MtRefSingleEn = strlen(substitute(s:optstr, "[^']", "", "g"))
 	let b:MtRefDoubleEn = strlen(substitute(s:optstr, "[^\"]", "", "g"))
 	let b:MtCodeSingleEn = strlen(substitute(s:optstr, "[^`]", "", "g"))
@@ -143,7 +141,7 @@ hi default link MtTitleEx MtTitle
 "  Hidden  </#abc>                       /#abc
 " Link     <~abc>    <<~abc~>>           ~abc
 "  Url
-" Ref      <:abc>    <<:abc:>>   : abc   :abc   General+Meat+Link
+" Ref      <:abc>    <<:abc:>>   : abc          General+Meat+Link
 "          "abc"                 > abc   'abc'    +Comment+Null
 " Code     <|abc>    <<|abc|>>   | abc          Comment in Code
 "          `abc`     ```abc```
@@ -186,10 +184,6 @@ if b:MtLinkWEn
 	syn match MtLinkW "[~][^ \t\d>~]\S\{-}\>" contains=MtWordSign
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
-endif
-if b:MtRefWEn
-	syn match MtRefW ":[^ \t-():]\S\{-}\>" contains=MtWordSign
-	hi default link MtRefW MtRef
 endif
 if b:MtRefSingleEn
 	syn match MtRefSingle +'\S\{-}'+
