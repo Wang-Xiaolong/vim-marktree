@@ -3,7 +3,7 @@
 
 " sync from start to correctly hi long blocks
 syn sync fromstart
-syn sync maxlines=100
+syn sync maxlines=500
 
 " == Clusters ==
 syn cluster MtKeys contains=MtKey
