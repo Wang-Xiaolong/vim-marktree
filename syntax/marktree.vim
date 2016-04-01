@@ -130,24 +130,24 @@ hi default link MtTitle2 MtTitle
 hi default link MtTitleEx MtTitle
 
 " == Marks ==
-" Mark     SB  Standard  Strict      Line    Word   Contain            Meaning
-" Comment  /C  </abc>    <</abc/>>   //abc          General+Meat+Link  Explanations or remarks beyond the original text
-"  InCode                            >> abc
-" Meat     _M  <_abc>    <<_abc_>>   _ abc   _abc   General+Comment    Important parts to underline
-" Key      *K  <*abc>                        *abc                      Keyword that can hook
-" Issue    ?Q  <?abc>    <<?abc?>>   ? abc   ?abc   Key                Things not quite sure
-"  Solved      </?abc>   <</?abc?>>  /? abc  /?abc  Key                Solved issue
-" Todo     !D  <!abc>    <<!abc!>>   ! abc   !abc   Key                Words push to some actions
-"  Done        </!abc>   <</!abc!>>  /! abc  /!abc  Key                Completed tasks
-" Tag      #T  <#abc>                        #abc                      Anchor or meta data
-"  Hidden      </#abc>                       /#abc                     Hidden anchor
-" Link     ~L  <~abc>    <<~abc~>>   ~ abc   ~abc                      Link to anchor or external content
-"  Url                                                                 Url/Email is auto recognized
-" Ref      :R  <:abc>    <<:abc:>>   : abc   :abc   General+Meat+Link  From other source
-"              "abc"                 > abc   'abc'    +Comment+Null
-" Code     |E  <|abc>    <<|abc|>>   | abc          Comment in Code    Code or embedded objects
-"              `abc`     ```abc```                                       such as tables and charts
-" Null     \N  <\abc>    <<\abc\>>   \\abc                             To be ignored
+" Mark     Standard  Strict      Line    Word   Contain
+" Comment  </abc>    <</abc/>>   //abc          General+Meat+Link
+"  InCode                        >>abc
+" Meat     <_abc>    <<_abc_>>   _ abc          General+Comment
+" Key      <*abc>                        *abc
+" Issue    <?abc>    <<?abc?>>   ? abc   ?abc   Key
+"  Solved  </?abc>   <</?abc?>>  /? abc  /?abc  Key
+" Todo     <!abc>    <<!abc!>>   ! abc   !abc   Key
+"  Done    </!abc>   <</!abc!>>  /! abc  /!abc  Key
+" Tag      <#abc>                        #abc
+"  Hidden  </#abc>                       /#abc
+" Link     <~abc>    <<~abc~>>           ~abc
+"  Url
+" Ref      <:abc>    <<:abc:>>   : abc   :abc   General+Meat+Link
+"          "abc"                 > abc   'abc'    +Comment+Null
+" Code     <|abc>    <<|abc|>>   | abc          Comment in Code
+"          `abc`     ```abc```
+" Null     <\abc>    <<\abc\>>   \\abc
 
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
