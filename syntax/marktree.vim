@@ -24,7 +24,6 @@ function! MtSyntaxInit()
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
 		let b:T2LvlCnt = 0
-		let b:MtMeatWEn = 0
 		let b:MtKeyWEn = 0
 		let b:MtIssueWEn = 0
 		let b:MtTodoWEn = 0
@@ -53,7 +52,6 @@ function! MtSyntaxInit()
 	let s:optstr = substitute(s:optstr, '+\w\+', '', 'g')
 	let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
 	let b:T2LvlCnt = strlen(substitute(s:optstr, "[^-]", "", "g"))
-	let b:MtMeatWEn = strlen(substitute(s:optstr, "[^_]", "", "g"))
 	let b:MtKeyWEn = strlen(substitute(s:optstr, "[^*]", "", "g"))
 	let b:MtIssueWEn = strlen(substitute(s:optstr, "[^?]", "", "g"))
 	let b:MtTodoWEn = strlen(substitute(s:optstr, "[^!]", "", "g"))
@@ -151,11 +149,6 @@ hi default link MtTitleEx MtTitle
 " Very light marks that mark only 1 word. All optional:
 syn match MtWordSign "[*~:]\|\<_\|/\=[?!#]" contained
 hi default link MtWordSign MtSign
-if b:MtMeatWEn
-	syn match MtMeatW "\<_\S\{-1,}\>" contains=MtWordSign 
-	hi default link MtMeatW MtMeat
-	syn cluster MtMeats add=MtMeatW
-endif
 if b:MtKeyWEn
 	syn match MtKeyW "\*[^ \t=]\S\{-}\>" contains=MtWordSign
 	hi default link MtKeyW MtKey
