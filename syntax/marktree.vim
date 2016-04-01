@@ -24,16 +24,16 @@ function! MtSyntaxInit()
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
 		let b:T2LvlCnt = 0
-		let b:MtMwEn = 0
-		let b:MtKwEn = 0
-		let b:MtQwEn = 0
-		let b:MtDwEn = 0
-		let b:MtTwEn = 0
-		let b:MtLwEn = 0
-		let b:MtRwEn = 0
-		let b:MtRSingleEn = 0
-		let b:MtRDoubleEn = 0
-		let b:MtESingleEn = 0
+		let b:MtMeatWEn = 0
+		let b:MtKeyWEn = 0
+		let b:MtIssueWEn = 0
+		let b:MtTodoWEn = 0
+		let b:MtTagWEn = 0
+		let b:MtLinkWEn = 0
+		let b:MtRefWEn = 0
+		let b:MtRefSingleEn = 0
+		let b:MtRefDoubleEn = 0
+		let b:MtCodeSingleEn = 0
 		return
 	endif
 	let s:idx = 1
@@ -54,16 +54,16 @@ function! MtSyntaxInit()
 	let s:optstr = substitute(s:optstr, '+\w\+', '', 'g')
 	let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
 	let b:T2LvlCnt = strlen(substitute(s:optstr, "[^-]", "", "g"))
-	let b:MtMwEn = strlen(substitute(s:optstr, "[^_]", "", "g"))
-	let b:MtKwEn = strlen(substitute(s:optstr, "[^*]", "", "g"))
-	let b:MtQwEn = strlen(substitute(s:optstr, "[^?]", "", "g"))
-	let b:MtDwEn = strlen(substitute(s:optstr, "[^!]", "", "g"))
-	let b:MtTwEn = strlen(substitute(s:optstr, "[^#]", "", "g"))
-	let b:MtLwEn = strlen(substitute(s:optstr, "[^~]", "", "g"))
-	let b:MtRwEn = strlen(substitute(s:optstr, "[^:]", "", "g"))
-	let b:MtRSingleEn = strlen(substitute(s:optstr, "[^']", "", "g"))
-	let b:MtRDoubleEn = strlen(substitute(s:optstr, "[^\"]", "", "g"))
-	let b:MtESingleEn = strlen(substitute(s:optstr, "[^`]", "", "g"))
+	let b:MtMeatWEn = strlen(substitute(s:optstr, "[^_]", "", "g"))
+	let b:MtKeyWEn = strlen(substitute(s:optstr, "[^*]", "", "g"))
+	let b:MtIssueWEn = strlen(substitute(s:optstr, "[^?]", "", "g"))
+	let b:MtTodoWEn = strlen(substitute(s:optstr, "[^!]", "", "g"))
+	let b:MtTagWEn = strlen(substitute(s:optstr, "[^#]", "", "g"))
+	let b:MtLinkWEn = strlen(substitute(s:optstr, "[^~]", "", "g"))
+	let b:MtRefWEn = strlen(substitute(s:optstr, "[^:]", "", "g"))
+	let b:MtRefSingleEn = strlen(substitute(s:optstr, "[^']", "", "g"))
+	let b:MtRefDoubleEn = strlen(substitute(s:optstr, "[^\"]", "", "g"))
+	let b:MtCodeSingleEn = strlen(substitute(s:optstr, "[^`]", "", "g"))
 endfunction
 
 let g:mtpath = expand('<sfile>:p:h:h')
@@ -153,53 +153,53 @@ hi default link MtTitleEx MtTitle
 " Very light marks that mark only 1 word. All optional:
 syn match MtWordSign "[*~:]\|\<_\|/\=[?!#]" contained
 hi default link MtWordSign MtSign
-if b:MtMwEn
+if b:MtMeatWEn
 	syn match MtMeatW "\<_\S\{-1,}\>" contains=MtWordSign 
 	hi default link MtMeatW MtMeat
 	syn cluster MtMeats add=MtMeatW
 endif
-if b:MtKwEn
+if b:MtKeyWEn
 	syn match MtKeyW "\*[^ \t=]\S\{-}\>" contains=MtWordSign
 	hi default link MtKeyW MtKey
 	syn cluster MtKeys add=MtKeyW
 endif
-if b:MtQwEn
+if b:MtIssueWEn
 	syn match MtIssueW "?\S\{-}\>" contains=MtWordSign
 	syn match MtSolvedW "/?\S\{-}\>" contains=MtWordSign
 	hi default link MtIssueW MtIssue
 	hi default link MtSolvedW MtSolved
 	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW
 endif
-if b:MtDwEn
+if b:MtTodoWEn
 	syn match MtTodoW "![^ \t=]\S\{-}\>" contains=MtWordSign
 	syn match MtDoneW "/![^ \t=]\S\{-}\>" contains=MtWordSign
 	hi default link MtTodoW MtTodo
 	hi default link MtDoneW MtDone
 	syn cluster MtGeneralMark add=MtTodoW,MtDoneW
 endif
-if b:MtTwEn
+if b:MtTagWEn
 	syn match MtTagW "#[^ \t\d]\S\{-}\>" contains=MtWordSign
 	hi default link MtTagW MtTag
 	syn cluster MtGeneralMark add=MtTagW
 endif
-if b:MtLwEn
+if b:MtLinkWEn
 	syn match MtLinkW "[~][^ \t\d>~]\S\{-}\>" contains=MtWordSign
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
 endif
-if b:MtRwEn
+if b:MtRefWEn
 	syn match MtRefW ":[^ \t-():]\S\{-}\>" contains=MtWordSign
 	hi default link MtRefW MtRef
 endif
-if b:MtRSingleEn
+if b:MtRefSingleEn
 	syn match MtRefSingle +'\S\{-}'+
 	hi default link MtRefSingle MtRef
 endif
-if b:MtRDoubleEn
+if b:MtRefDoubleEn
 	syn match MtRefDouble +".\{-}"+
 	hi default link MtRefDouble MtRef
 endif
-if b:MtESingleEn
+if b:MtCodeSingleEn
 	syn match MtCodeSingle +`.\{-}`+
 	hi default link MtCodeSingle MtCode
 endif
