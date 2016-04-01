@@ -21,17 +21,17 @@ syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolve
 function! MtSyntaxInit()
 	let s:optstr = matchstr(getline(1), '<mt\S*>')
 	let b:MtExtList = []
+	let b:MtKeyWEn = 0
+	let b:MtIssueWEn = 0
+	let b:MtTodoWEn = 0
+	let b:MtTagWEn = 0
+	let b:MtLinkWEn = 0
+	let b:MtRefSingleEn = 0
+	let b:MtRefDoubleEn = 0
+	let b:MtCodeSingleEn = 0
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
 		let b:T2LvlCnt = 0
-		let b:MtKeyWEn = 0
-		let b:MtIssueWEn = 0
-		let b:MtTodoWEn = 0
-		let b:MtTagWEn = 0
-		let b:MtLinkWEn = 0
-		let b:MtRefSingleEn = 0
-		let b:MtRefDoubleEn = 0
-		let b:MtCodeSingleEn = 0
 		return
 	endif
 	let s:idx = 1
@@ -52,14 +52,25 @@ function! MtSyntaxInit()
 	let s:optstr = substitute(s:optstr, '+\w\+', '', 'g')
 	let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
 	let b:T2LvlCnt = strlen(substitute(s:optstr, "[^-]", "", "g"))
-	let b:MtKeyWEn = strlen(substitute(s:optstr, "[^*]", "", "g"))
-	let b:MtIssueWEn = strlen(substitute(s:optstr, "[^?]", "", "g"))
-	let b:MtTodoWEn = strlen(substitute(s:optstr, "[^!]", "", "g"))
-	let b:MtTagWEn = strlen(substitute(s:optstr, "[^#]", "", "g"))
-	let b:MtLinkWEn = strlen(substitute(s:optstr, "[^~]", "", "g"))
-	let b:MtRefSingleEn = strlen(substitute(s:optstr, "[^']", "", "g"))
-	let b:MtRefDoubleEn = strlen(substitute(s:optstr, "[^\"]", "", "g"))
-	let b:MtCodeSingleEn = strlen(substitute(s:optstr, "[^`]", "", "g"))
+	if s:optstr =~ '\^'
+		let b:MtKeyWEn = (s:optstr !~ '*')
+		let b:MtIssueWEn = (s:optstr !~ '?')
+		let b:MtTodoWEn = (s:optstr !~ '!')
+		let b:MtTagWEn = (s:optstr !~ '#')
+		let b:MtLinkWEn = (s:optstr !~ '[~]')
+		let b:MtRefSingleEn = (s:optstr !~ "'")
+		let b:MtRefDoubleEn = (s:optstr !~ '"')
+		let b:MtCodeSingleEn = (s:optstr !~ '`')
+	else
+		let b:MtKeyWEn = (s:optstr =~ '*')
+		let b:MtIssueWEn = (s:optstr =~ '?')
+		let b:MtTodoWEn = (s:optstr =~ '!')
+		let b:MtTagWEn = (s:optstr =~ '#')
+		let b:MtLinkWEn = (s:optstr =~ '[~]')
+		let b:MtRefSingleEn = (s:optstr =~ "'")
+		let b:MtRefDoubleEn = (s:optstr =~ '"')
+		let b:MtCodeSingleEn = (s:optstr =~ '`')
+	endif
 endfunction
 
 let g:mtpath = expand('<sfile>:p:h:h')
