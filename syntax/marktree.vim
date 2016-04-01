@@ -119,8 +119,8 @@ hi default link MtOption MtSign
 "   It has the same level of the text it decorates.
 
 syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMark,@MtLinet,@MtAutoLink,MtCommentLine,MtOption
-syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMark,MtWhiteTail
-syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMark,MtWhiteTail
+syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMark
+syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMark
 syn match MtTitle "^\t*# .\+ #\(\s\|$\)" contains=@MtTitleMark,@MtLinet
 syn match MtTitleEx "^\s*|_.\{-}\(_|\|$\)" contains=@MtTitleMark,MtWhiteTail
 
