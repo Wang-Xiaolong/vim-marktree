@@ -148,8 +148,12 @@ hi default link MtTitleEx MtTitle
 "  Done    </!abc>   <</!abc!>>  /! abc  /!abc  Key
 " Tag      <#abc>                        #abc
 "  Hidden  </#abc>                       /#abc
+"  Note    (#123)
+"  Bibl    [#123]
 " Link     <~abc>    <<~abc~>>           ~abc
 "  Url
+"  Note    (~123)
+"  Bibl    [~123]OB
 " Ref      <:abc>    <<:abc:>>   : abc          General+Meat+Link
 "          "abc"                 > abc   'abc'    +Comment+Null
 " Code     <|abc>    <<|abc|>>   | abc          Comment in Code
@@ -215,6 +219,16 @@ syn region MtLink start="<[~]" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>
 syn region MtRef start="<:" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline contains=@MtKeys
 syn region MtCode start="<|" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
 syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet
+" -- Note & Bibl --
+syn match MtNote "^\s*(#\d\+)" contains=@MtIndent
+syn match MtLinkToNote "([~]\d\+)"
+syn match MtBibl "^\s*\[#\d\+\]" contains=@MtIndent
+syn match MtLinkToBibl "\[[~]\d\+\]"
+
+hi default link MtNote MtTag
+hi default link MtLinkToNote MtLink
+hi default link MtBibl MtTag
+hi default link MtLinkToBibl MtLink
 
 " -- Strict Marks --
 syn region MtMeatSt start="<<_"  end="_>>" contains=@MtLinet,@MtMeatMark
