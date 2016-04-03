@@ -184,12 +184,12 @@ if b:MtTodoWEn
 	syn cluster MtGeneralMark add=MtTodoW,MtDoneW
 endif
 if b:MtTagWEn
-	syn match MtTagW "#[^ \t\d]\S\{-}\>" contains=MtWordSign
+	syn match MtTagW "#[^ \t\d]\S*\>" contains=MtWordSign
 	hi default link MtTagW MtTag
 	syn cluster MtGeneralMark add=MtTagW
 endif
 if b:MtLinkWEn
-	syn match MtLinkW "[~][^ \t\d>~]\S\{-}\>" contains=MtWordSign
+	syn match MtLinkW "[~][^ \t\d>~]\S*\>" contains=MtWordSign
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
 endif
