@@ -280,7 +280,7 @@ hi default link MtLineSign MtSign
 " A block is treated as one paragraph in folding, even without any indentation.
 " The level is determined by its heading line.
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
-syn region MtCommentBlock matchgroup=MtBlockFence start="<</\ze[^?!]" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
+syn region MtCommentBlock matchgroup=MtBlockFence start="<</\ze[^?!]\|<</$" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtRefBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@MtLinet,@MtRefMark,@MtRefBlockLine
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet,MtCodeComment
 syn region MtGhCodeBlock matchgroup=MtBlockFence start="```" end="```" contains=@MtLinet,MtCodeComment
