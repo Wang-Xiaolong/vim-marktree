@@ -189,7 +189,7 @@ if b:MtTagWEn
 	syn cluster MtGeneralMark add=MtTagW
 endif
 if b:MtLinkWEn
-	syn match MtLinkW "[~][^ \t\d>~]\S*\>" contains=MtWordSign
+	syn match MtLinkW "[~][^ \t\d>~/]\S*\>" contains=MtWordSign
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
 endif
