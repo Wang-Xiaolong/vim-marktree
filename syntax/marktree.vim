@@ -162,7 +162,7 @@ hi default link MtTitleEx MtTitle
 
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
-syn match MtWordSign "[*~:]\|\<_\|/\=[?!#]" contained
+syn match MtWordSign "[*~:]\|/\=[?!#]" contained
 hi default link MtWordSign MtSign
 if b:MtKeyWEn
 	syn match MtKeyW "\*[^ \t=.]\S\{-}\>" contains=MtWordSign
