@@ -172,9 +172,13 @@ endif
 if b:MtIssueWEn
 	syn match MtIssueW "?\S\{-}\>" contains=MtWordSign
 	syn match MtSolvedW "/?\S\{-}\>" contains=MtWordSign
+	syn match MtSolvedWC "/\=?\S\{-}\(//\S\{-}\)\+\>" contains=MtWordSign,MtCommentInSolvedWC
+	syn match MtCommentInSolvedWC "\(//\S\{-}\)\+\>" contained
 	hi default link MtIssueW MtIssue
 	hi default link MtSolvedW MtSolved
-	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW
+	hi default link MtSolvedWC MtSolved
+	hi default link MtCommentInSolvedWC MtComment
+	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW,MtSolvedWC
 endif
 if b:MtTodoWEn
 	syn match MtTodoW "![^ \t=]\S\{-}\>" contains=MtWordSign
