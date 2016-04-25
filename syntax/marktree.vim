@@ -224,8 +224,12 @@ syn region MtLink start="<[~]" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>
 syn region MtRef start="<:" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline contains=@MtKeys
 syn region MtCode start="<|" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
 syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet
+syn match MtSolvedC "</\=?.\{-}//.\{-}>" contains=MtCommentInSolvedC
+syn match MtCommentInSolvedC "//.\{-}\ze>" contained
 
 hi default link MtTagSign MtSign
+hi default link MtSolvedC MtSolved
+hi default link MtCommentInSolvedC MtComment
 
 " -- Note & Bibl --
 syn match MtNote "^\s*(#\d\+)" contains=@MtIndent
