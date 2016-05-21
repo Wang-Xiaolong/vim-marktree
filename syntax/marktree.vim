@@ -16,6 +16,7 @@ syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@
 syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
 syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
+syn cluster MtCodeBlockLine contains=MtCodeComment,MtCodeIssue,MtCodeSolved,MtCodeSolvedC
 
 " init
 function! MtSyntaxInit()
@@ -296,13 +297,19 @@ hi default link MtLineSign MtSign
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
 syn region MtCommentBlock matchgroup=MtBlockFence start="<</\ze[^?!]\|<</$" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtRefBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@MtLinet,@MtRefMark,@MtRefBlockLine
-syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet,MtCodeComment
-syn region MtGhCodeBlock matchgroup=MtBlockFence start="```" end="```" contains=@MtLinet,MtCodeComment
+syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet,@MtCodeBlockLine
+syn region MtGhCodeBlock matchgroup=MtBlockFence start="```" end="```" contains=@MtLinet,@MtCodeBlockLine
 syn match MtCodeComment "^>>[^>].*$" contained contains=MtWhiteTail,@MtCommentMark
+syn match MtCodeIssue "^>>? .*$" contained contains=MtWhiteTail,@MtKey
+syn match MtCodeSolved "^>>/? .*$" contained contains=MtWhiteTail,@MtKey
+syn match MtCodeSolvedC "^>>? .*\s\+//.*$" contained contains=MtCommentLine,@MtKey
 
 hi default link MtCommentBlock MtComment
 hi default link MtRefBlock MtRef
 hi default link MtCodeBlock MtCode
 hi default link MtGhCodeBlock MtCode
 hi default link MtCodeComment MtComment
+hi default link MtCodeIssue MtIssue
+hi default link MtCodeSolved MtSolved
+hi default link MtCodeSolvedC MtSolved
 hi default link MtBlockFence MtSign
