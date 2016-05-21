@@ -14,8 +14,8 @@ syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
 syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtNull,MtNullSt
 syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock
-syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
-syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
+syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
+syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
 
 " init
 function! MtSyntaxInit()
@@ -266,6 +266,7 @@ syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
 syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn match MtIssueLine "^\s*? .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtSolvedLine "^\s*/? .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
+syn match MtSolvedCLine "^\s*/\=? .*\s\+//[^/].*$" contains=MtLineSign,MtWhiteTail,@MtKeys,MtCommentLine
 syn match MtTodoLine "^\s*! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtDoneLine "^\s*/! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtRefLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtRefMark
@@ -278,6 +279,7 @@ hi default link MtCommentLine MtComment
 hi default link MtMeatLine MtMeat
 hi default link MtIssueLine MtIssue
 hi default link MtSolvedLine MtSolved
+hi default link MtSolvedCLine MtSolved
 hi default link MtTodoLine MtTodo
 hi default link MtDoneLine MtDone
 hi default link MtLinkLine MtLink
