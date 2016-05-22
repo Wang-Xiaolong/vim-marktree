@@ -228,10 +228,12 @@ syn region MtRef start="<:" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" o
 syn region MtCode start="<|" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
 syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet
 syn match MtSolvedC "</\=?.\{-}//.\{-}>" contains=MtCommentInSolvedC
+syn match MtDoneC "</\=!.\{-}//.\{-}>" contains=MtCommentInSolvedC
 syn match MtCommentInSolvedC "//.\{-}\ze>" contained
 
 hi default link MtTagSign MtSign
 hi default link MtSolvedC MtSolved
+hi default link MtDoneC MtDone
 hi default link MtCommentInSolvedC MtComment
 
 " -- Note & Bibl --
