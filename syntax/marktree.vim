@@ -300,9 +300,9 @@ syn region MtRefBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@M
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet,@MtCodeBlockLine
 syn region MtGhCodeBlock matchgroup=MtBlockFence start="```" end="```" contains=@MtLinet,@MtCodeBlockLine
 syn match MtCodeComment "^>>[^>].*$" contained contains=MtWhiteTail,@MtCommentMark
-syn match MtCodeIssue "^>>? .*$" contained contains=MtWhiteTail,@MtKey
-syn match MtCodeSolved "^>>/? .*$" contained contains=MtWhiteTail,@MtKey
-syn match MtCodeSolvedC "^>>? .*\s\+//.*$" contained contains=MtCommentLine,@MtKey
+syn match MtCodeIssue "^?>[^>].*$" contained contains=MtWhiteTail,@MtKey
+syn match MtCodeSolved "^/?>[^>].*$" contained contains=MtWhiteTail,@MtKey
+syn match MtCodeSolvedC "^/\=?>[^>].*\s\+//.*$" contained contains=MtCommentLine,@MtKey
 
 hi default link MtCommentBlock MtComment
 hi default link MtRefBlock MtRef
