@@ -16,8 +16,7 @@ syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@
 syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
 syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
-syn cluster MtCodeBlockLine contains=MtCodeComment,MtCodeIssue,MtCodeSolved,MtCodeSolvedC
-
+syn cluster MtCodeBlockLine contains=MtCodeComment,MtCodeIssue,MtCodeSolved,MtCodeSolvedC,MtCodeTodo,MtCodeDone,MtCodeDoneC
 " init
 function! MtSyntaxInit()
 	let s:optstr = matchstr(getline(1), '<mt\S*>')
@@ -309,6 +308,9 @@ syn match MtCodeComment "^>>[^>].*$" contained contains=MtWhiteTail,@MtCommentMa
 syn match MtCodeIssue "^?>[^>].*$" contained contains=MtWhiteTail,@MtKey
 syn match MtCodeSolved "^/?>[^>].*$" contained contains=MtWhiteTail,@MtKey
 syn match MtCodeSolvedC "^/\=?>[^>].*\s\+//.*$" contained contains=MtCommentLine,@MtKey
+syn match MtCodeTodo "^!>[^>].*$" contained contains=MtWhiteTail,@MtKey
+syn match MtCodeDone "^/!>[^>].*$" contained contains=MtWhiteTail,@MtKey
+syn match MtCodeDoneC "^/\=!>[^>].*\s\+//.*$" contained contains=MtCommentLine,@MtKey
 
 hi default link MtCommentBlock MtComment
 hi default link MtRefBlock MtRef
@@ -318,4 +320,7 @@ hi default link MtCodeComment MtComment
 hi default link MtCodeIssue MtIssue
 hi default link MtCodeSolved MtSolved
 hi default link MtCodeSolvedC MtSolved
+hi default link MtCodeTodo MtTodo
+hi default link MtCodeDone MtDone
+hi default link MtCodeDoneC MtDone
 hi default link MtBlockFence MtSign
