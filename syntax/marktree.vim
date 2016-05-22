@@ -274,6 +274,7 @@ syn match MtSolvedLine "^\s*/? .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtSolvedCLine "^\s*/\=? .*\s\+//[^/].*$" contains=MtLineSign,MtWhiteTail,@MtKeys,MtCommentLine
 syn match MtTodoLine "^\s*! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtDoneLine "^\s*/! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
+syn match MtDoneCLine "^\s*/\=! .*\s\+//[^/].*$" contains=MtLineSign,MtWhiteTail,@MtKeys,MtCommentLine
 syn match MtRefLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtRefMark
 syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtRefMark
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
@@ -287,6 +288,7 @@ hi default link MtSolvedLine MtSolved
 hi default link MtSolvedCLine MtSolved
 hi default link MtTodoLine MtTodo
 hi default link MtDoneLine MtDone
+hi default link MtDoneCLine MtDone
 hi default link MtLinkLine MtLink
 hi default link MtRefLine MtRef
 hi default link MtMdRefLine MtRef
