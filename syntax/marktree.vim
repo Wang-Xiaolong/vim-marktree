@@ -173,20 +173,22 @@ endif
 if b:MtIssueWEn
 	syn match MtIssueW "?\S\{-}\>" contains=MtWordSign
 	syn match MtSolvedW "/?\S\{-}\>" contains=MtWordSign
-	syn match MtSolvedWC "/\=?\S\{-}\(//\S\{-}\)\+\>" contains=MtWordSign,MtCommentInSolvedWC
-	syn match MtCommentInSolvedWC "\(//\S\{-}\)\+\>" contained
+	syn match MtSolvedWC "/\=?\S\{-}\(//\S\{-}\)\+\>" contains=MtWordSign,MtCommentInWC
+	syn match MtCommentInWC "\(//\S\{-}\)\+\>" contained
 	hi default link MtIssueW MtIssue
 	hi default link MtSolvedW MtSolved
 	hi default link MtSolvedWC MtSolved
-	hi default link MtCommentInSolvedWC MtComment
+	hi default link MtCommentInWC MtComment
 	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW,MtSolvedWC
 endif
 if b:MtTodoWEn
 	syn match MtTodoW "![^ \t=]\S\{-}\>" contains=MtWordSign
 	syn match MtDoneW "/![^ \t=]\S\{-}\>" contains=MtWordSign
+	syn match MtDoneWC "/\=![^ \t=]\S\{-}\(//\S\{-}\)\+\>" contains=MtWordSign,MtCommentInWC
 	hi default link MtTodoW MtTodo
 	hi default link MtDoneW MtDone
-	syn cluster MtGeneralMark add=MtTodoW,MtDoneW
+	hi default link MtDoneWC MtDone
+	syn cluster MtGeneralMark add=MtTodoW,MtDoneW,MtDoneWC
 endif
 if b:MtTagWEn
 	syn match MtTagW "#[^ \t\d]\S*\>" contains=MtWordSign
