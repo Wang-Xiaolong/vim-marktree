@@ -1,4 +1,4 @@
-syn region MtCbarBlock matchgroup=MtBlockFence start="<<cbar|" end="|>>" contains=@MtLinet,MtCodeComment,@MtCbarMarks,MtKey
+syn region MtCbarBlock matchgroup=MtBlockFence start="<<cbar|" end="|>>" contains=@MtLinet,@MtCodeBlockLine,@MtCbarMarks,MtKey
 syn cluster MtCbarMarks contains=MtCbarRed,MtCbarGreen,MtCbarBlue,MtCbarMagenta,MtCbarYellow,MtCbarCyan
 
 syn match MtCbarRed "{[^}]\{-}{" contained contains=MtCbarRedSign,MtCbarGreen,MtCbarBlue,MtCbarYellow,MtCbarCyan,MtKey
@@ -14,7 +14,7 @@ syn match MtCbarYellowSign "[\[\]]" contained
 syn match MtCbarCyan ")[^(]\{-})" contained contains=MtCbarCyanSign,MtCbarRed,MtCbarGreen,MtCbarMagenta,MtCbarYellow,MtKey
 syn match MtCbarCyanSign "[()]" contained
 
-syn region MtCbarTableBlock matchgroup=MtBlockFence start="<<cbar_table|" end="|>>" contains=MtCodeComment,@MtCbarTableCells,MtCbarTableGrid,MtKey
+syn region MtCbarTableBlock matchgroup=MtBlockFence start="<<cbar_table|" end="|>>" contains=@MtLinet,@MtCodeBlockLine,@MtCbarTableCells,MtCbarTableGrid,MtKey
 syn cluster MtCbarTableCells contains=MtCbarRedCell,MtCbarGreenCell,MtCbarBlueCell,MtCbarMagentaCell,MtCbarYellowCell,MtCbarCyanCell
 syn match MtCbarTableGrid "|" contained
 
