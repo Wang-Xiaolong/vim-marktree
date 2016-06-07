@@ -91,7 +91,7 @@ syn match MtSignTodo "\[ \?\]" contained
 syn match MtSignIssue "\[?\]" contained
 syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$" contains=@MtLinet
 syn match MtUrl "[a-z]\{3,6}:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*"
-syn match MtEmail "[a-z0-9_\.-]\+@[\da-z\.-]\+\.[a-z\.]\{2,6}"
+syn match MtEmail "[a-z0-9_\.-]\+@[0-9a-z\.-]\+\.[a-z\.]\{2,6}"
 syn match MtOption "<mt\S*>" contained
 
 syn cluster MtLinet contains=MtIndent,MtWhiteTail
@@ -190,12 +190,12 @@ if b:MtTodoWEn
 	syn cluster MtGeneralMark add=MtTodoW,MtDoneW,MtDoneWC
 endif
 if b:MtTagWEn
-	syn match MtTagW "#[^ \t\d]\S*\>" contains=MtWordSign
+	syn match MtTagW "#[^ \t0-9]\S*\>" contains=MtWordSign
 	hi default link MtTagW MtTag
 	syn cluster MtGeneralMark add=MtTagW
 endif
 if b:MtLinkWEn
-	syn match MtLinkW "[~][^ \t\d>~/]\S*\>" contains=MtWordSign
+	syn match MtLinkW "[~][^ \t0-9>~/]\S*\>" contains=MtWordSign
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
 endif
