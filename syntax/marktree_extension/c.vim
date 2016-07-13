@@ -8,8 +8,8 @@ syn keyword cType int long short char void signed unsigned float double bool con
 syn keyword cStructure struct union enum typedef contained
 syn keyword cStorageClass static register auto volatile extern const inline contained
 
-syn match cNumber "\d\+\(u\=l\{0,2}\|ll\=u\)\>" contained
-syn match cNumber "0x\x\+\(u\=l\{0,2}\|ll\=u\)\>" contained
+syn match cNumber "\<\d\+\(u\=l\{0,2}\|ll\=u\)\>" contained
+syn match cNumber "\<0x\x\+\(u\=l\{0,2}\|ll\=u\)\>" contained
 
 syn region cString start=+\(L\|u\|u8\|U\|R\|LR\|u8R\|uR\|UR\)\="+ skip=+\\\\\|\\"+ end=+"+ extend contained
 
