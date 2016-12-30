@@ -10,7 +10,7 @@ setlocal softtabstop=0
 setlocal noexpandtab
 setlocal nosmarttab
 setlocal textwidth=0
-colorscheme marktree_dark
+colorscheme marktree
 
 " folding
 setlocal foldmethod=expr
