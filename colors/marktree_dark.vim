@@ -40,7 +40,7 @@ hi MtSign     guifg=Yellow                      ctermfg=Yellow
 hi MtRef      guifg=LightBlue        gui=italic
 hi MtCode     guifg=LightBlue
 hi MtNull     guifg=Gray30                      ctermfg=DarkGray
-hi MtIndentTab            guibg=Gray10                        ctermbg=DarkBlue
+hi MtIndentTab            guibg=Gray10
 hi MtWhiteTail            guibg=DarkRed                       ctermbg=DarkRed
 
 " Extension files
