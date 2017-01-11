@@ -1,25 +1,26 @@
 " color/marktree.vim to highlight marktree leaves
 " xiaolong.wang@intel.com from Dec.2015
 
-if &background == "dark" " compatible to 8bit console
+if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi MtTitle gui=bold guifg=LightMagenta ctermfg=Magenta
-  hi MtComment guifg=LightGreen ctermfg=Green
+  hi MtComment guifg=LightBlue ctermfg=Blue
   hi MtMeat gui=underline guifg=White ctermfg=White
-  hi MtKey gui=underline,bold guifg=Black guibg=Orange ctermfg=White ctermbg=DarkCyan
-  hi MtIssue guibg=DarkRed guifg=White ctermfg=White ctermbg=DarkRed
+  hi MtKey gui=underline,bold guibg=DarkMagenta guifg=White
+\      ctermbg=DarkMagenta ctermfg=White
+  hi MtIssue guibg=DarkRed guifg=White ctermbg=DarkRed ctermfg=White
   hi MtSolved guifg=LightRed ctermfg=Red
-  hi MtTodo guibg=DarkYellow guifg=Black ctermfg=Black ctermbg=DarkYellow
+  hi MtTodo guibg=DarkYellow guifg=Black ctermbg=DarkYellow ctermfg=Black
   hi MtDone guifg=DarkYellow ctermfg=Yellow
   hi MtTag guifg=Magenta ctermfg=Magenta
   hi MtLink guifg=Cyan ctermfg=Cyan
   hi MtUrl gui=underline guifg=DarkCyan ctermfg=Cyan
   hi MtSign guifg=Yellow ctermfg=Yellow
-  hi MtRef gui=italic guifg=LightBlue ctermfg=White
-  hi MtCode guifg=LightBlue ctermfg=White
-  hi MtNull guifg=Gray30 ctermfg=DarkGray
+  hi MtRef gui=italic guifg=Green ctermfg=Green
+  hi MtCode guifg=Cyan ctermfg=Cyan
+  hi MtNull guifg=DarkGray ctermfg=DarkGray
   hi MtIndentTab guibg=Gray10
   hi MtWhiteTail guibg=Blue ctermbg=DarkRed
-else " light background, console should be at least 16 color
+else " light background, console should >=16 color, assume Black on White
   hi MtTitle gui=bold guifg=DarkMagenta ctermfg=DarkMagenta
   hi MtComment guifg=DarkGreen ctermfg=DarkGreen
   hi MtMeat gui=underline ctermfg=DarkCyan
@@ -34,7 +35,7 @@ else " light background, console should be at least 16 color
   hi MtSign guifg=DarkYellow ctermfg=DarkYellow
   hi MtRef gui=italic guifg=DarkBlue ctermfg=DarkBlue
   hi MtCode guifg=Brown ctermfg=DarkBlue
-  hi MtNull guifg=Grey ctermfg=LightGray
-  hi MtIndentTab guibg=Grey90
+  hi MtNull guifg=Gray ctermfg=LightGray
+  hi MtIndentTab guibg=Gray90
   hi MtWhiteTail guibg=Blue ctermbg=Blue
 endif
