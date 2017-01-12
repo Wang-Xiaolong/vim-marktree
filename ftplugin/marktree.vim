@@ -44,8 +44,6 @@ function! MtFold(lnum)
 			let b:T2LvlCnt = s:idx
 		endif
 		return b:T1LvlCnt + s:idx - 1
-	elseif s:synroot == "MtTitleEx"
-		return '='
 	elseif s:synroot == "MtBlockFence"  "tailing mark of a block
 		return '='
 	elseif s:synroot !~ 'Mt\w\+Block$'  "ordinary line (not start in block)
