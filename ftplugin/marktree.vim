@@ -30,9 +30,9 @@ function! MtFold(lnum)
 		return b:T1LvlCnt + b:T2LvlCnt + MtIndentLevel(s:line)
 	endif
 	let s:synroot = synIDattr(s:synstack[0], "name")
-	if s:synroot == "MtTitle0"
+	if s:synroot == "MtHead0"
 		return 0
-	elseif s:synroot == "MtTitle1"
+	elseif s:synroot == "MtHead1"
 		if s:line !~ "^==[^=].*$"
 			return '='
 		endif
@@ -41,7 +41,7 @@ function! MtFold(lnum)
 			let b:T1LvlCnt = s:idx
 		endif
 		return s:idx - 1
-	elseif s:synroot == "MtTitle2"
+	elseif s:synroot == "MtHead2"
 		if s:line !~ "^--[^-].*$"
 			return '='
 		endif

@@ -13,7 +13,7 @@ syn cluster MtGeneralMark contains=@MtKeys,MtTag,MtIssue,MtSolved,MtSolvedC,MtTo
 syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
 syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtNull,MtNullSt
-syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
+syn cluster MtHeadMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
 syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
 syn cluster MtCodeBlockLine contains=MtCodeComment,MtCodeIssue,MtCodeSolved,MtCodeSolvedC,MtCodeTodo,MtCodeDone,MtCodeDoneC
@@ -106,14 +106,14 @@ hi default link MtSignIssue MtIssue
 hi default link MtOption MtSign
 
 " == Titles ==
-syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMark,MtOption
-syn region MtTitle1 start="^==[^=]" end="==\s*$" contains=@MtTitleMark
-syn region MtTitle2 start="^--[^-]" end="--\s*$" contains=@MtTitleMark
-syn region MtTitle start="^\t*# " end=" #\s*$" contains=@MtTitleMark
+syn region MtHead0 start="\%^" end="^\s*$" contains=@MtHeadMark,MtOption
+syn region MtHead1 start="^==[^=]" end="==\s*$" contains=@MtHeadMark
+syn region MtHead2 start="^--[^-]" end="--\s*$" contains=@MtHeadMark
+syn region MtHead start="^\t*# " end=" #\s*$" contains=@MtHeadMark
 
-hi default link MtTitle0 MtTitle
-hi default link MtTitle1 MtTitle
-hi default link MtTitle2 MtTitle
+hi default link MtHead0 MtHead
+hi default link MtHead1 MtHead
+hi default link MtHead2 MtHead
 
 " == Marks ==
 " Mark     Standard  Strict      Line    Word   Contain

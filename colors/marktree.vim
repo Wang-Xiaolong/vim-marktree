@@ -2,7 +2,7 @@
 " xiaolong.wang@intel.com from Dec.2015
 
 if &background == "dark" " compatible to 8bit console, assume Grey on Black
-  hi MtTitle gui=bold guifg=LightMagenta ctermfg=Magenta
+  hi MtHead gui=bold guifg=LightMagenta ctermfg=Magenta
   hi MtComment guifg=LightBlue ctermfg=Blue
   hi MtMeat gui=underline guifg=White ctermfg=White
   hi MtKey gui=underline,bold guibg=DarkMagenta guifg=White
@@ -21,7 +21,7 @@ if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi MtIndentTab guibg=Gray10
   hi MtWhiteTail guibg=Blue ctermbg=DarkRed
 else " light background, console should >=16 color, assume Black on White
-  hi MtTitle gui=bold guifg=DarkMagenta ctermfg=DarkMagenta
+  hi MtHead gui=bold guifg=DarkMagenta ctermfg=DarkMagenta
   hi MtComment guifg=DarkGreen ctermfg=DarkGreen
   hi MtMeat gui=underline ctermfg=DarkCyan
   hi MtKey gui=underline,bold guifg=Orange ctermbg=Cyan
