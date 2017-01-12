@@ -13,7 +13,7 @@ syn cluster MtGeneralMark contains=@MtKeys,MtTag,MtIssue,MtSolved,MtSolvedC,MtTo
 syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
 syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtNull,MtNullSt
-syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock
+syn cluster MtTitleMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
 syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
 syn cluster MtCodeBlockLine contains=MtCodeComment,MtCodeIssue,MtCodeSolved,MtCodeSolvedC,MtCodeTodo,MtCodeDone,MtCodeDoneC
@@ -26,7 +26,6 @@ function! MtSyntaxInit()
 	let b:MtTodoWEn = 0
 	let b:MtTagWEn = 0
 	let b:MtLinkWEn = 0
-	let b:MtRefSingleEn = 0
 	let b:MtRefDoubleEn = 0
 	let b:MtCodeSingleEn = 0
 	if s:optstr == ""
@@ -107,34 +106,14 @@ hi default link MtSignIssue MtIssue
 hi default link MtOption MtSign
 
 " == Titles ==
-" Title0 is the head block from the beginning of file to the first empty line;
-" Title1 is as '== Title 1 =='
-"   Start with at least 2 equal signs at the start-of-line,
-"   End with at least 2 equal signs.
-"   The count of beginning equal signs indicates the level of title,
-"   2 equal signs each level, e.g. :
-"     '== Title 1 ==' is level 0, that will never be folded;
-"     '==== Title 1.1 ==' is level 1
-"   You can also extend the tailing equal signs to make it a separator, e.g.
-"     '====== Title 1.1.1 ================================================='
-" Title2 is as '-- Title 2 --'
-"   Start with 2 minus signs at the start-of-line,
-"   End with at least 2 minus signs, that could also be extend to a separator.
-"   The level is just lower than the lowest Title1.
-" Title3 is as '# Title 3 #'
-"   Start with a sharp sign, tab indented, end also with a sharp sign. 
-"   It has the same level of the text it decorates.
-
-syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMark,@MtLinet,@MtAutoLink,MtCommentLine,MtOption
-syn match MtTitle1 "^==\+[^=].\+==\+" contains=@MtTitleMark
-syn match MtTitle2 "^--\+[^-].\+--\+" contains=@MtTitleMark
-syn match MtTitle "^\t*# .\+ #\(\s\|$\)" contains=@MtTitleMark,@MtLinet
-syn match MtTitleEx "^\s*|_.\{-}\(_|\|$\)" contains=@MtTitleMark,MtWhiteTail
+syn region MtTitle0 start="\%^" end="^\s*$" contains=@MtTitleMark,MtOption
+syn region MtTitle1 start="^==[^=]" end="==\s*$" contains=@MtTitleMark
+syn region MtTitle2 start="^--[^-]" end="--\s*$" contains=@MtTitleMark
+syn region MtTitle start="^\t*# " end=" #\s*$" contains=@MtTitleMark
 
 hi default link MtTitle0 MtTitle
 hi default link MtTitle1 MtTitle
 hi default link MtTitle2 MtTitle
-hi default link MtTitleEx MtTitle
 
 " == Marks ==
 " Mark     Standard  Strict      Line    Word   Contain
