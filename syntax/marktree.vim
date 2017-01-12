@@ -12,10 +12,10 @@ syn cluster MtLinks contains=MtLink,MtLinkSt,@MtAutoLink
 syn cluster MtGeneralMark contains=@MtKeys,MtTag,MtIssue,MtSolved,MtSolvedC,MtTodo,MtDone,MtIssueSt,MtSolvedSt,MtTodoSt,MtDoneSt
 syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
-syn cluster MtRefMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtNull,MtNullSt
+syn cluster MtQuoteMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtNull,MtNullSt
 syn cluster MtHeadMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
-syn cluster MtRefBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
+syn cluster MtQuoteBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
 syn cluster MtCodeBlockLine contains=MtCodeComment,MtCodeIssue,MtCodeSolved,MtCodeSolvedC,MtCodeTodo,MtCodeDone,MtCodeDoneC
 " init
 function! MtSyntaxInit()
@@ -26,7 +26,7 @@ function! MtSyntaxInit()
 	let b:MtTodoWEn = 0
 	let b:MtTagWEn = 0
 	let b:MtLinkWEn = 0
-	let b:MtRefDoubleEn = 0
+	let b:MtQuoteDoubleEn = 0
 	let b:MtCodeSingleEn = 0
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
@@ -57,8 +57,8 @@ function! MtSyntaxInit()
 		let b:MtTodoWEn = (s:optstr !~ '!')
 		let b:MtTagWEn = (s:optstr !~ '#')
 		let b:MtLinkWEn = (s:optstr !~ '[~]')
-		let b:MtRefSingleEn = (s:optstr !~ "'")
-		let b:MtRefDoubleEn = (s:optstr !~ '"')
+		let b:MtQuoteSingleEn = (s:optstr !~ "'")
+		let b:MtQuoteDoubleEn = (s:optstr !~ '"')
 		let b:MtCodeSingleEn = (s:optstr !~ '`')
 	else
 		let b:MtKeyWEn = (s:optstr =~ '*')
@@ -66,8 +66,8 @@ function! MtSyntaxInit()
 		let b:MtTodoWEn = (s:optstr =~ '!')
 		let b:MtTagWEn = (s:optstr =~ '#')
 		let b:MtLinkWEn = (s:optstr =~ '[~]')
-		let b:MtRefSingleEn = (s:optstr =~ "'")
-		let b:MtRefDoubleEn = (s:optstr =~ '"')
+		let b:MtQuoteSingleEn = (s:optstr =~ "'")
+		let b:MtQuoteDoubleEn = (s:optstr =~ '"')
 		let b:MtCodeSingleEn = (s:optstr =~ '`')
 	endif
 endfunction
@@ -178,13 +178,13 @@ if b:MtLinkWEn
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
 endif
-if b:MtRefSingleEn
-	syn match MtRefSingle +'\S\{-}'+
-	hi default link MtRefSingle MtRef
+if b:MtQuoteSingleEn
+	syn match MtQuoteSingle +'\S\{-}'+
+	hi default link MtQuoteSingle MtQuote
 endif
-if b:MtRefDoubleEn
-	syn match MtRefDouble +".\{-}"+
-	hi default link MtRefDouble MtRef
+if b:MtQuoteDoubleEn
+	syn match MtQuoteDouble +".\{-}"+
+	hi default link MtQuoteDouble MtQuote
 endif
 if b:MtCodeSingleEn
 	syn match MtCodeSingle +`.\{-}`+
@@ -202,7 +202,7 @@ syn region MtDone start="</!" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\
 syn region MtTag start="</\=#" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline contains=MtTagSign
 syn match MtTagSign "[.=+\-\:]\ze[^>]" contained
 syn region MtLink start="<[~]" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet,@MtAutoLink
-syn region MtRef start="<:" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline contains=@MtKeys
+syn region MtQuote start="<:" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline contains=@MtKeys
 syn region MtCode start="<|" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>" oneline
 syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet
 syn match MtSolvedC "</\=?.\{-}//.\{-}>" contains=MtCommentInSolvedC
@@ -253,8 +253,8 @@ syn match MtSolvedCLine "^\s*/\=? .*\s\+//[^/].*$" contains=MtLineSign,MtWhiteTa
 syn match MtTodoLine "^\s*! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtDoneLine "^\s*/! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtDoneCLine "^\s*/\=! .*\s\+//[^/].*$" contains=MtLineSign,MtWhiteTail,@MtKeys,MtCommentLine
-syn match MtRefLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtRefMark
-syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtRefMark
+syn match MtQuoteLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtQuoteMark
+syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtQuoteMark
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
 syn match MtLinkLine "^\s*\~ .*$" contains=MtLineSign,MtWhiteTail,@MtAutoLink
 syn match MtNullLine "^\s*\\\\.*$" contains=@MtLinet
@@ -268,8 +268,8 @@ hi default link MtTodoLine MtTodo
 hi default link MtDoneLine MtDone
 hi default link MtDoneCLine MtDone
 hi default link MtLinkLine MtLink
-hi default link MtRefLine MtRef
-hi default link MtMdRefLine MtRef
+hi default link MtQuoteLine MtQuote
+hi default link MtMdRefLine MtQuote
 hi default link MtCodeLine MtCode
 hi default link MtNullLine MtNull
 hi default link MtLineSign MtSign
@@ -280,7 +280,7 @@ hi default link MtLineSign MtSign
 " The level is determined by its heading line.
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
 syn region MtCommentBlock matchgroup=MtBlockFence start="<</\ze[^?!]\|<</$" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
-syn region MtRefBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@MtLinet,@MtRefMark,@MtRefBlockLine
+syn region MtQuoteBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@MtLinet,@MtQuoteMark,@MtQuoteBlockLine
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet,@MtCodeBlockLine
 syn region MtGhCodeBlock matchgroup=MtBlockFence start="```" end="```" contains=@MtLinet,@MtCodeBlockLine
 syn match MtCodeComment "^>>[^>].*$" contained contains=MtWhiteTail,@MtCommentMark
@@ -292,7 +292,7 @@ syn match MtCodeDone "^/!>[^>].*$" contained contains=MtWhiteTail,@MtKey
 syn match MtCodeDoneC "^/\=!>[^>].*\s\+//.*$" contained contains=MtCommentLine,@MtKey
 
 hi default link MtCommentBlock MtComment
-hi default link MtRefBlock MtRef
+hi default link MtQuoteBlock MtQuote
 hi default link MtCodeBlock MtCode
 hi default link MtGhCodeBlock MtCode
 hi default link MtCodeComment MtComment
