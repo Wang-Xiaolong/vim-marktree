@@ -33,13 +33,19 @@ function! MtFold(lnum)
 	if s:synroot == "MtTitle0"
 		return 0
 	elseif s:synroot == "MtTitle1"
-		let s:idx = match(s:line, '[^=]') / 2
+		if s:line !~ "^==[^=].*$"
+			return '='
+		endif
+		let s:idx = match(s:line, '[^= ]') / 2
 		if b:T1LvlCnt < s:idx
 			let b:T1LvlCnt = s:idx
 		endif
 		return s:idx - 1
 	elseif s:synroot == "MtTitle2"
-		let s:idx = match(s:line, '[^-]') / 2
+		if s:line !~ "^--[^-].*$"
+			return '='
+		endif
+		let s:idx = match(s:line, '[^- ]') / 2
 		if b:T2LvlCnt < s:idx
 			let b:T2LvlCnt = s:idx
 		endif
