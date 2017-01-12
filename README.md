@@ -1,4 +1,4 @@
-# Marktree -- the better Markdown for myself
+# Marktree -- the better Markdown for notes
 
 Markdown is simple and elegant, but I always feel it lacks something.
 I'm a Chinese and not a good English user, when I was reading in English,
