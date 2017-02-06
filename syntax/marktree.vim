@@ -144,7 +144,7 @@ hi default link MtHead2 MtHead
 syn match MtWordSign "[*~:]\|/\=[?!#]" contained
 hi default link MtWordSign MtSign
 if b:MtKeyWEn
-	syn match MtKeyW "\*[^ \t=.]\S\{-}\>" contains=MtWordSign
+	syn match MtKeyW "\*[^ \t=.*/]\S\{-}\>" contains=MtWordSign
 	hi default link MtKeyW MtKey
 	syn cluster MtKeys add=MtKeyW
 endif
