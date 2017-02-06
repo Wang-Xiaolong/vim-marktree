@@ -107,8 +107,8 @@ hi default link MtOption MtSign
 
 " == Titles ==
 syn region MtHead0 start="\%^" end="^\s*$" contains=@MtHeadMark,MtOption
-syn region MtHead1 start="^==[^=]" end="==\s*$" contains=@MtHeadMark
-syn region MtHead2 start="^--[^-]" end="--\s*$" contains=@MtHeadMark
+syn region MtHead1 start="^== " end=" ==\s*$" contains=@MtHeadMark
+syn region MtHead2 start="^-- " end=" --\s*$" contains=@MtHeadMark
 syn region MtHead start="^\t*# " end=" #\s*$" contains=@MtHeadMark
 
 hi default link MtHead0 MtHead
