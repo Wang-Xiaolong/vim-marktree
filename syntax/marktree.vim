@@ -109,7 +109,7 @@ hi default link MtOption MtSign
 syn region MtHead0 start="\%^" end="^\s*$" contains=@MtHeadMark,MtOption
 syn region MtHead1 start="^== " end=" ==\+$" contains=@MtHeadMark
 syn region MtHead2 start="^-- " end=" --\+$" contains=@MtHeadMark
-syn region MtHead start="^\t*# " end=" #\s*$" contains=@MtHeadMark
+syn match MtHead "^\t*#[^#].*#$" contains=@MtHeadMark
 
 hi default link MtHead0 MtHead
 hi default link MtHead1 MtHead
