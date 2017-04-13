@@ -33,19 +33,19 @@ function! MtFold(lnum)
 	if s:synroot == "MtHead0"
 		return 0
 	elseif s:synroot == "MtHead1"
-		if s:line !~ "^==[^=].*$"
+		if s:line !~ '^==\+\s\+.\+$' "Not the 1st line
 			return '='
-		endif
-		let s:idx = match(s:line, '[^= ]') / 2
+		endif "Then, the 1st line
+		let s:idx = match(s:line, '[^=]') / 2 "Count of == -> level
 		if b:T1LvlCnt < s:idx
 			let b:T1LvlCnt = s:idx
 		endif
-		return s:idx - 1
+		return b:T1LvlCnt - s:idx
 	elseif s:synroot == "MtHead2"
-		if s:line !~ "^--[^-].*$"
+		if s:line !~ '^--\+\s\+.\+$' "Not the 1st line
 			return '='
-		endif
-		let s:idx = match(s:line, '[^- ]') / 2
+		endif "Then, the 1st line
+		let s:idx = match(s:line, '[^-]') / 2 "Count of -- -> level
 		if b:T2LvlCnt < s:idx
 			let b:T2LvlCnt = s:idx
 		endif
