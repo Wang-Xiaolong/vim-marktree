@@ -116,42 +116,17 @@ hi default link MtHead1 MtHead
 hi default link MtHead2 MtHead
 
 " == Marks ==
-" Mark     Standard  Strict      Line    Word   Contain
-" Comment  </abc>    <</abc/>>   //abc          General+Meat+Link
-"  InCode                        >>abc
-" Meat     <_abc>    <<_abc_>>   _ abc          General+Comment
-" Key      <*abc>                        *abc
-" Issue    <?abc>    <<?abc?>>   ? abc   ?abc   Key
-"  Solved  </?abc>   <</?abc?>>  /? abc  /?abc  Key
-" Todo     <!abc>    <<!abc!>>   ! abc   !abc   Key
-"  Done    </!abc>   <</!abc!>>  /! abc  /!abc  Key
-" Tag      <#abc>                        #abc
-"  Hidden  </#abc>                       /#abc
-"  Note    (#123)
-"  Bibl    [#123]
-" Link     <~abc>    <<~abc~>>           ~abc
-"  Url
-"  Note    (~123)
-"  Bibl    [~123]OB
-" Ref      <:abc>    <<:abc:>>   : abc          General+Meat+Link
-"          "abc"                 > abc   'abc'    +Comment+Null
-" Code     <|abc>    <<|abc|>>   | abc          Comment in Code
-"          `abc`     ```abc```
-" Null     <\abc>    <<\abc\>>   \\abc
-
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
-syn match MtWordSign "[*~:]\|/\=[?!#]" contained
-hi default link MtWordSign MtSign
 if b:MtKeyWEn
-	syn match MtKeyW "\*[^ \t=.*/]\S\{-}\>" contains=MtWordSign
+	syn match MtKeyW "\*[^ \t=.*/]\S\{-}\>"
 	hi default link MtKeyW MtKey
 	syn cluster MtKeys add=MtKeyW
 endif
 if b:MtIssueWEn
-	syn match MtIssueW "?\S\{-}\>" contains=MtWordSign
-	syn match MtSolvedW "/?\S\{-}\>" contains=MtWordSign
-	syn match MtSolvedWC "/\=?\S\{-}\(//\S\{-}\)\+\>" contains=MtWordSign,MtCommentInWC
+	syn match MtIssueW "?\S\{-}\>"
+	syn match MtSolvedW "/?\S\{-}\>"
+	syn match MtSolvedWC "/\=?\S\{-}\(//\S\{-}\)\+\>" contains=MtCommentInWC
 	syn match MtCommentInWC "\(//\S\{-}\)\+\>" contained
 	hi default link MtIssueW MtIssue
 	hi default link MtSolvedW MtSolved
@@ -160,21 +135,21 @@ if b:MtIssueWEn
 	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW,MtSolvedWC
 endif
 if b:MtTodoWEn
-	syn match MtTodoW "![^ \t=]\S\{-}\>" contains=MtWordSign
-	syn match MtDoneW "/![^ \t=]\S\{-}\>" contains=MtWordSign
-	syn match MtDoneWC "/\=![^ \t=]\S\{-}\(//\S\{-}\)\+\>" contains=MtWordSign,MtCommentInWC
+	syn match MtTodoW "![^ \t=]\S\{-}\>"
+	syn match MtDoneW "/![^ \t=]\S\{-}\>"
+	syn match MtDoneWC "/\=![^ \t=]\S\{-}\(//\S\{-}\)\+\>" contains=MtCommentInWC
 	hi default link MtTodoW MtTodo
 	hi default link MtDoneW MtDone
 	hi default link MtDoneWC MtDone
 	syn cluster MtGeneralMark add=MtTodoW,MtDoneW,MtDoneWC
 endif
 if b:MtTagWEn
-	syn match MtTagW "#[^ \t0-9]\S*\>" contains=MtWordSign
+	syn match MtTagW "#[^ \t0-9]\S*\>"
 	hi default link MtTagW MtTag
 	syn cluster MtGeneralMark add=MtTagW
 endif
 if b:MtLinkWEn
-	syn match MtLinkW "[~][^ \t0-9>~/]\S*\>" contains=MtWordSign
+	syn match MtLinkW "[~][^ \t0-9>~/]\S*\>"
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
 endif
