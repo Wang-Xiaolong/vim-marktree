@@ -16,7 +16,6 @@ syn cluster MtQuoteMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats
 syn cluster MtHeadMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
 syn cluster MtQuoteBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
-syn cluster MtCodeBlockLine contains=MtCodeComment,MtCodeIssue,MtCodeSolved,MtCodeSolvedC,MtCodeTodo,MtCodeDone,MtCodeDoneC
 " init
 function! MtSyntaxInit()
 	let s:optstr = matchstr(getline(1), '<mt\S*>')
@@ -256,7 +255,7 @@ hi default link MtLineSign MtSign
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
 syn region MtCommentBlock matchgroup=MtBlockFence start="<</\ze[^?!]\|<</$" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtQuoteBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@MtLinet,@MtQuoteMark,@MtQuoteBlockLine
-syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet,@MtCodeBlockLine
+syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet
 
 hi default link MtCommentBlock MtComment
 hi default link MtQuoteBlock MtQuote
