@@ -256,8 +256,12 @@ hi default link MtLineSign MtSign
 syn region MtCommentBlock matchgroup=MtBlockFence start="<</\ze[^?!]\|<</$" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtQuoteBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@MtLinet,@MtQuoteMark,@MtQuoteBlockLine
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet
+syn region MtCppCommentCodeBlock matchgroup=MtBlockFence start="<<//|" end="|>>" contains=@MtLinet,MtCppCommentCodeBlockComment
+syn match MtCppCommentCodeBlockComment "//.*$" contained
 
 hi default link MtCommentBlock MtComment
 hi default link MtQuoteBlock MtQuote
 hi default link MtCodeBlock MtCode
 hi default link MtBlockFence MtSign
+hi default link MtCppCommentCodeBlock MtCode
+hi default link MtCppCommentCodeBlockComment MtComment
