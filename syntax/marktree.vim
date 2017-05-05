@@ -277,35 +277,35 @@ hi default link MtCodeBlock MtCode
 " -- Special Code Blocks: line comment in code blocks for code review --
 " -- 1. // C, Java, Go, PHP ...
 syn region MtCode1Block matchgroup=MtBlockFence start="<<//|" end="|>>" contains=@MtLinet,MtCode1Comment
-syn match MtCode1Comment "//.*$" contained
+syn match MtCode1Comment "//.*$" contains=@MtCommentMark contained
 
 hi default link MtCode1Block MtCode
 hi default link MtCode1Comment MtComment
 
 " -- 2. # Shell, Perl, Python, Ruby, PowerShell, PHP, Make
 syn region MtCode2Block matchgroup=MtBlockFence start="<<#|" end="|>>" contains=@MtLinet,MtCode2Comment
-syn match MtCode2Comment "#.*$" contained
+syn match MtCode2Comment "#.*$" contains=@MtCommentMark contained
 
 hi default link MtCode2Block MtCode
 hi default link MtCode2Comment MtComment
 
 " -- 3. ; Assemble, Lisp
 syn region MtCode3Block matchgroup=MtBlockFence start="<<;|" end="|>>" contains=@MtLinet,MtCode3Comment
-syn match MtCode3Comment ";.*$" contained
+syn match MtCode3Comment ";.*$" contains=@MtCommentMark contained
 
 hi default link MtCode3Block MtCode
 hi default link MtCode3Comment MtComment
 
 " -- 4. -- SQL, Ada, Lua, VHDL
 syn region MtCode4Block matchgroup=MtBlockFence start="<<--|" end="|>>" contains=@MtLinet,MtCode4Comment
-syn match MtCode4Comment "--.*$" contained
+syn match MtCode4Comment "--.*$" contains=@MtCommentMark contained
 
 hi default link MtCode4Block MtCode
 hi default link MtCode4Comment MtComment
 
 " -- 5. " Vim
 syn region MtCode5Block matchgroup=MtBlockFence start=+<<"|+ end="|>>" contains=@MtLinet,MtCode5Comment
-syn match MtCode5Comment +".*$+ contained
+syn match MtCode5Comment +".*$+ contains=@MtCommentMark contained
 
 hi default link MtCode5Block MtCode
 hi default link MtCode5Comment MtComment
