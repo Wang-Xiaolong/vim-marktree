@@ -270,12 +270,43 @@ hi default link MtNullSt MtNull
 syn region MtCommentBlock matchgroup=MtBlockFence start="<</\ze[^?!]\|<</$" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtQuoteBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@MtLinet,@MtQuoteMark,@MtQuoteBlockLine
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet
-syn region MtCppCommentCodeBlock matchgroup=MtBlockFence start="<<//|" end="|>>" contains=@MtLinet,MtCppCommentCodeBlockComment
-syn match MtCppCommentCodeBlockComment "//.*$" contained
-
 hi default link MtCommentBlock MtComment
 hi default link MtQuoteBlock MtQuote
 hi default link MtCodeBlock MtCode
-hi default link MtBlockFence MtSign
-hi default link MtCppCommentCodeBlock MtCode
-hi default link MtCppCommentCodeBlockComment MtComment
+
+" -- Special Code Blocks: line comment in code blocks for code review --
+" -- 1. // C, Java, Go, PHP ...
+syn region MtCode1Block matchgroup=MtBlockFence start="<<//|" end="|>>" contains=@MtLinet,MtCode1Comment
+syn match MtCode1Comment "//.*$" contained
+
+hi default link MtCode1Block MtCode
+hi default link MtCode1Comment MtComment
+
+" -- 2. # Shell, Perl, Python, Ruby, PowerShell, PHP, Make
+syn region MtCode2Block matchgroup=MtBlockFence start="<<#|" end="|>>" contains=@MtLinet,MtCode2Comment
+syn match MtCode2Comment "#.*$" contained
+
+hi default link MtCode2Block MtCode
+hi default link MtCode2Comment MtComment
+
+" -- 3. ; Assemble, Lisp
+syn region MtCode3Block matchgroup=MtBlockFence start="<<;|" end="|>>" contains=@MtLinet,MtCode3Comment
+syn match MtCode3Comment ";.*$" contained
+
+hi default link MtCode3Block MtCode
+hi default link MtCode3Comment MtComment
+
+" -- 4. -- SQL, Ada, Lua, VHDL
+syn region MtCode4Block matchgroup=MtBlockFence start="<<--|" end="|>>" contains=@MtLinet,MtCode4Comment
+syn match MtCode4Comment "--.*$" contained
+
+hi default link MtCode4Block MtCode
+hi default link MtCode4Comment MtComment
+
+" -- 5. " Vim
+syn region MtCode5Block matchgroup=MtBlockFence start=+<<"|+ end="|>>" contains=@MtLinet,MtCode5Comment
+syn match MtCode5Comment +".*$+ contained
+
+hi default link MtCode5Block MtCode
+hi default link MtCode5Comment MtComment
+

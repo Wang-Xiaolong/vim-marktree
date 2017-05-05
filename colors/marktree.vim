@@ -5,6 +5,7 @@ hi MtQuote gui=italic
 
 if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi MtFence ctermfg=DarkYellow
+  hi MtBlockFence ctermfg=Yellow ctermbg=DarkBlue 
   hi MtHead gui=bold guifg=LightMagenta ctermfg=White
   hi MtComment guifg=LightBlue ctermfg=Cyan
   hi MtMeat gui=underline guifg=White ctermfg=Green
