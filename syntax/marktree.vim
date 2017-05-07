@@ -143,15 +143,15 @@ hi default link MtOption MtSign
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
 if b:MtKeyWEn
-	syn match MtKeyW "\*[^ \t=.*/]\S\{-}\>"
+	syn match MtKeyW "\*\k*\>"
 	hi default link MtKeyW MtKey
 	syn cluster MtKeys add=MtKeyW
 endif
 if b:MtIssueWEn
-	syn match MtIssueW "?\S\{-}\>"
-	syn match MtSolvedW "/?\S\{-}\>"
-	syn match MtSolvedWC "/\=?\S\{-}\(//\S\{-}\)\+\>" contains=MtCommentInWC
-	syn match MtCommentInWC "\(//\S\{-}\)\+\>" contained
+	syn match MtIssueW "?\k*\>"
+	syn match MtSolvedW "/?\k*\>"
+	syn match MtSolvedWC "/\=?\k*\(//\k\+\)\+\>" contains=MtCommentInWC
+	syn match MtCommentInWC "\(//\k\+\)\+\>" contained
 	hi default link MtIssueW MtIssue
 	hi default link MtSolvedW MtSolved
 	hi default link MtSolvedWC MtSolved
@@ -159,7 +159,7 @@ if b:MtIssueWEn
 	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW,MtSolvedWC
 endif
 if b:MtTodoWEn
-	syn match MtTodoW "![^ \t=]\S\{-}\>"
+	syn match MtTodoW "!\k*\>"
 	syn match MtDoneW "/![^ \t=]\S\{-}\>"
 	syn match MtDoneWC "/\=![^ \t=]\S\{-}\(//\S\{-}\)\+\>" contains=MtCommentInWC
 	hi default link MtTodoW MtTodo
@@ -168,12 +168,12 @@ if b:MtTodoWEn
 	syn cluster MtGeneralMark add=MtTodoW,MtDoneW,MtDoneWC
 endif
 if b:MtTagWEn
-	syn match MtTagW "#[^ \t0-9]\S*\>"
+	syn match MtTagW "#\(\k*\.\)*\k*\>"
 	hi default link MtTagW MtTag
 	syn cluster MtGeneralMark add=MtTagW
 endif
 if b:MtLinkWEn
-	syn match MtLinkW "[~][^ \t0-9>~/]\S*\>"
+	syn match MtLinkW "[~]\(\k*\.\)*\k*\>"
 	hi default link MtLinkW MtLink
 	syn cluster MtLinks add=MtLinkW
 endif
