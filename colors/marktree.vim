@@ -4,6 +4,7 @@
 hi MtQuote gui=italic
 
 if &background == "dark" " compatible to 8bit console, assume Grey on Black
+  hi Normal guifg=Gray guibg=Black ctermfg=Gray ctermbg=Black
   hi MtFence guifg=DarkYellow ctermfg=DarkYellow
   hi MtBlockFence guifg=Yellow guibg=DarkBlue ctermfg=Yellow ctermbg=DarkBlue 
   hi MtHead gui=bold guifg=White ctermfg=White
@@ -23,6 +24,7 @@ if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi MtIndentTab guibg=Gray10
   hi MtWhiteTail guibg=DarkRed ctermbg=DarkRed
 else " light background, console should >=16 color, assume Black on White
+  hi Normal guifg=DarkGray guibg=White ctermfg=DarkGray ctermbg=White
   hi MtHead gui=bold guifg=DarkMagenta ctermfg=DarkMagenta
   hi MtKey gui=underline,bold guifg=Orange ctermbg=Cyan
   hi MtIssue guibg=Red guifg=White ctermfg=White ctermbg=Red
