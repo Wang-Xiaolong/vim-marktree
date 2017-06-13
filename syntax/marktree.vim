@@ -127,13 +127,15 @@ syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$" contains=@MtLine
 
 " == Titles =================================================================
 syn region MtHead0 start="\%^" end="^\s*$" contains=@MtHeadMark,MtOption
-syn region MtHead1 matchgroup=MtFence start="^==\+\s" end="\s==\+$" contains=@MtHeadMark
-syn region MtHead2 matchgroup=MtFence start="^--\+\s" end="\s--\+$" contains=@MtHeadMark
-syn match MtHead "^\t*#[^#].*#$" contains=@MtHeadMark
+syn match MtHeadSign "^==\+\|==\+$\|^--\+\|--\+$\|^\t*#\|#$\|\\$" contained
+syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
+syn match MtHead2 "^--\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
+syn match MtHead "^\t*#[^#]\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
 
 hi default link MtHead0 MtHead
 hi default link MtHead1 MtHead
 hi default link MtHead2 MtHead
+hi default link MtHeadSign MtFence
 
 " -- Option mark --
 syn match MtOption "<mt\S*>" contained
