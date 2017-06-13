@@ -130,7 +130,7 @@ syn region MtHead0 start="\%^" end="^\s*$" contains=@MtHeadMark,MtOption
 syn match MtHeadSign "^==\+\|==\+$\|^--\+\|--\+$\|^\t*#\|#$\|\\$" contained
 syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
 syn match MtHead2 "^--\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
-syn match MtHead "^\t*#[^#]\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
+syn match MtHead "^\t*# \(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
 
 hi default link MtHead0 MtHead
 hi default link MtHead1 MtHead
