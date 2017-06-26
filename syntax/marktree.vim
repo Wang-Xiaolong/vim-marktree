@@ -126,15 +126,21 @@ hi default link MtLinkToBibl MtLink
 syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$" contains=@MtLinet
 
 " == Titles =================================================================
-syn region MtHead0 start="\%^" end="^\s*$" contains=@MtHeadMark,MtOption
-syn match MtHeadSign "^==\+\|==\+$\|^--\+\|--\+$\|^\t*#\|#$\|\\$" contained
-syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
-syn match MtHead2 "^--\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
+syn match MtHeadSign0 "\\$" contained
+syn match MtHead0 "\%^\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign0,MtOption
+syn match MtHeadSign1 "^==\+\|==\+$\|\\$" contained
+syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign1
+syn match MtHeadSign2 "^--\+\|--\+$\|\\$" contained
+syn match MtHead2 "^--\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign2
+syn match MtHeadSign "^\t*#\|#$\|\\$" contained
 syn match MtHead "^\t*# \(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
 
 hi default link MtHead0 MtHead
 hi default link MtHead1 MtHead
 hi default link MtHead2 MtHead
+hi default link MtHeadSign0 MtHeadSign
+hi default link MtHeadSign1 MtHeadSign
+hi default link MtHeadSign2 MtHeadSign
 hi default link MtHeadSign MtFence
 
 " -- Option mark --
