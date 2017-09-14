@@ -233,7 +233,7 @@ syn match MtComment "//[^/].*$" contains=MtWhiteTail,@MtCommentMark
 syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
 syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn match MtIssue "??[^?].*$" contains=MtWhiteTail,@MtKeys
-syn match MtSolvedLine "^\s*/? .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
+syn match MtSolved "/?[^?].*$" contains=MtWhiteTail,@MtKeys
 syn match MtSolvedCLine "^\s*/\=? .*\s\+//[^/].*$" contains=MtLineSign,MtWhiteTail,@MtKeys,MtCommentLine
 syn match MtTodoLine "!![^!].*$" contains=MtWhiteTail,@MtKeys
 syn match MtDoneLine "^\s*/! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
