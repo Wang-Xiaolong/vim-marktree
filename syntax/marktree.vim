@@ -229,7 +229,7 @@ hi default link MtCommentInSolvedC MtComment
 
 " -- Lines --
 " Lines are effective marks for you only need to mark the beginning of it.
-syn match MtCommentLine "^\s*//[^/].*$\|\s\+//[^/].*$" contains=@MtLinet,@MtCommentMark
+syn match MtComment "//[^/].*$" contains=@MtLinet,@MtCommentMark
 syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
 syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn match MtIssueLine "^\s*? .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
