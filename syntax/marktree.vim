@@ -235,7 +235,7 @@ syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn match MtIssue "??[^?].*$" contains=MtWhiteTail,@MtKeys
 syn match MtSolvedLine "^\s*/? .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtSolvedCLine "^\s*/\=? .*\s\+//[^/].*$" contains=MtLineSign,MtWhiteTail,@MtKeys,MtCommentLine
-syn match MtTodoLine "^\s*! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
+syn match MtTodoLine "!![^!].*$" contains=MtWhiteTail,@MtKeys
 syn match MtDoneLine "^\s*/! .*$" contains=MtLineSign,MtWhiteTail,@MtKeys
 syn match MtDoneCLine "^\s*/\=! .*\s\+//[^/].*$" contains=MtLineSign,MtWhiteTail,@MtKeys,MtCommentLine
 syn match MtQuoteLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtQuoteMark
