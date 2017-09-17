@@ -158,18 +158,16 @@ endif
 if b:MtIssueWEn
 	syn match MtIssueW "?\k*\>"
 	syn match MtSolvedW "/?\k*\>"
-	syn match MtSolvedWC "/\=?\k*\(//\k\+\)\+\>" contains=MtCommentInWC
-	syn match MtCommentInWC "\(//\k\+\)\+\>" contained
+	syn match MtSolvedWC "/\=?\k*</.*>" contains=MtComment
 	hi default link MtIssueW MtIssue
 	hi default link MtSolvedW MtSolved
 	hi default link MtSolvedWC MtSolved
-	hi default link MtCommentInWC MtComment
 	syn cluster MtGeneralMark add=MtIssueW,MtSolvedW,MtSolvedWC
 endif
 if b:MtTodoWEn
 	syn match MtTodoW "!\k*\>"
-	syn match MtDoneW "/![^ \t=]\S\{-}\>"
-	syn match MtDoneWC "/\=![^ \t=]\S\{-}\(//\S\{-}\)\+\>" contains=MtCommentInWC
+	syn match MtDoneW "/!\k*\>"
+	syn match MtDoneWC "/\=!\k*</.*>" contains=MtComment
 	hi default link MtTodoW MtTodo
 	hi default link MtDoneW MtDone
 	hi default link MtDoneWC MtDone
