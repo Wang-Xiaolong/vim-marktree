@@ -233,11 +233,11 @@ syn match MtCommentLine "//.*$" contains=MtWhiteTail,@MtCommentMark
 syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
 syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn match MtIssue "??.*$" contains=MtWhiteTail,@MtKeys
-syn match MtSolved "/?.*$" contains=MtWhiteTail,@MtKeys
-syn match MtSolved "[/?]?.*//.*$" contains=MtWhiteTail,@MtKeys,MtCommentLine
+syn match MtSolved "/??.*$" contains=MtWhiteTail,@MtKeys
+syn match MtSolved "/\=??.*//.*$" contains=MtWhiteTail,@MtKeys,MtCommentLine
 syn match MtTodo "!!.*$" contains=MtWhiteTail,@MtKeys
-syn match MtDone "/!.*$" contains=MtWhiteTail,@MtKeys
-syn match MtDone "[/!]!.*//.*$" contains=MtWhiteTail,@MtKeys,MtCommentLine
+syn match MtDone "/!!.*$" contains=MtWhiteTail,@MtKeys
+syn match MtDone "/\=!!.*//.*$" contains=MtWhiteTail,@MtKeys,MtCommentLine
 syn match MtQuoteLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtQuoteMark
 syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtQuoteMark
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
