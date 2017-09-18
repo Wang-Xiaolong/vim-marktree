@@ -9,16 +9,16 @@ syn sync maxlines=500
 function! MtSyntaxInit()
 	let s:optstr = matchstr(getline(1), '<mt\S*>')
 	let b:MtExtList = []
-	let b:MtKeyWEn = 0
-	let b:MtIssueWEn = 0
-	let b:MtTodoWEn = 0
-	let b:MtTagWEn = 0
-	let b:MtLinkWEn = 0
-	let b:MtQuoteDoubleEn = 0
-	let b:MtCodeSingleEn = 0
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
 		let b:T2LvlCnt = 0
+		let b:MtKeyWEn = 1
+		let b:MtIssueWEn = 1
+		let b:MtTodoWEn = 1
+		let b:MtTagWEn = 1
+		let b:MtLinkWEn = 1
+		let b:MtQuoteDoubleEn = 1
+		let b:MtCodeSingleEn = 1
 		return
 	endif
 	let s:idx = 1
