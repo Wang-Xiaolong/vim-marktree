@@ -14,7 +14,7 @@ if &background == "dark" " compatible to 8bit console, assume Grey on Black
 \      ctermbg=DarkGreen ctermfg=White
   hi MtIssue guibg=DarkRed guifg=White ctermbg=DarkRed ctermfg=White
   hi MtSolved guifg=Red ctermfg=Red
-  hi MtTodo guibg=DarkYellow guifg=Black ctermbg=DarkYellow ctermfg=Black
+  hi MtTodo guibg=DarkYellow guifg=Black ctermbg=DarkYellow ctermfg=White
   hi MtDone guifg=Yellow ctermfg=Yellow
   hi MtTag guifg=Magenta ctermfg=Magenta
   hi MtLink guifg=White guibg=DarkBlue ctermfg=White ctermbg=DarkBlue
