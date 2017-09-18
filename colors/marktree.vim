@@ -7,7 +7,7 @@ if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi Normal guifg=Gray guibg=Black ctermfg=Gray ctermbg=Black
   hi MtFence guifg=DarkYellow ctermfg=DarkYellow
   hi MtBlockFence guifg=Yellow guibg=DarkBlue ctermfg=Yellow ctermbg=DarkBlue 
-  hi MtHead gui=bold guifg=White ctermfg=White
+  hi MtHead gui=bold guifg=Magenta ctermfg=Magenta
   hi MtComment guifg=Cyan ctermfg=Cyan
   hi MtMeat gui=underline guifg=Green ctermfg=Green
   hi MtKey gui=underline,bold guibg=DarkGreen guifg=White
