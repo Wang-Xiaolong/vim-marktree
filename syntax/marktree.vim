@@ -99,9 +99,12 @@ syn cluster MtAutoLink contains=MtUrl,MtEmail
 hi default link MtEmail MtUrl
 
 " -- Signs of a list --
-syn match MtSign "^\t*[\*+\-] \(\[.\?\]\)\?" contains=MtIndent,MtSignIssue,MtSignTodo
-syn match MtNumSign "^\t*\d\+\. \(\[.\?\]\)\?" contains=MtIndent,MtSignIssue,MtSignTodo
-syn match MtLetterSign "^\t*[a-zA-Z]\. \(\[.\?\]\)\?" contains=MtIndent,MtSignIssue,MtSignTodo
+syn match MtSign "^\t*[\*+\-] \(\[.\?\]\)\?"
+  \ contains=MtIndent,MtSignIssue,MtSignTodo
+syn match MtNumSign "^\t*\d\+\. \(\[.\?\]\)\?"
+  \ contains=MtIndent,MtSignIssue,MtSignTodo
+syn match MtLetterSign "^\t*[a-zA-Z]\. \(\[.\?\]\)\?"
+  \ contains=MtIndent,MtSignIssue,MtSignTodo
 syn match MtSignTodo "\[ \?\]" contained
 syn match MtSignIssue "\[?\]" contained
 
@@ -123,11 +126,13 @@ hi default link MtBibl MtTag
 hi default link MtLinkToBibl MtLink
 
 " -- Seperator --
-syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$" contains=@MtLinet
+syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$"
+  \ contains=@MtLinet
 
 " == Titles =================================================================
 syn match MtHeadSign0 "\\$" contained
-syn match MtHead0 "\%^\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign0,MtOption
+syn match MtHead0 "\%^\(.*\\\n\)*.*[^\\]$"
+  \ contains=@MtHeadMark,MtHeadSign0,MtOption
 syn match MtHeadSign1 "^==\+\|==\+$\|\\$" contained
 syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign1
 syn match MtHeadSign2 "^--\+\|--\+$\|\\$" contained
@@ -203,19 +208,40 @@ if b:MtCodeSingleEn
 endif
 
 " -- Standard Marks --
-syn region MtComment matchgroup=MtFence start="</" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$" contains=@MtLinet,@MtCommentMark
-syn region MtMeat matchgroup=MtFence start="<_" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$" contains=@MtLinet,@MtMeatMark
-syn region MtKey matchgroup=MtFence start="<\*" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
-syn region MtIssue matchgroup=MtFence start="<?" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$" contains=@MtLinet,@MtKeys
-syn region MtSolved matchgroup=MtFence start="</?" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$" contains=@MtLinet,@MtKeys
-syn region MtTodo matchgroup=MtFence start="<!" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$" contains=@MtLinet,@MtKeys
-syn region MtDone matchgroup=MtFence start="</!" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$" contains=@MtLinet,@MtKeys
-syn region MtTag matchgroup=MtFence start="</\=#" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline contains=MtTagSign
+syn region MtComment matchgroup=MtFence start="</"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
+  \ contains=@MtLinet,@MtCommentMark
+syn region MtMeat matchgroup=MtFence start="<_"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
+  \ contains=@MtLinet,@MtMeatMark
+syn region MtKey matchgroup=MtFence start="<\*"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
+syn region MtIssue matchgroup=MtFence start="<?"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
+  \ contains=@MtLinet,@MtKeys
+syn region MtSolved matchgroup=MtFence start="</?"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
+  \ contains=@MtLinet,@MtKeys
+syn region MtTodo matchgroup=MtFence start="<!"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
+  \ contains=@MtLinet,@MtKeys
+syn region MtDone matchgroup=MtFence start="</!"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
+  \ contains=@MtLinet,@MtKeys
+syn region MtTag matchgroup=MtFence start="</\=#"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
+  \ contains=MtTagSign
 syn match MtTagSign "[.=+\-\:]\ze[^>]" contained
-syn region MtLink matchgroup=MtFence start="<[~]" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$" contains=@MtLinet,@MtAutoLink
-syn region MtQuote matchgroup=MtFence start="<:" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline contains=@MtKeys
-syn region MtCode matchgroup=MtFence start="<|" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
-syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]>\|^\s*$" contains=@MtLinet
+syn region MtLink matchgroup=MtFence start="<[~]"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
+  \ contains=@MtLinet,@MtAutoLink
+syn region MtQuote matchgroup=MtFence start="<:"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
+  \ contains=@MtKeys
+syn region MtCode matchgroup=MtFence start="<|"
+  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
+syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
+  \ end="[^ \-=>]>\|^\s*$" contains=@MtLinet
 syn match MtSolvedC "</\=?.\{-}//.\{-}>" contains=MtCommentInSolvedC
 syn match MtDoneC "</\=!.\{-}//.\{-}>" contains=MtCommentInSolvedC
 syn match MtCommentInSolvedC "//.\{-}\ze>" contained
@@ -258,13 +284,20 @@ hi default link MtNullLine MtNull
 hi default link MtLineSign MtSign
 
 " -- Strict Marks --
-syn region MtMeatSt matchgroup=MtFence start="<<_"  end="_>>" contains=@MtLinet,@MtMeatMark
-syn region MtIssueSt matchgroup=MtFence start="<<?"  end="?>>" contains=@MtLinet,@MtKeys
-syn region MtSolvedSt matchgroup=MtFence start="<</?" end="?>>" contains=@MtLinet,@MtKeys
-syn region MtTodoSt matchgroup=MtFence start="<<!"  end="!>>" contains=@MtLinet,@MtKeys
-syn region MtDoneSt matchgroup=MtFence start="<</!" end="!>>" contains=@MtLinet,@MtKeys
-syn region MtLinkSt matchgroup=MtFence start="<<[~]"  end="[~]>>" contains=@MtLinet,@MtAutoLink
-syn region MtNullSt matchgroup=MtFence start="<<\\" end="\\>>" contains=@MtLinet
+syn region MtMeatSt matchgroup=MtFence start="<<_"  end="_>>"
+  \ contains=@MtLinet,@MtMeatMark
+syn region MtIssueSt matchgroup=MtFence start="<<?"  end="?>>"
+  \ contains=@MtLinet,@MtKeys
+syn region MtSolvedSt matchgroup=MtFence start="<</?" end="?>>"
+  \ contains=@MtLinet,@MtKeys
+syn region MtTodoSt matchgroup=MtFence start="<<!"  end="!>>"
+  \ contains=@MtLinet,@MtKeys
+syn region MtDoneSt matchgroup=MtFence start="<</!" end="!>>"
+  \ contains=@MtLinet,@MtKeys
+syn region MtLinkSt matchgroup=MtFence start="<<[~]"  end="[~]>>"
+  \ contains=@MtLinet,@MtAutoLink
+syn region MtNullSt matchgroup=MtFence start="<<\\" end="\\>>"
+  \ contains=@MtLinet
 
 hi default link MtMeatSt MtMeat
 hi default link MtIssueSt MtIssue
@@ -279,44 +312,53 @@ hi default link MtNullSt MtNull
 " A block is treated as one paragraph in folding, even without any indentation.
 " The level is determined by its heading line.
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
-syn region MtCommentBlock matchgroup=MtBlockFence start="<</\ze[^?!]\|<</$" end="/>>" contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
-syn region MtQuoteBlock matchgroup=MtBlockFence start="<<:"  end=":>>" contains=@MtLinet,@MtQuoteMark,@MtQuoteBlockLine
-syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>" contains=@MtLinet
+syn region MtCommentBlock matchgroup=MtBlockFence
+  \ start="<</\ze[^?!]\|<</$" end="/>>"
+  \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
+syn region MtQuoteBlock matchgroup=MtBlockFence start="<<:"  end=":>>"
+  \ contains=@MtLinet,@MtQuoteMark,@MtQuoteBlockLine
+syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>"
+  \ contains=@MtLinet
 hi default link MtCommentBlock MtComment
 hi default link MtQuoteBlock MtQuote
 hi default link MtCodeBlock MtCode
 
 " -- Special Code Blocks: line comment in code blocks for code review --
 " -- 1. // C, Java, Go, PHP ...
-syn region MtCode1Block matchgroup=MtBlockFence start="<<//|" end="|>>" contains=@MtLinet,MtCode1Comment
+syn region MtCode1Block matchgroup=MtBlockFence start="<<//|" end="|>>"
+  \ contains=@MtLinet,MtCode1Comment
 syn match MtCode1Comment "//.*$" contains=@MtCommentMark contained
 
 hi default link MtCode1Block MtCode
 hi default link MtCode1Comment MtComment
 
 " -- 2. # Shell, Perl, Python, Ruby, PowerShell, PHP, Make
-syn region MtCode2Block matchgroup=MtBlockFence start="<<#|" end="|>>" contains=@MtLinet,MtCode2Comment
+syn region MtCode2Block matchgroup=MtBlockFence start="<<#|" end="|>>"
+  \ contains=@MtLinet,MtCode2Comment
 syn match MtCode2Comment "#.*$" contains=@MtCommentMark contained
 
 hi default link MtCode2Block MtCode
 hi default link MtCode2Comment MtComment
 
 " -- 3. ; Assemble, Lisp
-syn region MtCode3Block matchgroup=MtBlockFence start="<<;|" end="|>>" contains=@MtLinet,MtCode3Comment
+syn region MtCode3Block matchgroup=MtBlockFence start="<<;|" end="|>>"
+  \ contains=@MtLinet,MtCode3Comment
 syn match MtCode3Comment ";.*$" contains=@MtCommentMark contained
 
 hi default link MtCode3Block MtCode
 hi default link MtCode3Comment MtComment
 
 " -- 4. -- SQL, Ada, Lua, VHDL
-syn region MtCode4Block matchgroup=MtBlockFence start="<<--|" end="|>>" contains=@MtLinet,MtCode4Comment
+syn region MtCode4Block matchgroup=MtBlockFence start="<<--|" end="|>>"
+  \ contains=@MtLinet,MtCode4Comment
 syn match MtCode4Comment "--.*$" contains=@MtCommentMark contained
 
 hi default link MtCode4Block MtCode
 hi default link MtCode4Comment MtComment
 
 " -- 5. " Vim
-syn region MtCode5Block matchgroup=MtBlockFence start=+<<"|+ end="|>>" contains=@MtLinet,MtCode5Comment
+syn region MtCode5Block matchgroup=MtBlockFence start=+<<"|+ end="|>>"
+  \ contains=@MtLinet,MtCode5Comment
 syn match MtCode5Comment +".*$+ contains=@MtCommentMark contained
 
 hi default link MtCode5Block MtCode
