@@ -366,3 +366,7 @@ syn match MtCode5Comment +".*$+ contains=@MtCommentMark contained
 hi default link MtCode5Block MtCode
 hi default link MtCode5Comment MtComment
 
+" -- Final: Marktree, used in marktree.mt to show syntax colors
+"  and avoid unexpected folding
+syn region MtMarktreeBlock matchgroup=MtBlockFence start="<<marktree|" end="|>>"
+  \ contains=ALL
