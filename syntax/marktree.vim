@@ -175,21 +175,18 @@ if b:MtLinkWordEn
 	syn match MtLink "[~]\(\k*\.\)*\k*\>"
 endif
 if b:MtQuoteSingleEn
-	syn match MtQuoteSingle +'\S\{-}'+ contains=MtQuoteSingleSign
+	syn match MtQuote +'\S\{-}'+ contains=MtQuoteSingleSign
 	syn match MtQuoteSingleSign +'+ contained
-	hi default link MtQuoteSingle MtQuote
 	hi default link MtQuoteSingleSign MtSign
 endif
 if b:MtQuoteDoubleEn
-	syn match MtQuoteDouble +".\{-}"+ contains=MtQuoteDoubleSign
+	syn match MtQuote +".\{-}"+ contains=MtQuoteDoubleSign
 	syn match MtQuoteDoubleSign +"+ contained
-	hi default link MtQuoteDouble MtQuote
 	hi default link MtQuoteDoubleSign MtSign
 endif
 if b:MtCodeSingleEn
-	syn match MtCodeSingle +`.\{-}`+ contains=MtCodeSingleSign
+	syn match MtCode +`.\{-}`+ contains=MtCodeSingleSign
 	syn match MtCodeSingleSign +`+ contained
-	hi default link MtCodeSingle MtCode
 	hi default link MtCodeSingleSign MtSign
 endif
 
