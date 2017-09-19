@@ -156,9 +156,7 @@ hi default link MtOption MtSign
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
 if b:MtKeyWEn
-	syn match MtKeyW "\*\k*\>"
-	hi default link MtKeyW MtKey
-	syn cluster MtKeys add=MtKeyW
+	syn match MtKey "\*\k*\>"
 endif
 if b:MtIssueWEn
 	syn match MtIssueW "?\k*\>"
