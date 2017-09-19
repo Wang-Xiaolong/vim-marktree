@@ -171,9 +171,7 @@ if b:MtTagWEn
 	syn match MtTag "#\(\k*\.\)*\k*\>"
 endif
 if b:MtLinkWEn
-	syn match MtLinkW "[~]\(\k*\.\)*\k*\>"
-	hi default link MtLinkW MtLink
-	syn cluster MtLinks add=MtLinkW
+	syn match MtLink "[~]\(\k*\.\)*\k*\>"
 endif
 if b:MtQuoteSingleEn
 	syn match MtQuoteSingle +'\S\{-}'+ contains=MtQuoteSingleSign
