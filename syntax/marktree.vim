@@ -99,20 +99,12 @@ syn cluster MtAutoLink contains=MtUrl,MtEmail
 hi default link MtEmail MtUrl
 
 " -- Signs of a list --
-syn match MtSign "^\t*[\*+\-] \(\[.\?\]\)\?"
-  \ contains=MtIndent,MtSignIssue,MtSignTodo
-syn match MtNumSign "^\t*\d\+\. \(\[.\?\]\)\?"
-  \ contains=MtIndent,MtSignIssue,MtSignTodo
-syn match MtLetterSign "^\t*[a-zA-Z]\. \(\[.\?\]\)\?"
-  \ contains=MtIndent,MtSignIssue,MtSignTodo
-syn match MtSignTodo "\[ \?\]" contained
-syn match MtSignIssue "\[?\]" contained
+syn match MtSign "^\t*[\*+\-] " contains=MtIndent
+syn match MtNumSign "^\t*\d\+\. " contains=MtIndent
+syn match MtLetterSign "^\t*[a-zA-Z]\. " contains=MtIndent
 
 hi default link MtNumSign MtSign
 hi default link MtLetterSign MtSign
-hi default link MtSeparator MtSign
-hi default link MtSignTodo MtTodo
-hi default link MtSignIssue MtIssue
 
 " -- Note & Bibl --
 syn match MtNote "^\s*(#\d\+)" contains=@MtIndent
@@ -128,6 +120,8 @@ hi default link MtLinkToBibl MtLink
 " -- Seperator --
 syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$"
   \ contains=@MtLinet
+
+hi default link MtSeparator MtSign
 
 " == Titles =================================================================
 syn match MtHeadSign0 "\\$" contained
