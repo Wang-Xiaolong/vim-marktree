@@ -163,13 +163,9 @@ if b:MtIssueWEn
 	syn match MtSolved "/\=?\k*</.*>" contains=MtComment
 endif
 if b:MtTodoWEn
-	syn match MtTodoW "!\k*\>"
-	syn match MtDoneW "/!\k*\>"
-	syn match MtDoneWC "/\=!\k*</.*>" contains=MtComment
-	hi default link MtTodoW MtTodo
-	hi default link MtDoneW MtDone
-	hi default link MtDoneWC MtDone
-	syn cluster MtGeneralMark add=MtTodoW,MtDoneW,MtDoneWC
+	syn match MtTodo "!\k*\>"
+	syn match MtDone "/!\k*\>"
+	syn match MtDone "/\=!\k*</.*>" contains=MtComment
 endif
 if b:MtTagWEn
 	syn match MtTagW "#\(\k*\.\)*\k*\>"
