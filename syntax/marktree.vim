@@ -8,7 +8,6 @@ syn sync maxlines=500
 " == Init Function: Get options from MtOption mark ==========================
 function! MtSyntaxInit()
 	let s:optstr = matchstr(getline(1), '<mt\S*>')
-	let b:MtExtList = []
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
 		let b:T2LvlCnt = 0
@@ -22,6 +21,7 @@ function! MtSyntaxInit()
 		let b:MtCodeSingleEn = 1
 		return
 	endif
+	let b:MtExtList = []
 	let s:idx = 1
 	while 1
 		let s:filestr = matchstr(s:optstr, '+\zs\w\+', 0, s:idx)
