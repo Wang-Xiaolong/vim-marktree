@@ -12,11 +12,12 @@ function! MtSyntaxInit()
 	if s:optstr == ""
 		let b:T1LvlCnt = 0
 		let b:T2LvlCnt = 0
-		let b:MtKeyWEn = 1
-		let b:MtIssueWEn = 1
-		let b:MtTodoWEn = 1
-		let b:MtTagWEn = 1
-		let b:MtLinkWEn = 1
+		let b:MtKeyWordEn = 1
+		let b:MtIssueWordEn = 1
+		let b:MtTodoWordEn = 1
+		let b:MtTagWordEn = 1
+		let b:MtLinkWordEn = 1
+		let b:MtQuoteSingleEn = 1
 		let b:MtQuoteDoubleEn = 1
 		let b:MtCodeSingleEn = 1
 		return
@@ -40,20 +41,20 @@ function! MtSyntaxInit()
 	let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
 	let b:T2LvlCnt = strlen(substitute(s:optstr, "[^-]", "", "g"))
 	if s:optstr =~ '\^'
-		let b:MtKeyWEn = (s:optstr !~ '*')
-		let b:MtIssueWEn = (s:optstr !~ '?')
-		let b:MtTodoWEn = (s:optstr !~ '!')
-		let b:MtTagWEn = (s:optstr !~ '#')
-		let b:MtLinkWEn = (s:optstr !~ '[~]')
+		let b:MtKeyWordEn = (s:optstr !~ '*')
+		let b:MtIssueWordEn = (s:optstr !~ '?')
+		let b:MtTodoWordEn = (s:optstr !~ '!')
+		let b:MtTagWordEn = (s:optstr !~ '#')
+		let b:MtLinkWordEn = (s:optstr !~ '[~]')
 		let b:MtQuoteSingleEn = (s:optstr !~ "'")
 		let b:MtQuoteDoubleEn = (s:optstr !~ '"')
 		let b:MtCodeSingleEn = (s:optstr !~ '`')
 	else
-		let b:MtKeyWEn = (s:optstr =~ '*')
-		let b:MtIssueWEn = (s:optstr =~ '?')
-		let b:MtTodoWEn = (s:optstr =~ '!')
-		let b:MtTagWEn = (s:optstr =~ '#')
-		let b:MtLinkWEn = (s:optstr =~ '[~]')
+		let b:MtKeyWordEn = (s:optstr =~ '*')
+		let b:MtIssueWordEn = (s:optstr =~ '?')
+		let b:MtTodoWordEn = (s:optstr =~ '!')
+		let b:MtTagWordEn = (s:optstr =~ '#')
+		let b:MtLinkWordEn = (s:optstr =~ '[~]')
 		let b:MtQuoteSingleEn = (s:optstr =~ "'")
 		let b:MtQuoteDoubleEn = (s:optstr =~ '"')
 		let b:MtCodeSingleEn = (s:optstr =~ '`')
@@ -154,23 +155,23 @@ hi default link MtOption MtSign
 " == Marks ==================================================================
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
-if b:MtKeyWEn
+if b:MtKeyWordEn
 	syn match MtKey "\*\k*\>"
 endif
-if b:MtIssueWEn
+if b:MtIssueWordEn
 	syn match MtIssue "?\k*\>"
 	syn match MtSolved "/?\k*\>"
 	syn match MtSolved "/\=?\k*</.*>" contains=MtComment
 endif
-if b:MtTodoWEn
+if b:MtTodoWordEn
 	syn match MtTodo "!\k*\>"
 	syn match MtDone "/!\k*\>"
 	syn match MtDone "/\=!\k*</.*>" contains=MtComment
 endif
-if b:MtTagWEn
+if b:MtTagWordEn
 	syn match MtTag "#\(\k*\.\)*\k*\>"
 endif
-if b:MtLinkWEn
+if b:MtLinkWordEn
 	syn match MtLink "[~]\(\k*\.\)*\k*\>"
 endif
 if b:MtQuoteSingleEn
