@@ -64,10 +64,9 @@ let g:mtpath = expand('<sfile>:p:h:h')
 call MtSyntaxInit()
 
 " == Clusters ===============================================================
-syn cluster MtKeys contains=MtKey
 syn cluster MtMeats contains=MtMeat
 syn cluster MtLinks contains=MtLink,@MtAutoLink
-syn cluster MtGeneralMark contains=@MtKeys,MtTag,MtIssue,MtSolved,MtSolvedC,MtTodo,MtDone
+syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtSolvedC,MtTodo,MtDone
 syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
 syn cluster MtQuoteMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtJunk
@@ -216,16 +215,16 @@ syn region MtKey matchgroup=MtFence start="<\*"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
 syn region MtIssue matchgroup=MtFence start="<?"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
-  \ contains=@MtLinet,@MtKeys
+  \ contains=@MtLinet,MtKey
 syn region MtSolved matchgroup=MtFence start="</?"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
-  \ contains=@MtLinet,@MtKeys
+  \ contains=@MtLinet,MtKey
 syn region MtTodo matchgroup=MtFence start="<!"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
-  \ contains=@MtLinet,@MtKeys
+  \ contains=@MtLinet,MtKey
 syn region MtDone matchgroup=MtFence start="</!"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
-  \ contains=@MtLinet,@MtKeys
+  \ contains=@MtLinet,MtKey
 syn region MtTag matchgroup=MtFence start="</\=#"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
   \ contains=MtTagSign
@@ -235,7 +234,7 @@ syn region MtLink matchgroup=MtFence start="<[~]"
   \ contains=@MtLinet,@MtAutoLink
 syn region MtQuote matchgroup=MtFence start="<:"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
-  \ contains=@MtKeys
+  \ contains=MtKey
 syn region MtCode matchgroup=MtFence start="<|"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
 syn region MtJunk start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
@@ -254,12 +253,12 @@ hi default link MtCommentInSolvedC MtComment
 syn match MtCommentLine "//.*$" contains=MtWhiteTail,@MtCommentMark
 syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
 syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
-syn match MtIssue "??.*$" contains=MtWhiteTail,@MtKeys
-syn match MtSolved "/??.*$" contains=MtWhiteTail,@MtKeys
-syn match MtSolved "/\=??.*//.*$" contains=MtWhiteTail,@MtKeys,MtCommentLine
-syn match MtTodo "!!.*$" contains=MtWhiteTail,@MtKeys
-syn match MtDone "/!!.*$" contains=MtWhiteTail,@MtKeys
-syn match MtDone "/\=!!.*//.*$" contains=MtWhiteTail,@MtKeys,MtCommentLine
+syn match MtIssue "??.*$" contains=MtWhiteTail,MtKey
+syn match MtSolved "/??.*$" contains=MtWhiteTail,MtKey
+syn match MtSolved "/\=??.*//.*$" contains=MtWhiteTail,MtKey,MtCommentLine
+syn match MtTodo "!!.*$" contains=MtWhiteTail,MtKey
+syn match MtDone "/!!.*$" contains=MtWhiteTail,MtKey
+syn match MtDone "/\=!!.*//.*$" contains=MtWhiteTail,MtKey,MtCommentLine
 syn match MtQuoteLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtQuoteMark
 syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtQuoteMark
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
@@ -285,13 +284,13 @@ hi default link MtLineSign MtSign
 syn region MtMeat matchgroup=MtFence start="<<_"  end="_>>"
   \ contains=@MtLinet,@MtMeatMark
 syn region MtIssue matchgroup=MtFence start="<<?"  end="?>>"
-  \ contains=@MtLinet,@MtKeys
+  \ contains=@MtLinet,MtKey
 syn region MtSolved matchgroup=MtFence start="<</?" end="?>>"
-  \ contains=@MtLinet,@MtKeys
+  \ contains=@MtLinet,MtKey
 syn region MtTodo matchgroup=MtFence start="<<!"  end="!>>"
-  \ contains=@MtLinet,@MtKeys
+  \ contains=@MtLinet,MtKey
 syn region MtDone matchgroup=MtFence start="<</!" end="!>>"
-  \ contains=@MtLinet,@MtKeys
+  \ contains=@MtLinet,MtKey
 syn region MtLink matchgroup=MtFence start="<<[~]"  end="[~]>>"
   \ contains=@MtLinet,@MtAutoLink
 syn region MtJunk matchgroup=MtFence start="<<\\" end="\\>>"
