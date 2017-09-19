@@ -70,10 +70,10 @@ syn cluster MtLinks contains=MtLink,MtLinkSt,@MtAutoLink
 syn cluster MtGeneralMark contains=@MtKeys,MtTag,MtIssue,MtSolved,MtSolvedC,MtTodo,MtDone,MtIssueSt,MtSolvedSt,MtTodoSt,MtDoneSt
 syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
-syn cluster MtQuoteMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtNull,MtNullSt
+syn cluster MtQuoteMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtJunk,MtJunkSt
 syn cluster MtHeadMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
-syn cluster MtQuoteBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtNullLine
+syn cluster MtQuoteBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtJunkLine
 
 " == Small Stuff ============================================================
 " It is here before the Lines and Regions because if not so,
@@ -240,7 +240,7 @@ syn region MtQuote matchgroup=MtFence start="<:"
   \ contains=@MtKeys
 syn region MtCode matchgroup=MtFence start="<|"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
-syn region MtNull start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
+syn region MtJunk start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
   \ end="[^ \-=>]>\|^\s*$" contains=@MtLinet
 syn match MtSolvedC "</\=?.\{-}//.\{-}>" contains=MtCommentInSolvedC
 syn match MtDoneC "</\=!.\{-}//.\{-}>" contains=MtCommentInSolvedC
@@ -266,7 +266,7 @@ syn match MtQuoteLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtQuoteMark
 syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtQuoteMark
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
 syn match MtLinkLine "^\s*\~ .*$" contains=MtLineSign,MtWhiteTail,@MtAutoLink
-syn match MtNullLine "^\s*\\\\.*$" contains=@MtLinet
+syn match MtJunkLine "^\s*\\\\.*$" contains=@MtLinet
 
 hi default link MtCommentLine MtComment
 hi default link MtMeatLine MtMeat
@@ -280,7 +280,7 @@ hi default link MtLinkLine MtLink
 hi default link MtQuoteLine MtQuote
 hi default link MtMdRefLine MtQuote
 hi default link MtCodeLine MtCode
-hi default link MtNullLine MtNull
+hi default link MtJunkLine MtJunk
 hi default link MtLineSign MtSign
 
 " -- Strict Marks --
@@ -296,7 +296,7 @@ syn region MtDoneSt matchgroup=MtFence start="<</!" end="!>>"
   \ contains=@MtLinet,@MtKeys
 syn region MtLinkSt matchgroup=MtFence start="<<[~]"  end="[~]>>"
   \ contains=@MtLinet,@MtAutoLink
-syn region MtNullSt matchgroup=MtFence start="<<\\" end="\\>>"
+syn region MtJunkSt matchgroup=MtFence start="<<\\" end="\\>>"
   \ contains=@MtLinet
 
 hi default link MtMeatSt MtMeat
@@ -305,7 +305,7 @@ hi default link MtSolvedSt MtSolved
 hi default link MtTodoSt MtTodo
 hi default link MtDoneSt MtDone
 hi default link MtLinkSt MtLink
-hi default link MtNullSt MtNull
+hi default link MtJunkSt MtJunk
 
 " -- Blocks --
 " Blocks are special "strict marks" for multi-line comment, ref and code.
