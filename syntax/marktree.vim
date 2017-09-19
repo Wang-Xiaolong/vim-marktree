@@ -168,9 +168,7 @@ if b:MtTodoWEn
 	syn match MtDone "/\=!\k*</.*>" contains=MtComment
 endif
 if b:MtTagWEn
-	syn match MtTagW "#\(\k*\.\)*\k*\>"
-	hi default link MtTagW MtTag
-	syn cluster MtGeneralMark add=MtTagW
+	syn match MtTag "#\(\k*\.\)*\k*\>"
 endif
 if b:MtLinkWEn
 	syn match MtLinkW "[~]\(\k*\.\)*\k*\>"
