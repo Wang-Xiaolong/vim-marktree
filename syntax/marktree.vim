@@ -284,28 +284,20 @@ hi default link MtJunkLine MtJunk
 hi default link MtLineSign MtSign
 
 " -- Strict Marks --
-syn region MtMeatSt matchgroup=MtFence start="<<_"  end="_>>"
+syn region MtMeat matchgroup=MtFence start="<<_"  end="_>>"
   \ contains=@MtLinet,@MtMeatMark
-syn region MtIssueSt matchgroup=MtFence start="<<?"  end="?>>"
+syn region MtIssue matchgroup=MtFence start="<<?"  end="?>>"
   \ contains=@MtLinet,@MtKeys
-syn region MtSolvedSt matchgroup=MtFence start="<</?" end="?>>"
+syn region MtSolved matchgroup=MtFence start="<</?" end="?>>"
   \ contains=@MtLinet,@MtKeys
-syn region MtTodoSt matchgroup=MtFence start="<<!"  end="!>>"
+syn region MtTodo matchgroup=MtFence start="<<!"  end="!>>"
   \ contains=@MtLinet,@MtKeys
-syn region MtDoneSt matchgroup=MtFence start="<</!" end="!>>"
+syn region MtDone matchgroup=MtFence start="<</!" end="!>>"
   \ contains=@MtLinet,@MtKeys
-syn region MtLinkSt matchgroup=MtFence start="<<[~]"  end="[~]>>"
+syn region MtLink matchgroup=MtFence start="<<[~]"  end="[~]>>"
   \ contains=@MtLinet,@MtAutoLink
-syn region MtJunkSt matchgroup=MtFence start="<<\\" end="\\>>"
+syn region MtJunk matchgroup=MtFence start="<<\\" end="\\>>"
   \ contains=@MtLinet
-
-hi default link MtMeatSt MtMeat
-hi default link MtIssueSt MtIssue
-hi default link MtSolvedSt MtSolved
-hi default link MtTodoSt MtTodo
-hi default link MtDoneSt MtDone
-hi default link MtLinkSt MtLink
-hi default link MtJunkSt MtJunk
 
 " -- Blocks --
 " Blocks are special "strict marks" for multi-line comment, ref and code.
