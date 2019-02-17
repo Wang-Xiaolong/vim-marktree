@@ -194,7 +194,6 @@ hi default link MtCommentInSolvedC MtComment
 
 " -- Lines --
 " Lines are effective marks for you only need to mark the beginning of it.
-"syn match MtCommentLine "//.*$" contains=MtWhiteTail,@MtCommentMark
 syn region MtCommentLine matchgroup=MtFence start="//" end="$"
   \ contains=MtWhiteTail,@MtCommentMark oneline
 syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
