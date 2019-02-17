@@ -203,12 +203,14 @@ syn region MtIssue matchgroup=MtFence start="??" end="$"
   \ contains=MtWhiteTail,MtKey oneline
 syn region MtSolved matchgroup=MtFence start="/??" end="$"
   \ contains=MtWhiteTail,MtKey oneline
-syn region MtSolved matchgroup=MtFence start="??" end="\(//\)\@=" oneline
+syn region MtSolved matchgroup=MtFence start="??" end="\(//\)\@="
+  \ contains=MtKey oneline
 syn region MtTodo matchgroup=MtFence start="!!" end="$"
   \ contains=MtWhiteTail,MtKey oneline
 syn region MtDone matchgroup=MtFence start="/!!" end="$"
   \ contains=WtWhiteTail,MtKey oneline
-syn region MtDone matchgroup=MtFence start="!!" end="\(//\)\@=" oneline
+syn region MtDone matchgroup=MtFence start="!!" end="\(//\)\@="
+  \ contains=MtKey oneline
 syn match MtQuoteLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtQuoteMark
 syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtQuoteMark
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
