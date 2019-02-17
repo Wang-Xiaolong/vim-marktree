@@ -14,11 +14,6 @@ function! MtSyntaxInit()
 		let b:MtKeyWordEn = 1
 		let b:MtIssueWordEn = 1
 		let b:MtTodoWordEn = 1
-		let b:MtTagWordEn = 1
-		let b:MtLinkWordEn = 1
-		let b:MtQuoteSingleEn = 1
-		let b:MtQuoteDoubleEn = 1
-		let b:MtCodeSingleEn = 1
 		return
 	endif
 	let b:MtExtList = []
@@ -44,20 +39,10 @@ function! MtSyntaxInit()
 		let b:MtKeyWordEn = (s:optstr !~ '*')
 		let b:MtIssueWordEn = (s:optstr !~ '?')
 		let b:MtTodoWordEn = (s:optstr !~ '!')
-		let b:MtTagWordEn = (s:optstr !~ '#')
-		let b:MtLinkWordEn = (s:optstr !~ '[~]')
-		let b:MtQuoteSingleEn = (s:optstr !~ "'")
-		let b:MtQuoteDoubleEn = (s:optstr !~ '"')
-		let b:MtCodeSingleEn = (s:optstr !~ '`')
 	else
 		let b:MtKeyWordEn = (s:optstr =~ '*')
 		let b:MtIssueWordEn = (s:optstr =~ '?')
 		let b:MtTodoWordEn = (s:optstr =~ '!')
-		let b:MtTagWordEn = (s:optstr =~ '#')
-		let b:MtLinkWordEn = (s:optstr =~ '[~]')
-		let b:MtQuoteSingleEn = (s:optstr =~ "'")
-		let b:MtQuoteDoubleEn = (s:optstr =~ '"')
-		let b:MtCodeSingleEn = (s:optstr =~ '`')
 	endif
 endfunction
 
@@ -161,27 +146,6 @@ if b:MtTodoWordEn
 	syn match MtTodo "!\k*\>"
 	syn match MtDone "/!\k*\>"
 	syn match MtDone "/\=!\k*</.*>" contains=MtComment
-endif
-if b:MtTagWordEn
-	syn match MtTag "#\(\k*\.\)*\k*\>"
-endif
-if b:MtLinkWordEn
-	syn match MtLink "[~]\(\k*\.\)*\k*\>"
-endif
-if b:MtQuoteSingleEn
-	syn match MtQuote +'\S\{-}'+ contains=MtQuoteSingleSign
-	syn match MtQuoteSingleSign +'+ contained
-	hi default link MtQuoteSingleSign MtSign
-endif
-if b:MtQuoteDoubleEn
-	syn match MtQuote +".\{-}"+ contains=MtQuoteDoubleSign
-	syn match MtQuoteDoubleSign +"+ contained
-	hi default link MtQuoteDoubleSign MtSign
-endif
-if b:MtCodeSingleEn
-	syn match MtCode +`.\{-}`+ contains=MtCodeSingleSign
-	syn match MtCodeSingleSign +`+ contained
-	hi default link MtCodeSingleSign MtSign
 endif
 
 " -- Standard Marks --
