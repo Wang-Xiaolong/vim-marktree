@@ -59,6 +59,6 @@ _ Meat Line
 > Quote Line
 | Code Line
 -- Words --
-Normal *Key ?Issue /?Solved1 ?Solved</2> !Todo /!Done1 !Done</2>
+Normal *Key ?Issue /?Solved1 ?Solved</2>Normal> !Todo /!Done1 !Done</2>Normal>
 -- Blocks --
 == Compare with Markdown ==

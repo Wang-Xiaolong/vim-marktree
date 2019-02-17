@@ -140,12 +140,12 @@ endif
 if b:MtIssueWordEn
 	syn match MtIssue "?\k*\>"
 	syn match MtSolved "/?\k*\>"
-	syn match MtSolved "/\=?\k*</.*>" contains=MtComment
+	syn match MtSolved "/\=?\k*</.\{-}>" contains=MtComment
 endif
 if b:MtTodoWordEn
 	syn match MtTodo "!\k*\>"
 	syn match MtDone "/!\k*\>"
-	syn match MtDone "/\=!\k*</.*>" contains=MtComment
+	syn match MtDone "/\=!\k*</.\{-}>" contains=MtComment
 endif
 
 " -- Standard Marks --
