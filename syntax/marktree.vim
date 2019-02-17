@@ -183,14 +183,8 @@ syn region MtCode matchgroup=MtFence start="<|"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
 syn region MtJunk start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
   \ end="[^ \-=>]>\|^\s*$" contains=@MtLinet
-syn match MtSolvedC "</\=?.\{-}//.\{-}>" contains=MtCommentInSolvedC
-syn match MtDoneC "</\=!.\{-}//.\{-}>" contains=MtCommentInSolvedC
-syn match MtCommentInSolvedC "//.\{-}\ze>" contained
 
 hi default link MtTagSign MtSign
-hi default link MtSolvedC MtSolved
-hi default link MtDoneC MtDone
-hi default link MtCommentInSolvedC MtComment
 
 " -- Lines --
 " Lines are effective marks for you only need to mark the beginning of it.
