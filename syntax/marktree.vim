@@ -52,13 +52,13 @@ call MtSyntaxInit()
 " == Clusters ===============================================================
 syn cluster MtMeats contains=MtMeat
 syn cluster MtLinks contains=MtLink,@MtAutoLink
-syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtSolvedC,MtTodo,MtDone
+syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone
 syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
 syn cluster MtQuoteMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtJunk
 syn cluster MtHeadMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
-syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine
-syn cluster MtQuoteBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtSolvedCLine,MtTodoLine,MtDoneLine,MtLinkLine,MtJunkLine
+syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
+syn cluster MtQuoteBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine,MtJunkLine
 
 " == Small Stuff ============================================================
 " It is here before the Lines and Regions because if not so,
@@ -160,9 +160,10 @@ syn region MtKey matchgroup=MtFence start="<\*"
 syn region MtIssue matchgroup=MtFence start="<?"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,MtKey
+syn match MtCommentInSolved "//.\{-}\(>\@=\|$\)" contained contains=@MtLinet,MtKey
 syn region MtSolved matchgroup=MtFence start="</?"
-  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
-  \ contains=@MtLinet,MtKey
+  \ skip="->\+\|=>\+\|>>\+\|>\+=\| >\+" end=">\|^\s*$"
+  \ contains=@MtLinet,MtKey,MtCommentInSolved
 syn region MtTodo matchgroup=MtFence start="<!"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,MtKey
@@ -185,6 +186,7 @@ syn region MtJunk start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
   \ end="[^ \-=>]>\|^\s*$" contains=@MtLinet
 
 hi default link MtTagSign MtSign
+hi default link MtCommentInSolved MtComment
 
 " -- Lines --
 " Lines are effective marks for you only need to mark the beginning of it.
@@ -214,10 +216,8 @@ hi default link MtCommentLine MtComment
 hi default link MtMeatLine MtMeat
 hi default link MtIssueLine MtIssue
 hi default link MtSolvedLine MtSolved
-hi default link MtSolvedCLine MtSolved
 hi default link MtTodoLine MtTodo
 hi default link MtDoneLine MtDone
-hi default link MtDoneCLine MtDone
 hi default link MtLinkLine MtLink
 hi default link MtQuoteLine MtQuote
 hi default link MtMdRefLine MtQuote
