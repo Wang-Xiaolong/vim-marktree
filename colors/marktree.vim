@@ -9,14 +9,14 @@ if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi MtComment guifg=Cyan ctermfg=Cyan
   hi MtMeat gui=underline guifg=Green ctermfg=Green
   hi MtKey gui=underline,bold guibg=DarkGreen guifg=White
-\      ctermbg=DarkGreen ctermfg=White
+\      ctermbg=DarkGreen ctermfg=Black
   hi MtIssue guibg=DarkRed guifg=White ctermbg=DarkRed ctermfg=White
   hi MtSolved guifg=Red ctermfg=Red
-  hi MtTodo guibg=DarkYellow guifg=Black ctermbg=DarkYellow ctermfg=White
+  hi MtTodo guibg=DarkYellow guifg=Black ctermbg=DarkYellow ctermfg=Black
   hi MtDone guifg=Yellow ctermfg=Yellow
   hi MtTag guifg=Magenta ctermfg=Magenta
-  hi MtLink guifg=White guibg=DarkBlue ctermfg=White ctermbg=DarkBlue
-  hi MtUrl gui=underline guifg=DarkCyan ctermfg=DarkCyan
+  hi MtLink guifg=White guibg=DarkBlue ctermfg=Blue
+  hi MtUrl gui=underline guifg=DarkCyan ctermfg=Blue
   hi MtSign guifg=Yellow ctermfg=Yellow
   hi MtJunk guifg=DarkGray ctermfg=DarkGray
   hi MtIndentTab guibg=Gray10
