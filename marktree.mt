@@ -45,20 +45,27 @@ Done	</!Done>	<</!Done!>>	Key
 Tag	<#Tag>
 Link	<~Link>		<<~Link~>>
 Comment </Comment>	<</Comment/>>	All except Ref & Code
-Quote	<:Quote>	<<:Quote:>>	All
 Code	<|code>		<<|Code|>>
+
+<*Key > -> => >> >= >>> =>>> ->>>> >>>> >>>>= end>
+<?Issue > -> => >> >= *key end>
+<!Todo > -> => >> >= *key end>
+</?Solved 1 > 2-> 3=> 4>> 5>= 6 >> 7 >= 8-->>> 9==>>> 10>>=== 11*key
+12 //MtComment In Solved with *key
+13//MtComment In Solved2 with *key>
 -- Lines --
-_ Meat Line
-\\Junk Line
-? Issue Line
-/? Solved Line
-! Todo Line
-/! Done Line
-~ Link Line
-//Comment Line
-> Quote Line
+	_ Meat Line
+	\\Junk Line
+Normal??Issue Line contains *key
+Normal/??Solved Line contains *key
+Normal??Solved Line contains *key//Comment
+Normal!!Todo Line contains *key
+Normal/!!Done Line contains *key
+Normal!!Done Line contains *key//Comment
+	~ Link Line
+Normal//Comment Line contains *key ?issue !todo
 | Code Line
 -- Words --
 Normal *Key ?Issue /?Solved1 ?Solved</2>Normal> !Todo /!Done1 !Done</2>Normal>
--- Blocks --
-== Compare with Markdown ==
+
+
