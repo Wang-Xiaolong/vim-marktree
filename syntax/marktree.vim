@@ -166,8 +166,8 @@ syn region MtTodo matchgroup=MtFence start="<!"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,MtKey
 syn region MtDone matchgroup=MtFence start="</!"
-  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
-  \ contains=@MtLinet,MtKey
+  \ skip="->\+\|=>\+\|>>\+\|>\+=\| >\+" end=">\|^\s*$"
+  \ contains=@MtLinet,MtKey,MtCommentInSolved
 syn region MtTag matchgroup=MtFence start="</\=#"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
   \ contains=MtTagSign
