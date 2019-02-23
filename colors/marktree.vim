@@ -1,8 +1,6 @@
 " color/marktree.vim to highlight marktree leaves
 " xiaolong.wang@intel.com from Dec.2015
 
-hi MtQuote gui=italic
-
 if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi Normal guifg=Gray guibg=Black ctermfg=Gray ctermbg=Black
   hi MtFence guifg=DarkYellow ctermfg=DarkYellow

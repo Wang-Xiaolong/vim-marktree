@@ -55,10 +55,8 @@ syn cluster MtLinks contains=MtLink,@MtAutoLink
 syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone
 syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
 syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
-syn cluster MtQuoteMark contains=@MtGeneralMark,MtComment,MtCommentLine,@MtMeats,@MtLinks,MtJunk
 syn cluster MtHeadMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
 syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
-syn cluster MtQuoteBlockLine contains=MtCommentLine,MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine,MtJunkLine
 
 " == Small Stuff ============================================================
 " It is here before the Lines and Regions because if not so,
@@ -177,9 +175,6 @@ syn match MtTagSign "[.=+\-\:]\ze[^>]" contained
 syn region MtLink matchgroup=MtFence start="<[~]"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,@MtAutoLink
-syn region MtQuote matchgroup=MtFence start="<:"
-  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
-  \ contains=MtKey
 syn region MtCode matchgroup=MtFence start="<|"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
 syn region MtJunk start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
@@ -206,8 +201,6 @@ syn region MtDone matchgroup=MtFence start="/!!" end="$"
   \ contains=WtWhiteTail,MtKey oneline
 syn region MtDone matchgroup=MtFence start="!!" end="\(//\)\@="
   \ contains=MtKey oneline
-syn match MtQuoteLine "^\s*: .*$" contains=MtLineSign,MtWhiteTail,@MtQuoteMark
-syn match MtMdRefLine "^\t*>\s.*$" contains=@MtLinet,@MtQuoteMark
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
 syn match MtLinkLine "^\s*\~ .*$" contains=MtLineSign,MtWhiteTail,@MtAutoLink
 syn match MtJunkLine "^\s*\\\\.*$" contains=@MtLinet
@@ -219,8 +212,6 @@ hi default link MtSolvedLine MtSolved
 hi default link MtTodoLine MtTodo
 hi default link MtDoneLine MtDone
 hi default link MtLinkLine MtLink
-hi default link MtQuoteLine MtQuote
-hi default link MtMdRefLine MtQuote
 hi default link MtCodeLine MtCode
 hi default link MtJunkLine MtJunk
 hi default link MtLineSign MtSign
@@ -249,12 +240,9 @@ syn region MtJunk matchgroup=MtFence start="<<\\" end="\\>>"
 syn region MtCommentBlock matchgroup=MtBlockFence
   \ start="<</\ze[^?!]\|<</$" end="/>>"
   \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
-syn region MtQuoteBlock matchgroup=MtBlockFence start="<<:"  end=":>>"
-  \ contains=@MtLinet,@MtQuoteMark,@MtQuoteBlockLine
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>"
   \ contains=@MtLinet
 hi default link MtCommentBlock MtComment
-hi default link MtQuoteBlock MtQuote
 hi default link MtCodeBlock MtCode
 
 " -- Special Code Blocks: line comment in code blocks for code review --
