@@ -18,7 +18,7 @@ setlocal foldexpr=MtFold(v:lnum)
 setlocal foldlevel=10
 
 " init: get options from the 1st line and parse
-let g:mtpath = expand('<sfile>:p:h:h')
+let b:MtPath = expand('<sfile>:p:h:h')
 let s:optstr = matchstr(getline(1), '<mt\S*>')
 if s:optstr == ""
 	let b:T1LvlCnt = 0
@@ -36,7 +36,7 @@ while 1
 	if s:filestr == ""
 		break
 	endif
-	let s:filestrfull = g:mtpath . '/syntax/marktree.ext/' . s:filestr . '.vim'
+	let s:filestrfull = b:MtPath . '/syntax/marktree.ext/' . s:filestr . '.vim'
 	if filereadable(s:filestrfull)
 		execute 'source '.s:filestrfull
 		call add(b:MtExtList, s:filestr)

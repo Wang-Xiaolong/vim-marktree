@@ -46,7 +46,7 @@ hi MtWhiteTail            guibg=DarkRed                       ctermbg=DarkRed
 " Extension files
 if exists("b:MtExtList")
 	for s:filestr in b:MtExtList
-		let s:filestrfull = g:mtpath . '/colors/marktree.ext/' . s:filestr . '.vim'
+		let s:filestrfull = b:MtPath . '/colors/marktree.ext/' . s:filestr . '.vim'
 		if filereadable(s:filestrfull)
 			execute 'source '.s:filestrfull
 		endif
