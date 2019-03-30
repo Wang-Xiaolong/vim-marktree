@@ -5,49 +5,6 @@
 syn sync fromstart
 syn sync maxlines=500
 
-" == Init Function: Get options from MtOption mark ==========================
-function! MtSyntaxInit()
-	let s:optstr = matchstr(getline(1), '<mt\S*>')
-	if s:optstr == ""
-		let b:T1LvlCnt = 0
-		let b:T2LvlCnt = 0
-		let b:MtKeyWordEn = 1
-		let b:MtIssueWordEn = 1
-		let b:MtTodoWordEn = 1
-		return
-	endif
-	let b:MtExtList = []
-	let s:idx = 1
-	while 1
-		let s:filestr = matchstr(s:optstr, '+\zs\w\+', 0, s:idx)
-		if s:filestr == ""
-			break
-		endif
-		let s:filestrfull = g:mtpath . '/syntax/marktree.ext/' . s:filestr . '.vim'
-		if filereadable(s:filestrfull)
-			execute 'source '.s:filestrfull
-			call add(b:MtExtList, s:filestr)
-		else
-			echo "File not found: " . s:filestrfull
-		endif
-		let s:idx = s:idx + 1
-	endwhile
-	let s:optstr = substitute(s:optstr, '+\w\+', '', 'g')
-	let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
-	let b:T2LvlCnt = strlen(substitute(s:optstr, "[^-]", "", "g"))
-	if s:optstr =~ '\^'
-		let b:MtKeyWordEn = (s:optstr !~ '*')
-		let b:MtIssueWordEn = (s:optstr !~ '?')
-		let b:MtTodoWordEn = (s:optstr !~ '!')
-	else
-		let b:MtKeyWordEn = (s:optstr =~ '*')
-		let b:MtIssueWordEn = (s:optstr =~ '?')
-		let b:MtTodoWordEn = (s:optstr =~ '!')
-	endif
-endfunction
-
-let g:mtpath = expand('<sfile>:p:h:h')
-call MtSyntaxInit()
 
 " == Clusters ===============================================================
 syn cluster MtMeats contains=MtMeat
