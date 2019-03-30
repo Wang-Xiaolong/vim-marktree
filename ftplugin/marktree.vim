@@ -43,7 +43,7 @@ while 1
 	else
 		echo "File not found: " . s:filestrfull
 	endif
-	let s:idx = s:idx + 1
+	let s:idx += 1
 endwhile
 
 let s:optstr = substitute(s:optstr, '+\w\+', '', 'g')
