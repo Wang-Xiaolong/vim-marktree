@@ -19,8 +19,8 @@ setlocal foldlevel=10
 
 " init: get options from the 1st line and parse
 let b:MtPath = expand('<sfile>:p:h:h')
-let s:optstr = matchstr(getline(1), '<mt\S*>')
-if s:optstr == ""
+let s:opt = matchstr(getline(1), '<mt\S*>')
+if s:opt == ""
 	let b:T1LvlCnt = 0
 	let b:T2LvlCnt = 0
 	let b:MtKeyWordEn = 1
@@ -32,31 +32,31 @@ endif
 let b:MtExtList = []
 let s:idx = 1
 while 1
-	let s:filestr = matchstr(s:optstr, '+\zs\w\+', 0, s:idx)
-	if s:filestr == ""
+	let s:ext = matchstr(s:opt, '+\zs\w\+', 0, s:idx)
+	if s:ext == ""
 		break
 	endif
-	let s:filestrfull = b:MtPath . '/syntax/marktree.ext/' . s:filestr . '.vim'
-	if filereadable(s:filestrfull)
-		execute 'source '.s:filestrfull
-		call add(b:MtExtList, s:filestr)
+	let s:extpath = b:MtPath . '/syntax/marktree.ext/' . s:ext . '.vim'
+	if filereadable(s:extpath)
+		execute 'source '.s:extpath
+		call add(b:MtExtList, s:ext)
 	else
-		echo "File not found: " . s:filestrfull
+		echo "File not found: " . s:extpath
 	endif
 	let s:idx += 1
 endwhile
 
-let s:optstr = substitute(s:optstr, '+\w\+', '', 'g')
-let b:T1LvlCnt = strlen(substitute(s:optstr, "[^=]", "", "g"))
-let b:T2LvlCnt = strlen(substitute(s:optstr, "[^-]", "", "g"))
-if s:optstr =~ '\^'
-	let b:MtKeyWordEn = (s:optstr !~ '*')
-	let b:MtIssueWordEn = (s:optstr !~ '?')
-	let b:MtTodoWordEn = (s:optstr !~ '!')
+let s:opt = substitute(s:opt, '+\w\+', '', 'g')
+let b:T1LvlCnt = strlen(substitute(s:opt, "[^=]", "", "g"))
+let b:T2LvlCnt = strlen(substitute(s:opt, "[^-]", "", "g"))
+if s:opt =~ '\^'
+	let b:MtKeyWordEn = (s:opt !~ '*')
+	let b:MtIssueWordEn = (s:opt !~ '?')
+	let b:MtTodoWordEn = (s:opt !~ '!')
 else
-	let b:MtKeyWordEn = (s:optstr =~ '*')
-	let b:MtIssueWordEn = (s:optstr =~ '?')
-	let b:MtTodoWordEn = (s:optstr =~ '!')
+	let b:MtKeyWordEn = (s:opt =~ '*')
+	let b:MtIssueWordEn = (s:opt =~ '?')
+	let b:MtTodoWordEn = (s:opt =~ '!')
 endif
 " End of init
 
