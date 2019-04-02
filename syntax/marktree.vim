@@ -5,7 +5,6 @@
 syn sync fromstart
 syn sync maxlines=500
 
-
 " == Clusters ===============================================================
 syn cluster MtMeats contains=MtMeat
 syn cluster MtLinks contains=MtLink,@MtAutoLink
@@ -71,8 +70,9 @@ syn match MtHeadSign1 "^==\+\|==\+$\|\\$" contained
 syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign1
 syn match MtHeadSign2 "^--\+\|--\+$\|\\$" contained
 syn match MtHead2 "^--\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign2
-syn match MtHeadSign "^\t*#\|#$\|\\$" contained
-syn match MtHead "^\t*# \(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign
+syn match MtHeadSign "^\t*###\@!\|\\\n\|#\@<!###\@!" contained
+syn match MtHead "^\t*###\@!\(.*\\\n\)*.\{-}\(#\@<!###\@!\|[^\\]$\)"
+  \ contains=@MtHeadMark,MtHeadSign
 
 hi default link MtHead0 MtHead
 hi default link MtHead1 MtHead
