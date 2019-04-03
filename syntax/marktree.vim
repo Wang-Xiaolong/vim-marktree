@@ -93,7 +93,9 @@ if b:MtKeyWordEn
 	syn match MtKey "\*\k*\>"
 endif
 if b:MtIssueWordEn
-	syn match MtIssue "?\k*\>"
+	syn match MtIssueWordFence "?"
+	hi default link MtIssueWordFence MtFence
+	syn match MtIssue "?\k*\>" contains=MtIssueWordFence
 	syn match MtSolved "/?\k*\>"
 	syn match MtSolved "/\=?\k*</.\{-}>" contains=MtComment
 endif
