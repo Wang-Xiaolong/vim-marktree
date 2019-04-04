@@ -122,10 +122,9 @@ syn region MtKey matchgroup=MtFence start="<\*"
 syn region MtIssue matchgroup=MtFence start="<?"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,MtKey
-syn match MtCommentInSolved "//.\{-}\(>\@=\|$\)" contained contains=@MtLinet,MtKey
 syn region MtSolved matchgroup=MtFence start="</?"
   \ skip="->\+\|=>\+\|>>\+\|>\+=\| >\+" end=">\|^\s*$"
-  \ contains=@MtLinet,MtKey,MtCommentInSolved
+  \ contains=@MtLinet,MtKey
 syn region MtTodo matchgroup=MtFence start="<!"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,MtKey
