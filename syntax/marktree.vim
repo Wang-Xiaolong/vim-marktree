@@ -182,7 +182,7 @@ hi default link MtLineSign MtSign
 " -- Strict Marks --
 syn region MtMeat matchgroup=MtFence start="<<_"  end="_>>"
   \ contains=@MtLinet,@MtMeatMark
-syn region MtIssue matchgroup=MtFence start="<<?"  end="?>>"
+syn region MtIssue matchgroup=MtFence start="<??"  end="?>"
   \ contains=@MtLinet,MtKey
 syn region MtSolved matchgroup=MtFence start="<</?" end="?>>"
   \ contains=@MtLinet,MtKey
