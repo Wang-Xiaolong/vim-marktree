@@ -98,6 +98,8 @@ if b:MtIssueWordEn
 	syn match MtIssue "?\k*\>" contains=MtIssueWordFence
 	syn match MtSolved "?\k*\(</\)\@=" nextgroup=MtComment
 	  \ contains=MtIssueWordFence
+	syn match MtSolved "?\k*\(//\)\@=" nextgroup=MtCommentLine
+	  \ contains=MtIssueWordFence
 	syn match MtSolvedWordFence "/?"
 	hi default link MtSolvedWordFence MtFence
 	syn match MtSolved "/?\k*\>" contains=MtSolvedWordFence
