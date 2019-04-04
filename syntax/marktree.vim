@@ -155,9 +155,9 @@ syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
 syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn region MtIssue matchgroup=MtFence start="?\@<!???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline
-syn region MtSolved matchgroup=MtFence start="/??" end="$"
+syn region MtSolved matchgroup=MtFence start="/???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline
-syn region MtSolved matchgroup=MtFence start="?\@<!???\@!" end="\([</]/\)\@="
+syn region MtSolved matchgroup=MtFence start="/???\@!\|?\@<!???\@!" end="\([</]/\)\@="
   \ contains=MtKey oneline
 syn region MtTodo matchgroup=MtFence start="!!" end="$"
   \ contains=MtWhiteTail,MtKey oneline
