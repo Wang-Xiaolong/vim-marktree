@@ -180,6 +180,8 @@ hi default link MtJunkLine MtJunk
 hi default link MtLineSign MtSign
 
 " -- Strict Marks --
+syn region MtComment matchgroup=MtFence start="<//" end="/>"
+  \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtMeat matchgroup=MtFence start="<<_"  end="_>>"
   \ contains=@MtLinet,@MtMeatMark
 syn region MtIssue matchgroup=MtFence start="<??"  end="?>"
