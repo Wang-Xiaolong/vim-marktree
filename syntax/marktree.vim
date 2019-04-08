@@ -62,30 +62,6 @@ syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$"
 
 hi default link MtSeparator MtSign
 
-" == Titles =================================================================
-syn match MtHeadSign0 "\\$" contained
-syn match MtHead0 "\%^\(.*\\\n\)*.*[^\\]$"
-  \ contains=@MtHeadMark,MtHeadSign0,MtOption
-syn match MtHeadSign1 "^==\+\|==\+$\|\\$" contained
-syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign1
-syn match MtHeadSign2 "^--\+\|--\+$\|\\$" contained
-syn match MtHead2 "^--\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign2
-syn match MtHeadSign "^\t*###\@!\|\\\n\|#\@<!###\@!" contained
-syn match MtHead "^\t*###\@!\(.*\\\n\)*.\{-}\(#\@<!###\@!\|[^\\]$\)"
-  \ contains=@MtHeadMark,MtHeadSign
-
-hi default link MtHead0 MtHead
-hi default link MtHead1 MtHead
-hi default link MtHead2 MtHead
-hi default link MtHeadSign0 MtHeadSign
-hi default link MtHeadSign1 MtHeadSign
-hi default link MtHeadSign2 MtHeadSign
-hi default link MtHeadSign MtFence
-
-" -- Option mark --
-syn match MtOption "<mt\S*>" contained
-hi default link MtOption MtSign
-
 " == Marks ==================================================================
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
@@ -198,7 +174,7 @@ syn region MtJunk matchgroup=MtFence start="<<\\" end="\\>>"
   \ contains=@MtLinet
 
 " -- Blocks --
-" Blocks are special "strict marks" for multi-line comment, ref and code.
+" Blocks are for multiple lines of comment and code.
 " A block is treated as one paragraph in folding, even without any indentation.
 " The level is determined by its heading line.
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
@@ -257,3 +233,26 @@ hi default link MtCode5Comment MtComment
 "  and avoid unexpected folding
 syn region MtMarktreeBlock matchgroup=MtBlockFence start="<<marktree|" end="|>>"
   \ contains=ALL
+
+" == Headings =================================================================
+syn match MtHeadSign1 "^==\+\|==\+$\|\\$" contained
+syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign1
+syn match MtHeadSign2 "^--\+\|--\+$\|\\$" contained
+syn match MtHead2 "^--\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign2
+syn match MtHeadSign "^\t*###\@!\|\\\n\|#\@<!###\@!" contained
+syn match MtHead "^\t*###\@!\(.*\\\n\)*.\{-}\(#\@<!###\@!\|[^\\]$\)"
+  \ contains=@MtHeadMark,MtHeadSign
+syn match MtHeadSign0 "\\$" contained
+syn match MtOption "<mt\S*>" contained
+syn match MtHead0 "\%^\(.*\\\n\)*.*[^\\]$"
+  \ contains=@MtHeadMark,MtHeadSign0,MtOption
+
+hi default link MtHead0 MtHead
+hi default link MtHead1 MtHead
+hi default link MtHead2 MtHead
+hi default link MtHeadSign0 MtHeadSign
+hi default link MtHeadSign1 MtHeadSign
+hi default link MtHeadSign2 MtHeadSign
+hi default link MtHeadSign MtFence
+hi default link MtOption MtSign
+
