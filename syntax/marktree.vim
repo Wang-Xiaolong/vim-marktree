@@ -203,7 +203,7 @@ syn region MtJunk matchgroup=MtFence start="<<\\" end="\\>>"
 " The level is determined by its heading line.
 " Don't indent them, let them keep the original format, then it's easy to copy & paste them.
 syn region MtCommentBlock matchgroup=MtBlockFence
-  \ start="<</\ze[^?!]\|<</$" end="/>>"
+  \ start="\[/" end="/\]"
   \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>"
   \ contains=@MtLinet
