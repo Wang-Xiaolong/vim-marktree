@@ -81,7 +81,9 @@ if b:MtIssueWordEn
 	syn match MtSolved "/?\k*\>" contains=MtSolvedWordFence
 endif
 if b:MtTodoWordEn
-	syn match MtTodo "!\k*\>"
+	syn match MtTodoWordFence "!" contained
+	hi def link MtTodoWordFence MtFence
+	syn match MtTodo "!\@<!!\k*\>" contains=MtTodoWordFence
 	syn match MtDone "/!\k*\>"
 	syn match MtDone "/\=!\k*</.\{-}>" contains=MtComment
 endif
