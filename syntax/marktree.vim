@@ -141,12 +141,12 @@ syn region MtSolved matchgroup=MtFence start="/???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtSolved matchgroup=MtFence start="/???\@!\|?\@<!???\@!"
   \ end="\([</]/\)\@=" contains=MtKey oneline
-syn region MtTodo matchgroup=MtFence start="!!" end="$"
+syn region MtTodo matchgroup=MtFence start="!\@<!!!!\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtDone matchgroup=MtFence start="/!!" end="$"
+syn region MtDone matchgroup=MtFence start="/!!!\@!" end="$"
   \ contains=WtWhiteTail,MtKey oneline keepend
-syn region MtDone matchgroup=MtFence start="!!" end="\(//\)\@="
-  \ contains=MtKey oneline
+syn region MtDone matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
+  \ end="\([</]/\)\@=" contains=MtKey oneline
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
 syn match MtLinkLine "^\s*\~ .*$" contains=MtLineSign,MtWhiteTail,@MtAutoLink
 syn match MtJunkLine "^\s*\\\\.*$" contains=@MtLinet
