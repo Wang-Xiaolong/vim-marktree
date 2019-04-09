@@ -171,9 +171,9 @@ syn region MtIssue matchgroup=MtFence start="<??"  end="?>"
   \ contains=@MtLinet,MtKey
 syn region MtSolved matchgroup=MtFence start="</??" end="?>"
   \ contains=@MtLinet,MtKey
-syn region MtTodo matchgroup=MtFence start="<<!"  end="!>>"
+syn region MtTodo matchgroup=MtFence start="<!!"  end="!>"
   \ contains=@MtLinet,MtKey
-syn region MtDone matchgroup=MtFence start="<</!" end="!>>"
+syn region MtDone matchgroup=MtFence start="</!!" end="!>"
   \ contains=@MtLinet,MtKey
 syn region MtLink matchgroup=MtFence start="<<[~]"  end="[~]>>"
   \ contains=@MtLinet,@MtAutoLink
