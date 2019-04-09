@@ -125,19 +125,19 @@ hi default link MtCommentInSolved MtComment
 " -- Lines --
 " Lines are effective marks for you only need to mark the beginning of it.
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
-  \ contains=MtWhiteTail,@MtCommentMark oneline
+  \ contains=MtWhiteTail,@MtCommentMark oneline keepend
 syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
 syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn region MtIssue matchgroup=MtFence start="?\@<!???\@!" end="$"
-  \ contains=MtWhiteTail,MtKey oneline
+  \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtSolved matchgroup=MtFence start="/???\@!" end="$"
-  \ contains=MtWhiteTail,MtKey oneline
+  \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtSolved matchgroup=MtFence start="/???\@!\|?\@<!???\@!" end="\([</]/\)\@="
   \ contains=MtKey oneline
 syn region MtTodo matchgroup=MtFence start="!!" end="$"
-  \ contains=MtWhiteTail,MtKey oneline
+  \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtDone matchgroup=MtFence start="/!!" end="$"
-  \ contains=WtWhiteTail,MtKey oneline
+  \ contains=WtWhiteTail,MtKey oneline keepend
 syn region MtDone matchgroup=MtFence start="!!" end="\(//\)\@="
   \ contains=MtKey oneline
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
