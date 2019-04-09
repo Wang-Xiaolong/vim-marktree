@@ -84,8 +84,11 @@ if b:MtTodoWordEn
 	syn match MtTodoWordFence "!" contained
 	hi def link MtTodoWordFence MtFence
 	syn match MtTodo "!\@<!!\k*\>" contains=MtTodoWordFence
+	syn match MtDone "!\@<!!\k*\(</\)\@=" nextgroup=MtComment
+	  \ contains=MtTodoWordFence
+	syn match MtDone "!\@<!!\k*\(//\)\@=" nextgroup=MtCommentLine
+	  \ contains=MtTodoWordFence
 	syn match MtDone "/!\k*\>"
-	syn match MtDone "/\=!\k*</.\{-}>" contains=MtComment
 endif
 
 " -- Standard Marks --
