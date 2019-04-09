@@ -139,8 +139,8 @@ syn region MtIssue matchgroup=MtFence start="?\@<!???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtSolved matchgroup=MtFence start="/???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtSolved matchgroup=MtFence start="/???\@!\|?\@<!???\@!" end="\([</]/\)\@="
-  \ contains=MtKey oneline
+syn region MtSolved matchgroup=MtFence start="/???\@!\|?\@<!???\@!"
+  \ end="\([</]/\)\@=" contains=MtKey oneline
 syn region MtTodo matchgroup=MtFence start="!!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtDone matchgroup=MtFence start="/!!" end="$"
