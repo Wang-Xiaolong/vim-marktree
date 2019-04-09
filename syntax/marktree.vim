@@ -27,7 +27,7 @@ syn match MtTabAfterSpace " \+\t\+" contained
 
 syn cluster MtLinet contains=MtIndent,MtWhiteTail
 
-hi default link MtTabAfterSpace MtWhiteTail
+hi def link MtTabAfterSpace MtWhiteTail
 
 " -- URL & Email --
 syn match MtUrl "[a-z]\{3,6}:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*"
@@ -35,15 +35,15 @@ syn match MtEmail "[a-z0-9_\.-]\+@[0-9a-z\.-]\+\.[a-z\.]\{2,6}"
 
 syn cluster MtAutoLink contains=MtUrl,MtEmail
 
-hi default link MtEmail MtUrl
+hi def link MtEmail MtUrl
 
 " -- Signs of a list --
 syn match MtSign "^\t*[\*+\-] " contains=MtIndent
 syn match MtNumSign "^\t*\d\+\. " contains=MtIndent
 syn match MtLetterSign "^\t*[a-zA-Z]\. " contains=MtIndent
 
-hi default link MtNumSign MtSign
-hi default link MtLetterSign MtSign
+hi def link MtNumSign MtSign
+hi def link MtLetterSign MtSign
 
 " -- Note & Bibl --
 syn match MtNote "^\s*(#\d\+)" contains=@MtIndent
@@ -51,16 +51,16 @@ syn match MtLinkToNote "([~]\d\+)"
 syn match MtBibl "^\s*\[#\d\+\]" contains=@MtIndent
 syn match MtLinkToBibl "\[[~]\d\+\]"
 
-hi default link MtNote MtTag
-hi default link MtLinkToNote MtLink
-hi default link MtBibl MtTag
-hi default link MtLinkToBibl MtLink
+hi def link MtNote MtTag
+hi def link MtLinkToNote MtLink
+hi def link MtBibl MtTag
+hi def link MtLinkToBibl MtLink
 
 " -- Seperator --
 syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$"
   \ contains=@MtLinet
 
-hi default link MtSeparator MtSign
+hi def link MtSeparator MtSign
 
 " == Marks ==================================================================
 " -- Word Marks --
@@ -70,14 +70,14 @@ if b:MtKeyWordEn
 endif
 if b:MtIssueWordEn
 	syn match MtIssueWordFence "?" contained
-	hi default link MtIssueWordFence MtFence
+	hi def link MtIssueWordFence MtFence
 	syn match MtIssue "?\@<!?\k*\>" contains=MtIssueWordFence
 	syn match MtSolved "?\@<!?\k*\(</\)\@=" nextgroup=MtComment
 	  \ contains=MtIssueWordFence
 	syn match MtSolved "?\@<!?\k*\(//\)\@=" nextgroup=MtCommentLine
 	  \ contains=MtIssueWordFence
 	syn match MtSolvedWordFence "/?" contained
-	hi default link MtSolvedWordFence MtFence
+	hi def link MtSolvedWordFence MtFence
 	syn match MtSolved "/?\k*\>" contains=MtSolvedWordFence
 endif
 if b:MtTodoWordEn
@@ -119,8 +119,8 @@ syn region MtCode matchgroup=MtFence start="<|"
 syn region MtJunk start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
   \ end="[^ \-=>]>\|^\s*$" contains=@MtLinet
 
-hi default link MtTagSign MtSign
-hi default link MtCommentInSolved MtComment
+hi def link MtTagSign MtSign
+hi def link MtCommentInSolved MtComment
 
 " -- Lines --
 " Lines are effective marks for you only need to mark the beginning of it.
@@ -144,16 +144,16 @@ syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
 syn match MtLinkLine "^\s*\~ .*$" contains=MtLineSign,MtWhiteTail,@MtAutoLink
 syn match MtJunkLine "^\s*\\\\.*$" contains=@MtLinet
 
-hi default link MtCommentLine MtComment
-hi default link MtMeatLine MtMeat
-hi default link MtIssueLine MtIssue
-hi default link MtSolvedLine MtSolved
-hi default link MtTodoLine MtTodo
-hi default link MtDoneLine MtDone
-hi default link MtLinkLine MtLink
-hi default link MtCodeLine MtCode
-hi default link MtJunkLine MtJunk
-hi default link MtLineSign MtSign
+hi def link MtCommentLine MtComment
+hi def link MtMeatLine MtMeat
+hi def link MtIssueLine MtIssue
+hi def link MtSolvedLine MtSolved
+hi def link MtTodoLine MtTodo
+hi def link MtDoneLine MtDone
+hi def link MtLinkLine MtLink
+hi def link MtCodeLine MtCode
+hi def link MtJunkLine MtJunk
+hi def link MtLineSign MtSign
 
 " -- Strict Marks --
 syn region MtComment matchgroup=MtFence start="<//" end="/>"
@@ -183,8 +183,8 @@ syn region MtCommentBlock matchgroup=MtBlockFence
   \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>"
   \ contains=@MtLinet
-hi default link MtCommentBlock MtComment
-hi default link MtCodeBlock MtCode
+hi def link MtCommentBlock MtComment
+hi def link MtCodeBlock MtCode
 
 " -- Special Code Blocks: line comment in code blocks for code review --
 " -- 1. // C, Java, Go, PHP ...
@@ -194,40 +194,40 @@ syn match MtCode1Comment "//.*$" contains=@MtCommentMark contained
 syn region MtCode1Comment start="/\*" end="\*/"
   \ contains=@MtCommentMark contained
 
-hi default link MtCode1Block MtCode
-hi default link MtCode1Comment MtComment
+hi def link MtCode1Block MtCode
+hi def link MtCode1Comment MtComment
 
 " -- 2. # Shell, Perl, Python, Ruby, PowerShell, PHP, Make
 syn region MtCode2Block matchgroup=MtBlockFence start="<<#|" end="|>>"
   \ contains=@MtLinet,MtCode2Comment
 syn match MtCode2Comment "#.*$" contains=@MtCommentMark contained
 
-hi default link MtCode2Block MtCode
-hi default link MtCode2Comment MtComment
+hi def link MtCode2Block MtCode
+hi def link MtCode2Comment MtComment
 
 " -- 3. ; Assemble, Lisp
 syn region MtCode3Block matchgroup=MtBlockFence start="<<;|" end="|>>"
   \ contains=@MtLinet,MtCode3Comment
 syn match MtCode3Comment ";.*$" contains=@MtCommentMark contained
 
-hi default link MtCode3Block MtCode
-hi default link MtCode3Comment MtComment
+hi def link MtCode3Block MtCode
+hi def link MtCode3Comment MtComment
 
 " -- 4. -- SQL, Ada, Lua, VHDL
 syn region MtCode4Block matchgroup=MtBlockFence start="<<--|" end="|>>"
   \ contains=@MtLinet,MtCode4Comment
 syn match MtCode4Comment "--.*$" contains=@MtCommentMark contained
 
-hi default link MtCode4Block MtCode
-hi default link MtCode4Comment MtComment
+hi def link MtCode4Block MtCode
+hi def link MtCode4Comment MtComment
 
 " -- 5. " Vim
 syn region MtCode5Block matchgroup=MtBlockFence start=+<<"|+ end="|>>"
   \ contains=@MtLinet,MtCode5Comment
 syn match MtCode5Comment +".*$+ contains=@MtCommentMark contained
 
-hi default link MtCode5Block MtCode
-hi default link MtCode5Comment MtComment
+hi def link MtCode5Block MtCode
+hi def link MtCode5Comment MtComment
 
 " -- Final: Marktree, used in marktree.mt to show syntax colors
 "  and avoid unexpected folding
@@ -247,12 +247,12 @@ syn match MtOption "<mt\S*>" contained
 syn match MtHead0 "\%^\(.*\\\n\)*.*[^\\]$"
   \ contains=@MtHeadMark,MtHeadSign0,MtOption
 
-hi default link MtHead0 MtHead
-hi default link MtHead1 MtHead
-hi default link MtHead2 MtHead
-hi default link MtHeadSign0 MtHeadSign
-hi default link MtHeadSign1 MtHeadSign
-hi default link MtHeadSign2 MtHeadSign
-hi default link MtHeadSign MtFence
-hi default link MtOption MtSign
+hi def link MtHead0 MtHead
+hi def link MtHead1 MtHead
+hi def link MtHead2 MtHead
+hi def link MtHeadSign0 MtHeadSign
+hi def link MtHeadSign1 MtHeadSign
+hi def link MtHeadSign2 MtHeadSign
+hi def link MtHeadSign MtFence
+hi def link MtOption MtSign
 
