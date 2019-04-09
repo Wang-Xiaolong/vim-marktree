@@ -148,7 +148,6 @@ syn region MtDone matchgroup=MtFence start="/!!!\@!" end="$"
 syn region MtDone matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
   \ end="\([</]/\)\@=" contains=MtKey oneline
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
-syn match MtLinkLine "^\s*\~ .*$" contains=MtLineSign,MtWhiteTail,@MtAutoLink
 syn match MtJunkLine "^\s*\\\\.*$" contains=@MtLinet
 
 hi def link MtCommentLine MtComment
@@ -157,7 +156,6 @@ hi def link MtIssueLine MtIssue
 hi def link MtSolvedLine MtSolved
 hi def link MtTodoLine MtTodo
 hi def link MtDoneLine MtDone
-hi def link MtLinkLine MtLink
 hi def link MtCodeLine MtCode
 hi def link MtJunkLine MtJunk
 hi def link MtLineSign MtSign
