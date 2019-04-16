@@ -132,8 +132,6 @@ hi def link MtTagSign MtSign
 " Lines are effective marks for you only need to mark the beginning of it.
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
   \ contains=MtWhiteTail,@MtCommentMark oneline keepend
-syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
-syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn region MtIssue matchgroup=MtFence start="?\@<!???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtSolved matchgroup=MtFence start="/???\@!" end="$"
@@ -146,8 +144,11 @@ syn region MtDone matchgroup=MtFence start="/!!!\@!" end="$"
   \ contains=WtWhiteTail,MtKey oneline keepend
 syn region MtDone matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
   \ end="\([</]/\)\@=" contains=MtKey oneline
-syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
+
+syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
+syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn match MtJunkLine "^\s*\\\\.*$" contains=@MtLinet
+syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
 
 hi def link MtCommentLine MtComment
 hi def link MtMeatLine MtMeat
