@@ -66,7 +66,9 @@ hi def link MtSeparator MtSign
 " -- Word Marks --
 " Very light marks that mark only 1 word. All optional:
 if b:MtKeyWordEn
-	syn match MtKey "\*\k*\>"
+	syn match MtKeyWordFence "*" contained
+	hi def link MtKeyWordFence MtFence
+	syn match MtKey "\*\@<!\*\k*\>" contains=MtKeyWordFence
 endif
 if b:MtIssueWordEn
 	syn match MtIssueWordFence "?" contained
