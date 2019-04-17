@@ -63,8 +63,8 @@ syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$"
 hi def link MtSeparator MtSign
 
 " == Marks ==================================================================
-" -- Word Marks --
-" Very light marks that mark only 1 word. All optional:
+" -- Word -------------------------------------------------------------------
+" Very light marks for only 1 word. All optional.
 if b:MtKeyWordEn
 	syn match MtKeyWordFence "*" contained
 	hi def link MtKeyWordFence MtFence
@@ -95,7 +95,8 @@ if b:MtTodoWordEn
 	syn match MtDone "/!\k*\>" contains=MtDoneWordFence
 endif
 
-" -- Standard Marks --
+" -- Standard Region --------------------------------------------------------
+" For phrase and sentense, limited to oneline and pure (contain nothing)
 syn region MtComment matchgroup=MtFence start="[=<]\@<!</"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtMeat matchgroup=MtFence start="[=<]\@<!<_"
@@ -119,8 +120,8 @@ syn region MtCode matchgroup=MtFence start="[<=]\@<!<|"
 syn region MtJunk start="[<=]\@<!<\\"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 
-" -- Lines --
-" Lines are effective marks for you only need to mark the beginning of it.
+" -- Line -------------------------------------------------------------------
+" For single line element, probably a sentense. May contain other marks.
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
   \ contains=MtWhiteTail,@MtCommentMark oneline keepend
 syn region MtIssue matchgroup=MtFence start="?\@<!???\@!" end="$"
@@ -151,7 +152,8 @@ hi def link MtCodeLine MtCode
 hi def link MtJunkLine MtJunk
 hi def link MtLineSign MtSign
 
-" -- Strict Marks --
+" -- Strict Region ----------------------------------------------------------
+" For > using element, or big one with multi lines. May contain other marks.
 syn region MtComment matchgroup=MtFence start="<//" end="/>"
   \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
 syn region MtMeat matchgroup=MtFence start="<<_"  end="_>>"
@@ -167,7 +169,7 @@ syn region MtDone matchgroup=MtFence start="</!!" end="!>"
 syn region MtJunk matchgroup=MtFence start="<<\\" end="\\>>"
   \ contains=@MtLinet
 
-" -- Blocks --
+" -- Blocks -----------------------------------------------------------------
 " Blocks are for multiple lines of comment and code.
 " A block is treated as one paragraph in folding, even without any indentation.
 " The level is determined by its heading line.
