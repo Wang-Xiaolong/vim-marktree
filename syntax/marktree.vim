@@ -106,9 +106,8 @@ syn region MtKey matchgroup=MtFence start="<\*"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
 syn region MtIssue matchgroup=MtFence start="[=<]\@<!<?"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" contains=@MtLinet oneline
-syn region MtSolved matchgroup=MtFence start="</?"
-  \ skip="->\+\|=>\+\|>>\+\|>\+=\| >\+" end=">\|^\s*$"
-  \ contains=@MtLinet,MtKey
+syn region MtSolved matchgroup=MtFence start="[=<]\@<!</?"
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" contains=@MtLinet oneline
 syn region MtTodo matchgroup=MtFence start="<!"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,MtKey
