@@ -113,8 +113,7 @@ syn region MtTodo matchgroup=MtFence start="[=<]\@<!<!"
 syn region MtDone matchgroup=MtFence start="[=<]\@<!</!"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtTag matchgroup=MtFence start="[<=]\@<!</\=#"
-  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline contains=MtTagSign
-syn match MtTagSign "[.=+\-\:]\ze[^>]" contained
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtLink matchgroup=MtFence start="<[~]"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,@MtAutoLink
@@ -122,8 +121,6 @@ syn region MtCode matchgroup=MtFence start="<|"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
 syn region MtJunk start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
   \ end="[^ \-=>]>\|^\s*$" contains=@MtLinet
-
-hi def link MtTagSign MtSign
 
 " -- Lines --
 " Lines are effective marks for you only need to mark the beginning of it.
