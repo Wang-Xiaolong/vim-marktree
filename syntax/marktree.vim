@@ -96,9 +96,8 @@ if b:MtTodoWordEn
 endif
 
 " -- Standard Marks --
-syn region MtComment matchgroup=MtFence start="</"
-  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
-  \ contains=@MtLinet,@MtCommentMark
+syn region MtComment matchgroup=MtFence start="[=<]\@<!</"
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtMeat matchgroup=MtFence start="<_"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
   \ contains=@MtLinet,@MtMeatMark
