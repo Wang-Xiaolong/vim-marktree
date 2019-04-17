@@ -116,10 +116,10 @@ syn region MtTag matchgroup=MtFence start="[<=]\@<!</\=#"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtLink matchgroup=MtFence start="[<=]\@<!<[~]"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
-syn region MtCode matchgroup=MtFence start="<|"
-  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
-syn region MtJunk start="<\\" skip="[^ \-=>]>={1}\|[^ \-=>]>>\+"
-  \ end="[^ \-=>]>\|^\s*$" contains=@MtLinet
+syn region MtCode matchgroup=MtFence start="[<=]\@<!<|"
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
+syn region MtJunk start="[<=]\@<!<\\"
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 
 " -- Lines --
 " Lines are effective marks for you only need to mark the beginning of it.
