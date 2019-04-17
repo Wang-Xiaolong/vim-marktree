@@ -112,9 +112,8 @@ syn region MtTodo matchgroup=MtFence start="[=<]\@<!<!"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtDone matchgroup=MtFence start="[=<]\@<!</!"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
-syn region MtTag matchgroup=MtFence start="</\=#"
-  \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
-  \ contains=MtTagSign
+syn region MtTag matchgroup=MtFence start="[<=]\@<!</\=#"
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline contains=MtTagSign
 syn match MtTagSign "[.=+\-\:]\ze[^>]" contained
 syn region MtLink matchgroup=MtFence start="<[~]"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>\|^\s*$"
