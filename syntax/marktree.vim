@@ -156,8 +156,6 @@ hi def link MtLineSign MtSign
 " For > using element, or big one with multi lines. May contain other marks.
 syn region MtComment matchgroup=MtFence start="<//" end="/>"
   \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
-syn region MtMeat matchgroup=MtFence start="<<_"  end="_>>"
-  \ contains=@MtLinet,@MtMeatMark
 syn region MtIssue matchgroup=MtFence start="<??"  end="?>"
   \ contains=@MtLinet,MtKey
 syn region MtSolved matchgroup=MtFence start="</??" end="?>"
@@ -168,6 +166,8 @@ syn region MtDone matchgroup=MtFence start="</!!" end="!>"
   \ contains=@MtLinet,MtKey
 syn region MtJunk matchgroup=MtFence start="<<\\" end="\\>>"
   \ contains=@MtLinet
+syn region MtMeat matchgroup=MtFence start="<_\s"  end="_>"
+  \ contains=@MtLinet,@MtMeatMark
 
 " -- Blocks -----------------------------------------------------------------
 " Blocks are for multiple lines of comment and code.
