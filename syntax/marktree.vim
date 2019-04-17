@@ -164,8 +164,7 @@ syn region MtTodo matchgroup=MtFence start="<!!"  end="!>"
   \ contains=@MtLinet,MtKey
 syn region MtDone matchgroup=MtFence start="</!!" end="!>"
   \ contains=@MtLinet,MtKey
-syn region MtJunk matchgroup=MtFence start="<<\\" end="\\>>"
-  \ contains=@MtLinet
+syn region MtJunk start="<\\\\" end="\\>" contains=@MtLinet
 syn region MtMeat matchgroup=MtFence start="<_\s"  end="_>"
   \ contains=@MtLinet,@MtMeatMark
 
