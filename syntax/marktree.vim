@@ -105,13 +105,13 @@ syn region MtMeat matchgroup=MtFence start="<_"
 syn region MtKey matchgroup=MtFence start="<\*"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
 syn region MtIssue matchgroup=MtFence start="[=<]\@<!<?"
-  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" contains=@MtLinet oneline
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtSolved matchgroup=MtFence start="[=<]\@<!</?"
-  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" contains=@MtLinet oneline
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtTodo matchgroup=MtFence start="[=<]\@<!<!"
-  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" contains=@MtLinet oneline
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtDone matchgroup=MtFence start="[=<]\@<!</!"
-  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" contains=@MtLinet oneline
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtTag matchgroup=MtFence start="</\=#"
   \ skip="[^ \-=>]>={1}\|[^ \-=>]>>\+" end="[^ \-=>]\zs>" oneline
   \ contains=MtTagSign
