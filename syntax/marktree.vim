@@ -145,6 +145,8 @@ syn region MtDoneLine matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
 " Whole
 syn region MtMeatLine matchgroup=MtFence start="^\s*_\s\@=" end="$"
   \ contains=@MtLinet,@MtMeatLineMark oneline keepend
+syn region MtLinkLine matchgroup=MtFence start="^\s*[~]\s\@=" end="$"
+  \ contains=@MtLinet oneline keepend
 syn region MtJunkLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
 syn region MtCodeLine matchgroup=MtFence start="^\t*|\s\@=" end="$"
@@ -156,6 +158,7 @@ hi def link MtSolvedLine MtSolved
 hi def link MtTodoLine MtTodo
 hi def link MtDoneLine MtDone
 hi def link MtMeatLine MtMeat
+hi def link MtLinkLine MtLink
 hi def link MtJunkLine MtJunk
 hi def link MtCodeLine MtCode
 
