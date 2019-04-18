@@ -174,7 +174,8 @@ syn region MtMeat matchgroup=MtFence start="<_\s"  end="_>"
 " Blocks are for multiple lines of comment and code.
 " A block is treated as one paragraph in folding, even without any indentation.
 " The level is determined by its heading line.
-" Don't indent them, let them keep the original format, then it's easy to copy & paste them.
+" Don't indent them, let them keep the original format, then
+" it's easy to copy & paste them.
 syn region MtCommentBlock matchgroup=MtBlockFence
   \ start="\[/" end="/\]"
   \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
