@@ -122,6 +122,7 @@ syn region MtJunk start="[<=]\@<!<\\"
 
 " -- Line -------------------------------------------------------------------
 " For single line element, probably a sentense. May contain other marks.
+" Tailing
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
   \ contains=MtWhiteTail,@MtCommentMark oneline keepend
 syn region MtIssue matchgroup=MtFence start="?\@<!???\@!" end="$"
@@ -136,9 +137,11 @@ syn region MtDone matchgroup=MtFence start="/!!!\@!" end="$"
   \ contains=WtWhiteTail,MtKey oneline keepend
 syn region MtDone matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
   \ end="\([</]/\)\@=" contains=MtKey oneline
+" Whole
+syn region MtMeatLine matchgroup=MtFence start="^\s*_\s\@=" end="$"
+  \ contains=@MtLinet,@MtMeatMark oneline keepend
 
 syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
-syn match MtMeatLine "^\s*_ .*$" contains=MtLineSign,MtWhiteTail,@MtMeatMark
 syn match MtJunkLine "^\s*\\\\.*$" contains=@MtLinet
 syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
 
