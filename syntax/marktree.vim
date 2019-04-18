@@ -6,13 +6,18 @@ syn sync fromstart
 syn sync maxlines=500
 
 " == Clusters ===============================================================
-syn cluster MtMeats contains=MtMeat
-syn cluster MtLinks contains=MtLink,@MtAutoLink
-syn cluster MtGeneralMark contains=MtKey,MtTag,MtIssue,MtSolved,MtTodo,MtDone
-syn cluster MtCommentMark contains=@MtGeneralMark,@MtMeats,@MtLinks
-syn cluster MtMeatMark contains=@MtGeneralMark,MtComment,MtCommentLine
-syn cluster MtHeadMark contains=@MtGeneralMark,@MtLinks,MtComment,MtCommentLine,MtCommentBlock,@MtLinet
-syn cluster MtCommentBlockLine contains=MtMeatLine,MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
+syn cluster MtGeneralMark
+  \ contains=MtKey,MtIssue,MtSolved,MtTodo,MtDone,MtTag,MtLink,@MtAudoLink
+syn cluster MtCommentLineMark contains=@MtGeneralMark,MtMeat
+syn cluster MtMeatLineMark contains=@MtGeneralMark,
+  \ MtComment,MtCommentLine,MtCommentBlock
+syn cluster MtGeneralLine
+  \ contains=MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
+syn cluster MtStrictCommentRegionMark contains=@MtGeneralMark,@MtGeneralLine,
+  \ MtMeat,MtMeatLine,MtComment,MtCommentLine
+syn cluster MtStrictMeatRegionMark contains=@MtGeneralMark,@MtGeneralLine,
+  \ MtComment,MtCommentLine,MtCommentBlock
+syn cluster MtHeadMark contains=@MtGeneralMark,MtMeat,MtComment
 
 " == Small Stuff ============================================================
 " It is here before the Lines and Regions because if not so,
@@ -124,7 +129,7 @@ syn region MtJunk start="[<=]\@<!<\\"
 " For single line element, probably a sentense. May contain other marks.
 " Tailing
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
-  \ contains=MtWhiteTail,@MtCommentMark oneline keepend
+  \ contains=MtWhiteTail,@MtCommentLineMark oneline keepend
 syn region MtIssueLine matchgroup=MtFence start="?\@<!???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtSolvedLine matchgroup=MtFence start="/???\@!" end="$"
@@ -139,7 +144,7 @@ syn region MtDoneLine matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
   \ end="\([</]/\)\@=" contains=MtKey oneline
 " Whole
 syn region MtMeatLine matchgroup=MtFence start="^\s*_\s\@=" end="$"
-  \ contains=@MtLinet,@MtMeatMark oneline keepend
+  \ contains=@MtLinet,@MtMeatLineMark oneline keepend
 syn region MtJunkLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
 syn region MtCodeLine matchgroup=MtFence start="^\t*|\s\@=" end="$"
@@ -157,7 +162,7 @@ hi def link MtCodeLine MtCode
 " -- Strict Region ----------------------------------------------------------
 " For > using element, or big one with multi lines. May contain other marks.
 syn region MtComment matchgroup=MtFence start="<//" end="/>"
-  \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
+  \ contains=@MtLinet,@MtStrictCommentRegionMark
 syn region MtIssue matchgroup=MtFence start="<??"  end="?>"
   \ contains=@MtLinet,MtKey
 syn region MtSolved matchgroup=MtFence start="</??" end="?>"
@@ -168,7 +173,7 @@ syn region MtDone matchgroup=MtFence start="</!!" end="!>"
   \ contains=@MtLinet,MtKey
 syn region MtJunk start="<\\\\" end="\\>" contains=@MtLinet
 syn region MtMeat matchgroup=MtFence start="<_\s"  end="_>"
-  \ contains=@MtLinet,@MtMeatMark
+  \ contains=@MtLinet,@MtStrictMeatRegionMark
 
 " -- Blocks -----------------------------------------------------------------
 " Blocks are for multiple lines of comment and code.
@@ -176,9 +181,8 @@ syn region MtMeat matchgroup=MtFence start="<_\s"  end="_>"
 " The level is determined by its heading line.
 " Don't indent them, let them keep the original format, then
 " it's easy to copy & paste them.
-syn region MtCommentBlock matchgroup=MtBlockFence
-  \ start="\[/" end="/\]"
-  \ contains=@MtLinet,@MtCommentMark,@MtCommentBlockLine
+syn region MtCommentBlock matchgroup=MtBlockFence start="\[/" end="/\]"
+  \ contains=@MtLinet,@MtStrictCommentRegionMark
 syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>"
   \ contains=@MtLinet
 hi def link MtCommentBlock MtComment
