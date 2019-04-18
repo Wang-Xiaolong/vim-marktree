@@ -125,17 +125,17 @@ syn region MtJunk start="[<=]\@<!<\\"
 " Tailing
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
   \ contains=MtWhiteTail,@MtCommentMark oneline keepend
-syn region MtIssue matchgroup=MtFence start="?\@<!???\@!" end="$"
+syn region MtIssueLine matchgroup=MtFence start="?\@<!???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtSolved matchgroup=MtFence start="/???\@!" end="$"
+syn region MtSolvedLine matchgroup=MtFence start="/???\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtSolved matchgroup=MtFence start="/???\@!\|?\@<!???\@!"
+syn region MtSolvedLine matchgroup=MtFence start="/???\@!\|?\@<!???\@!"
   \ end="\([</]/\)\@=" contains=MtKey oneline
-syn region MtTodo matchgroup=MtFence start="!\@<!!!!\@!" end="$"
+syn region MtTodoLine matchgroup=MtFence start="!\@<!!!!\@!" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtDone matchgroup=MtFence start="/!!!\@!" end="$"
+syn region MtDoneLine matchgroup=MtFence start="/!!!\@!" end="$"
   \ contains=WtWhiteTail,MtKey oneline keepend
-syn region MtDone matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
+syn region MtDoneLine matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
   \ end="\([</]/\)\@=" contains=MtKey oneline
 " Whole
 syn region MtMeatLine matchgroup=MtFence start="^\s*_\s\@=" end="$"
