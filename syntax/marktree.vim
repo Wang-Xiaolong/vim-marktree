@@ -140,20 +140,19 @@ syn region MtDone matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
 " Whole
 syn region MtMeatLine matchgroup=MtFence start="^\s*_\s\@=" end="$"
   \ contains=@MtLinet,@MtMeatMark oneline keepend
-
-syn match MtLineSign "^\s*/\=[_*?!:|~]\s*" contained contains=MtIndent
-syn match MtJunkLine "^\s*\\\\.*$" contains=@MtLinet
-syn match MtCodeLine "^\t*|\s.*$" contains=MtLineSign,MtWhiteTail
+syn region MtJunkLine start="^\s*\\\\\\\@!" end="$"
+  \ contains=@MtLinet oneline keepend
+syn region MtCodeLine matchgroup=MtFence start="^\t*|\s\@=" end="$"
+  \ contains=@MtLinet oneline keepend
 
 hi def link MtCommentLine MtComment
-hi def link MtMeatLine MtMeat
 hi def link MtIssueLine MtIssue
 hi def link MtSolvedLine MtSolved
 hi def link MtTodoLine MtTodo
 hi def link MtDoneLine MtDone
-hi def link MtCodeLine MtCode
+hi def link MtMeatLine MtMeat
 hi def link MtJunkLine MtJunk
-hi def link MtLineSign MtSign
+hi def link MtCodeLine MtCode
 
 " -- Strict Region ----------------------------------------------------------
 " For > using element, or big one with multi lines. May contain other marks.
