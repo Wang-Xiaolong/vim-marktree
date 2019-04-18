@@ -188,57 +188,57 @@ syn region MtLink matchgroup=MtFence start="<[~]\s" end="[~]>"
 " it's easy to copy & paste them.
 syn region MtCommentBlock matchgroup=MtBlockFence start="\[/" end="/\]"
   \ contains=@MtLinet,@MtStrictCommentRegionMark
-syn region MtCodeBlock matchgroup=MtBlockFence start="<<|" end="|>>"
+syn region MtCodeBlock matchgroup=MtBlockFence start="\[|" end="|\]"
   \ contains=@MtLinet
 hi def link MtCommentBlock MtComment
 hi def link MtCodeBlock MtCode
 
 " -- Special Code Blocks: line comment in code blocks for code review --
 " -- 1. // C, Java, Go, PHP ...
-syn region MtCode1Block matchgroup=MtBlockFence start="<<//|" end="|>>"
+syn region MtCode1Block matchgroup=MtBlockFence start="\[//|" end="|\]"
   \ contains=@MtLinet,MtCode1Comment
-syn match MtCode1Comment "//.*$" contains=@MtCommentMark contained
+syn match MtCode1Comment "//.*$" contains=@MtCommentLineMark contained
 syn region MtCode1Comment start="/\*" end="\*/"
-  \ contains=@MtCommentMark contained
+  \ contains=@MtStrictCommentRegionMark contained
 
 hi def link MtCode1Block MtCode
 hi def link MtCode1Comment MtComment
 
 " -- 2. # Shell, Perl, Python, Ruby, PowerShell, PHP, Make
-syn region MtCode2Block matchgroup=MtBlockFence start="<<#|" end="|>>"
+syn region MtCode2Block matchgroup=MtBlockFence start="\[#|" end="|\]"
   \ contains=@MtLinet,MtCode2Comment
-syn match MtCode2Comment "#.*$" contains=@MtCommentMark contained
+syn match MtCode2Comment "#.*$" contains=@MtCommentLineMark contained
 
 hi def link MtCode2Block MtCode
 hi def link MtCode2Comment MtComment
 
 " -- 3. ; Assemble, Lisp
-syn region MtCode3Block matchgroup=MtBlockFence start="<<;|" end="|>>"
+syn region MtCode3Block matchgroup=MtBlockFence start="\[;|" end="|\]"
   \ contains=@MtLinet,MtCode3Comment
-syn match MtCode3Comment ";.*$" contains=@MtCommentMark contained
+syn match MtCode3Comment ";.*$" contains=@MtCommentLineMark contained
 
 hi def link MtCode3Block MtCode
 hi def link MtCode3Comment MtComment
 
 " -- 4. -- SQL, Ada, Lua, VHDL
-syn region MtCode4Block matchgroup=MtBlockFence start="<<--|" end="|>>"
+syn region MtCode4Block matchgroup=MtBlockFence start="\[--|" end="|\]"
   \ contains=@MtLinet,MtCode4Comment
-syn match MtCode4Comment "--.*$" contains=@MtCommentMark contained
+syn match MtCode4Comment "--.*$" contains=@MtCommentLineMark contained
 
 hi def link MtCode4Block MtCode
 hi def link MtCode4Comment MtComment
 
 " -- 5. " Vim
-syn region MtCode5Block matchgroup=MtBlockFence start=+<<"|+ end="|>>"
+syn region MtCode5Block matchgroup=MtBlockFence start=+\["|+ end="|\]"
   \ contains=@MtLinet,MtCode5Comment
-syn match MtCode5Comment +".*$+ contains=@MtCommentMark contained
+syn match MtCode5Comment +".*$+ contains=@MtCommentLineMark contained
 
 hi def link MtCode5Block MtCode
 hi def link MtCode5Comment MtComment
 
 " -- Final: Marktree, used in marktree.mt to show syntax colors
 "  and avoid unexpected folding
-syn region MtMarktreeBlock matchgroup=MtBlockFence start="<<marktree|" end="|>>"
+syn region MtMarktreeBlock matchgroup=MtBlockFence start="\[marktree|" end="|\]"
   \ contains=ALL
 
 " == Headings =================================================================
