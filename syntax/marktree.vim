@@ -177,6 +177,8 @@ syn region MtDone matchgroup=MtFence start="</!!" end="!>"
 syn region MtJunk start="<\\\\" end="\\>" contains=@MtLinet
 syn region MtMeat matchgroup=MtFence start="<_\s"  end="_>"
   \ contains=@MtLinet,@MtStrictMeatRegionMark
+syn region MtLink matchgroup=MtFence start="<[~]\s" end="[~]>"
+  \ contains=@MtLinet,MtKey
 
 " -- Blocks -----------------------------------------------------------------
 " Blocks are for multiple lines of comment and code.
