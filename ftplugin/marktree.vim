@@ -135,3 +135,8 @@ function! MtIndentLevel(line)
 	let s:n_tab_idx = match(a:line, '[^\t]')
 	return s:n_tab_idx + (a:line[s:n_tab_idx] == ' ')
 endfunction
+
+command MTI :call MtSearchIssue()
+function! MtSearchIssue()
+	vimgrep "[<?/]\@<!?\k\+\>\([</]/\)\@!\|[?</]\@<!???\@!\(.*[</]/\)\@!\|[<=]\@<!<??\@!\|<??" %
+endfunction
