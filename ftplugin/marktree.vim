@@ -136,12 +136,12 @@ function! MtIndentLevel(line)
 	return s:n_tab_idx + (a:line[s:n_tab_idx] == ' ')
 endfunction
 
-command MTI :call MtSearchIssue()
+command! MTI :call MtSearchIssue()
 function! MtSearchIssue()
 	vimgrep "[<?/]\@<!?\k\+\>\([</]/\)\@!\|[?</]\@<!???\@!\(.*[</]/\)\@!\|[<=]\@<!<??\@!\|<??" %
 endfunction
 
-command MTT :call MtSearchTodo()
+command! MTT :call MtSearchTodo()
 function! MtSearchTodo()
 	vimgrep "[<!/]\@<!!\k\+\>\([</]/\)\@!\|[!</]\@<!!!!\@!\(.*[</]/\)\@!\|[<=]\@<!<!!\@!\|<!!" %
 endfunction
