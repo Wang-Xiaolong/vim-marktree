@@ -140,3 +140,8 @@ command MTI :call MtSearchIssue()
 function! MtSearchIssue()
 	vimgrep "[<?/]\@<!?\k\+\>\([</]/\)\@!\|[?</]\@<!???\@!\(.*[</]/\)\@!\|[<=]\@<!<??\@!\|<??" %
 endfunction
+
+command MTT :call MtSearchTodo()
+function! MtSearchTodo()
+	vimgrep "[<!/]\@<!!\k\+\>\([</]/\)\@!\|[!</]\@<!!!!\@!\(.*[</]/\)\@!\|[<=]\@<!<!!\@!\|<!!" %
+endfunction
