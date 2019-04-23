@@ -145,7 +145,7 @@ syn region MtDoneLine matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
 syn region MtJunkLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
 " Single-sign
-syn region MtMeatLine matchgroup=MtFence start="^\s*_\s\@=" end="$"
+syn region MtMeatLine matchgroup=MtFence start="\S\@<!_\s\@=" end="$"
   \ contains=@MtLinet,@MtMeatLineMark oneline keepend
 syn region MtLinkLine matchgroup=MtFence start="^\s*[~]\s\@=" end="$"
   \ contains=@MtLinet oneline keepend
