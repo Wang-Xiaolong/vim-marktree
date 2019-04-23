@@ -79,10 +79,7 @@ if b:MtIssueWordEn
 	syn match MtIssueWordFence "?" contained
 	hi def link MtIssueWordFence MtFence
 	syn match MtIssue "?\@<!?\k*\>" contains=MtIssueWordFence
-	syn match MtSolved "?\@<!?\k*\(</\)\@=" nextgroup=MtComment
-	  \ contains=MtIssueWordFence
-	syn match MtSolved "?\@<!?\k*\(//\)\@=" nextgroup=MtCommentLine
-	  \ contains=MtIssueWordFence
+	syn match MtSolved "?\@<!?\k*\([</]/\)\@=" contains=MtIssueWordFence
 	syn match MtSolvedWordFence "/?" contained
 	hi def link MtSolvedWordFence MtFence
 	syn match MtSolved "/?\k*\>" contains=MtSolvedWordFence
@@ -91,10 +88,7 @@ if b:MtTodoWordEn
 	syn match MtTodoWordFence "!" contained
 	hi def link MtTodoWordFence MtFence
 	syn match MtTodo "!\@<!!\k*\>" contains=MtTodoWordFence
-	syn match MtDone "!\@<!!\k*\(</\)\@=" nextgroup=MtComment
-	  \ contains=MtTodoWordFence
-	syn match MtDone "!\@<!!\k*\(//\)\@=" nextgroup=MtCommentLine
-	  \ contains=MtTodoWordFence
+	syn match MtDone "!\@<!!\k*\([</]/\)\@=" contains=MtTodoWordFence
 	syn match MtDoneWordFence "/!" contained
 	hi def link MtDoneWordFence MtFence
 	syn match MtDone "/!\k*\>" contains=MtDoneWordFence
@@ -242,6 +236,7 @@ syn region MtMarktreeBlock matchgroup=MtBlockFence start="\[marktree|" end="|\]"
   \ contains=ALL
 
 " == Headings =================================================================
+syn match MtHeadCrSign "\\$" contained
 syn region MtHead1CommentLine matchgroup=MtFence
   \ start="/\@<!///\@!" end="=*$\|\\\=$" contained oneline keepend
   \ contains=MtHeadCrSign,@MtCommentLineMark
@@ -258,10 +253,11 @@ syn region MtHeadCommentLine matchgroup=MtFence
 syn region MtHead matchgroup=MtFence start="^\t*###\@!" skip="\\$"
   \ end="#\@<!###\@!\|$" keepend
   \ contains=@MtHeadMark,MtHeadCrSign,MtHeadCommentLine
-syn match MtHeadCrSign "\\$" contained
+syn region MtHead0CommentLine matchgroup=MtFence start="/\@<!///\@!" end="\\\=$"
+  \ contained oneline keepend contains=@MtCommentLineMark
 syn match MtOption "<mt\S*>" contained
-syn region MtHead0 start="\%^" skip="\\$" end="$"
-  \ contains=@MtHeadMark,MtHeadCrSign,MtOption
+syn region MtHead0 start="\%^" skip="\\$" end="$" keepend
+  \ contains=@MtHeadMark,MtHeadCrSign,MtOption,MtHead0CommentLine
 
 hi def link MtHead0 MtHead
 hi def link MtHead1 MtHead
@@ -271,4 +267,5 @@ hi def link MtOption MtSign
 hi def link MtHead1CommentLine MtComment
 hi def link MtHead2CommentLine MtComment
 hi def link MtHeadCommentLine MtComment
+hi def link MtHead0CommentLine MtComment
 
