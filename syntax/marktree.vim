@@ -245,9 +245,8 @@ syn region MtMarktreeBlock matchgroup=MtBlockFence start="\[marktree|" end="|\]"
 syn region MtHead1CommentLine matchgroup=MtHeadSign
   \ start="/\@<!///\@!" end="=*$\|\\\=$" contained oneline keepend
   \ contains=MtHeadCrSign,@MtCommentLineMark
-syn match MtHead1Sign "^==\+\|==\+$\|\\$" contained
-syn match MtHead1 "^==\(.*\\\n\)*.*\\\@!$"
-  \ contains=@MtHeadMark,MtHead1Sign,MtHead1CommentLine
+syn region MtHead1 matchgroup=MtHeadSign start="^==\+" skip="\\$" end="=*$"
+  \ contains=@MtHeadMark,MtHeadCrSign,MtHead1CommentLine keepend
 syn region MtHead2CommentLine matchgroup=MtHeadSign
   \ start="/\@<!///\@!" end="-*$\|\\\=$" contained oneline keepend
   \ contains=MtHeadCrSign,@MtCommentLineMark
@@ -266,7 +265,6 @@ hi def link MtHead0 MtHead
 hi def link MtHead1 MtHead
 hi def link MtHead2 MtHead
 hi def link MtHeadCrSign MtHeadSign
-hi def link MtHead1Sign MtHeadSign
 hi def link MtHead2Sign MtHeadSign
 hi def link MtHeadSign MtFence
 hi def link MtOption MtSign
