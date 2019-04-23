@@ -252,8 +252,12 @@ syn region MtHead2CommentLine matchgroup=MtFence
   \ contains=MtHeadCrSign,@MtCommentLineMark
 syn region MtHead2 matchgroup=MtFence start="^--\+" skip="\\$" end="-*$"
   \ contains=@MtHeadMark,MtHeadCrSign,MtHead2CommentLine keepend
+syn region MtHeadCommentLine matchgroup=MtFence
+  \ start="/\@<!///\@!" end="#\@<!###\@!\|\\\=$" contained oneline keepend
+  \ contains=MtHeadCrSign,@MtCommentLineMark
 syn region MtHead matchgroup=MtFence start="^\t*###\@!" skip="\\$"
-  \ end="#\@<!###\@!\|$" contains=@MtHeadMark,MtHeadCrSign keepend
+  \ end="#\@<!###\@!\|$" keepend
+  \ contains=@MtHeadMark,MtHeadCrSign,MtHeadCommentLine
 syn match MtHeadCrSign "\\$" contained
 syn match MtOption "<mt\S*>" contained
 syn match MtHead0 "\%^\(.*\\\n\)*.*[^\\]$"
@@ -266,4 +270,5 @@ hi def link MtHeadCrSign MtFence
 hi def link MtOption MtSign
 hi def link MtHead1CommentLine MtComment
 hi def link MtHead2CommentLine MtComment
+hi def link MtHeadCommentLine MtComment
 
