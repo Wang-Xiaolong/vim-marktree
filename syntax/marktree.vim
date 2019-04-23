@@ -242,24 +242,29 @@ syn region MtMarktreeBlock matchgroup=MtBlockFence start="\[marktree|" end="|\]"
   \ contains=ALL
 
 " == Headings =================================================================
+syn region MtHead1CommentLine matchgroup=MtHeadSign
+  \ start="/\@<!///\@!" end="=*$\|\\\=$" contained oneline keepend
+  \ contains=MtHeadCrSign,@MtCommentLineMark
 syn match MtHeadSign1 "^==\+\|==\+$\|\\$" contained
-syn match MtHead1 "^==\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign1
+syn match MtHead1 "^==\(.*\\\n\)*.*\\\@!$"
+  \ contains=@MtHeadMark,MtHeadSign1,MtHead1CommentLine
 syn match MtHeadSign2 "^--\+\|--\+$\|\\$" contained
 syn match MtHead2 "^--\(.*\\\n\)*.*[^\\]$" contains=@MtHeadMark,MtHeadSign2
 syn match MtHeadSign "^\t*###\@!\|\\\n\|#\@<!###\@!" contained
 syn match MtHead "^\t*###\@!\(.*\\\n\)*.\{-}\(#\@<!###\@!\|[^\\]$\)"
   \ contains=@MtHeadMark,MtHeadSign
-syn match MtHeadSign0 "\\$" contained
+syn match MtHeadCrSign "\\$" contained
 syn match MtOption "<mt\S*>" contained
 syn match MtHead0 "\%^\(.*\\\n\)*.*[^\\]$"
-  \ contains=@MtHeadMark,MtHeadSign0,MtOption
+  \ contains=@MtHeadMark,MtHeadCrSign,MtOption
 
 hi def link MtHead0 MtHead
 hi def link MtHead1 MtHead
 hi def link MtHead2 MtHead
-hi def link MtHeadSign0 MtHeadSign
+hi def link MtHeadCrSign MtHeadSign
 hi def link MtHeadSign1 MtHeadSign
 hi def link MtHeadSign2 MtHeadSign
 hi def link MtHeadSign MtFence
 hi def link MtOption MtSign
+hi def link MtHead1CommentLine MtComment
 
