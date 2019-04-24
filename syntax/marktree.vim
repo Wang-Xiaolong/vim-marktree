@@ -141,9 +141,9 @@ syn region MtJunkLine start="^\s*\\\\\\\@!" end="$"
 " Single-sign
 syn region MtMeatLine matchgroup=MtFence start="\S\@<!_\s\@=" end="$"
   \ contains=@MtLinet,@MtMeatLineMark oneline keepend
-syn region MtLinkLine matchgroup=MtFence start="^\s*[~]\s\@=" end="$"
+syn region MtLinkLine matchgroup=MtFence start="\(^\s*\)\@<=[~]\s\@=" end="$"
   \ contains=@MtLinet oneline keepend
-syn region MtCodeLine matchgroup=MtFence start="^\t*|\s\@=" end="$"
+syn region MtCodeLine matchgroup=MtFence start="\(^\t*\)\@<=|\s\@=" end="$"
   \ contains=@MtLinet oneline keepend
 
 hi def link MtCommentLine MtComment
