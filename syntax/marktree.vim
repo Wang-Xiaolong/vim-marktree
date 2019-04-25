@@ -61,12 +61,6 @@ hi def link MtLinkToNote MtLink
 hi def link MtBibl MtTag
 hi def link MtLinkToBibl MtLink
 
-" -- Seperator --
-syn match MtSeparator "^\s*-\{6,}\s*$\|^\s\+\*\s\+\*\s\+\*\s*$"
-  \ contains=@MtLinet
-
-hi def link MtSeparator MtSign
-
 " == Marks ==================================================================
 " -- Word -------------------------------------------------------------------
 " Very light marks for only 1 word. All optional.
