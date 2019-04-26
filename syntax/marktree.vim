@@ -43,12 +43,7 @@ syn cluster MtAutoLink contains=MtUrl,MtEmail
 hi def link MtEmail MtUrl
 
 " -- Signs of a list --
-syn match MtSign "^\t*[\*+\-] " contains=MtIndent
-syn match MtNumSign "^\t*\d\+\. " contains=MtIndent
-syn match MtLetterSign "^\t*[a-zA-Z]\. " contains=MtIndent
-
-hi def link MtNumSign MtSign
-hi def link MtLetterSign MtSign
+syn match MtSign "\(^\t*\)\@<=\([\*+\-]\|\d\+\.\|[a-zA-Z]\.\) \@="
 
 " -- Note & Bibl --
 syn match MtNote "^\s*(#\d\+)" contains=@MtIndent
