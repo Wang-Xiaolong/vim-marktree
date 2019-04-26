@@ -61,6 +61,10 @@ hi def link MtLinkToNote MtLink
 hi def link MtBibl MtTag
 hi def link MtLinkToBibl MtLink
 
+" -- Quote prefix --
+syn match MtQuotePrefix "\(^\t*\)\@<=>\+\( \|$\)\@="
+hi def link MtQuotePrefix MtFence
+
 " == Marks ==================================================================
 " -- Word -------------------------------------------------------------------
 " Very light marks for only 1 word. All optional.
