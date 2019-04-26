@@ -46,9 +46,9 @@ hi def link MtEmail MtUrl
 syn match MtSign "\(^\t*\)\@<=\([\*+\-]\|\d\+\.\|[a-zA-Z]\.\) \@="
 
 " -- Note & Bibl --
-syn match MtNote "^\s*(#\d\+)" contains=@MtIndent
+syn match MtNote "\(^\t*\)\@<=(#\d\+)"
 syn match MtLinkToNote "([~]\d\+)"
-syn match MtBibl "^\s*\[#\d\+\]" contains=@MtIndent
+syn match MtBibl "\(^\t*\)\@<=\[#\d\+\]"
 syn match MtLinkToBibl "\[[~]\d\+\]"
 
 hi def link MtNote MtTag
