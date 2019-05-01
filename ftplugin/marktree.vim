@@ -68,33 +68,39 @@ function! MtFold(lnum)
 
 	let s:synstack = synstack(a:lnum, 1)
 	if len(s:synstack) == 0 "Normal
-		return b:H1Levels + b:H2Levels + match(a:line, '[^\t]')
+		return b:H1Levels + b:H2Levels + match(s:line, '[^\t]')
 	endif
 	let s:synroot = synIDattr(s:synstack[0], "name")
 	if s:synroot == "MtHead0"
 		return 0
 	elseif s:synroot == "MtHead1"
-		if s:line !~ '^==\+\s\+.\+$' "Not the 1st line
-			return '='
-		endif "Then, the 1st line
-		let s:idx = match(s:line, '[^=]') / 2 "Count of == -> level
-		if b:H1Levels < s:idx
-			let b:H1Levels = s:idx
+		if len(s:synstack) == 2 && synIDattr(s:synstack[1], "name") == "MtFence" "1st line
+			let s:idx = match(s:line, '[^=]') / 2 "Count of ==
+			if s:idx < 1 "odd corner case
+				return '='
+			endif
+			if b:H1Levels < s:idx
+				let b:H1Levels = s:idx
+			endif
+			return b:H1Levels - s:idx
 		endif
-		return b:H1Levels - s:idx
+		return '='
 	elseif s:synroot == "MtHead2"
-		if s:line !~ '^--\+\s\+.\+$' "Not the 1st line
-			return '='
-		endif "Then, the 1st line
-		let s:idx = match(s:line, '[^-]') / 2 "Count of -- -> level
-		if b:H2Levels < s:idx
-			let b:H2Levels = s:idx
+		if len(s:synstack) == 2 && synIDattr(s:synstack[1], "name") == "MtFence" "1st line
+			let s:idx = match(s:line, '[^-]') / 2 "Count of --
+			if s:idx < 1 "odd corner case
+				return '='
+			endif
+			if b:H2Levels < s:idx
+				let b:H2Levels = s:idx
+			endif
+			return b:H1Levels + s:idx - 1
 		endif
-		return b:H1Levels + s:idx - 1
-	elseif s:synroot =~ 'Mt\w\+Block$' || s:synroot == "MtBlockFence"
+		return '='
+	elseif s:synroot =~ 'Mt\w\+Block$' || s:synroot == "MtBlockFence" || s:synroot == "MtFence"
 		return '='
 	else
-		return b:H1Levels + b:H2Levels + match(a:line, '[^\t]')
+		return b:H1Levels + b:H2Levels + match(s:line, '[^\t]')
 	endif
 endfunction
 
