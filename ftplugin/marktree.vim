@@ -62,9 +62,7 @@ endif
 
 function! MtFold(lnum)
 	let s:line = getline(a:lnum)
-
-	let s:idx = match(s:line, '\S')
-	if s:idx == -1 "empty line
+	if match(s:line, '\S') == -1 "Blank line
 		return '='
 	endif	
 
