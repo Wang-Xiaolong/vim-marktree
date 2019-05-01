@@ -68,7 +68,7 @@ function! MtFold(lnum)
 
 	let s:synstack = synstack(a:lnum, 1)
 	if len(s:synstack) == 0 "Normal
-		return b:H1Levels + b:H2Levels + MtIndentLevel(s:line)
+		return b:H1Levels + b:H2Levels + match(a:line, '[^\t]')
 	endif
 	let s:synroot = synIDattr(s:synstack[0], "name")
 	if s:synroot == "MtHead0"
@@ -94,13 +94,8 @@ function! MtFold(lnum)
 	elseif s:synroot =~ 'Mt\w\+Block$' || s:synroot == "MtBlockFence"
 		return '='
 	else
-		return b:H1Levels + b:H2Levels + MtIndentLevel(s:line)
+		return b:H1Levels + b:H2Levels + match(a:line, '[^\t]')
 	endif
-endfunction
-
-function! MtIndentLevel(line)
-	let s:n_tab_idx = match(a:line, '[^\t]')
-	return s:n_tab_idx + (a:line[s:n_tab_idx] == ' ')
 endfunction
 
 command! MTI :call MtSearchIssue()
