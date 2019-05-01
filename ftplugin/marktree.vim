@@ -21,8 +21,8 @@ setlocal foldlevel=10
 let b:MtPath = expand('<sfile>:p:h:h')
 let s:opt = matchstr(getline(1), '<mt\S*>')
 if s:opt == ""
-	let b:T1LvlCnt = 0
-	let b:T2LvlCnt = 0
+	let b:H1Levels = 0
+	let b:H2Levels = 0
 	let b:MtKeyWordEn = 1
 	let b:MtIssueWordEn = 1
 	let b:MtTodoWordEn = 1
@@ -47,8 +47,8 @@ while 1
 endwhile
 
 let s:opt = substitute(s:opt, '+\w\+', '', 'g')
-let b:T1LvlCnt = strlen(substitute(s:opt, "[^=]", "", "g"))
-let b:T2LvlCnt = strlen(substitute(s:opt, "[^-]", "", "g"))
+let b:H1Levels = strlen(substitute(s:opt, "[^=]", "", "g"))
+let b:H2Levels = strlen(substitute(s:opt, "[^-]", "", "g"))
 if s:opt =~ '\^'
 	let b:MtKeyWordEn = (s:opt !~ '*')
 	let b:MtIssueWordEn = (s:opt !~ '?')
@@ -70,7 +70,7 @@ function! MtFold(lnum)
 
 	let s:synstack = synstack(a:lnum, 1)
 	if len(s:synstack) == 0 "Normal
-		return b:T1LvlCnt + b:T2LvlCnt + MtIndentLevel(s:line)
+		return b:H1Levels + b:H2Levels + MtIndentLevel(s:line)
 	endif
 	let s:synroot = synIDattr(s:synstack[0], "name")
 	if s:synroot == "MtHead0"
@@ -80,28 +80,28 @@ function! MtFold(lnum)
 			return '='
 		endif "Then, the 1st line
 		let s:idx = match(s:line, '[^=]') / 2 "Count of == -> level
-		if b:T1LvlCnt < s:idx
-			let b:T1LvlCnt = s:idx
+		if b:H1Levels < s:idx
+			let b:H1Levels = s:idx
 		endif
-		return b:T1LvlCnt - s:idx
+		return b:H1Levels - s:idx
 	elseif s:synroot == "MtHead2"
 		if s:line !~ '^--\+\s\+.\+$' "Not the 1st line
 			return '='
 		endif "Then, the 1st line
 		let s:idx = match(s:line, '[^-]') / 2 "Count of -- -> level
-		if b:T2LvlCnt < s:idx
-			let b:T2LvlCnt = s:idx
+		if b:H2Levels < s:idx
+			let b:H2Levels = s:idx
 		endif
-		return b:T1LvlCnt + s:idx - 1
+		return b:H1Levels + s:idx - 1
 	elseif s:synroot == "MtBlockFence"  "tailing mark of a block
 		return '='
 	elseif s:synroot !~ 'Mt\w\+Block$'  "ordinary line (not start in block)
-		return b:T1LvlCnt + b:T2LvlCnt + MtIndentLevel(s:line)
+		return b:H1Levels + b:H2Levels + MtIndentLevel(s:line)
 	else "start in block
 		" Check if it's the 1st block line
 		if len(s:synstack) > 1
 			if s:synstack[1] == hlID("MtBlockFence")
-				return b:T1LvlCnt + b:T2LvlCnt + 1
+				return b:H1Levels + b:H2Levels + 1
 			endif
 		endif
 		" 1st line excluded, now check the last line
