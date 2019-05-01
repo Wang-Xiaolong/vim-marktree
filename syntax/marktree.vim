@@ -233,12 +233,12 @@ syn match MtHeadCrSign "\\$" contained
 syn region MtHead1CommentLine matchgroup=MtFence
   \ start="/\@<!///\@!" end="=*$\|\\\=$" contained oneline keepend
   \ contains=MtHeadCrSign,@MtCommentLineMark
-syn region MtHead1 matchgroup=MtFence start="^==\+" skip="\\$" end="=*$"
+syn region MtHead1 matchgroup=MtFence start="^==\+[^=]\@=" skip="\\$" end="=*$"
   \ contains=@MtHeadMark,MtHeadCrSign,MtHead1CommentLine keepend
 syn region MtHead2CommentLine matchgroup=MtFence
   \ start="/\@<!///\@!" end="-*$\|\\\=$" contained oneline keepend
   \ contains=MtHeadCrSign,@MtCommentLineMark
-syn region MtHead2 matchgroup=MtFence start="^--\+" skip="\\$" end="-*$"
+syn region MtHead2 matchgroup=MtFence start="^--\+[^-]\@=" skip="\\$" end="-*$"
   \ contains=@MtHeadMark,MtHeadCrSign,MtHead2CommentLine keepend
 syn region MtHeadCommentLine matchgroup=MtFence
   \ start="/\@<!///\@!" end="#\@<!###\@!\|\\\=$" contained oneline keepend
