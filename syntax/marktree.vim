@@ -229,7 +229,6 @@ syn region MtMarktreeBlock matchgroup=MtBlockFence start="\[marktree|" end="|\]"
   \ contains=ALL
 
 " == Headings =================================================================
-syn match MtHeadCrSign "\\$" contained
 syn match MtFollowSign "\(^\t*\)\@<=\\\s\@=" contained
 syn region MtHead1 matchgroup=MtFence start="^==\+[^=]\@=" end="=*\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
@@ -245,7 +244,6 @@ syn region MtHead0 start="\%^" end="\n\(\\\s\)\@!" keepend
 hi def link MtHead0 MtHead
 hi def link MtHead1 MtHead
 hi def link MtHead2 MtHead
-hi def link MtHeadCrSign MtFence
 hi def link MtFollowSign MtFence
 hi def link MtOption MtSign
 
