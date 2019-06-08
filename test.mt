@@ -46,15 +46,15 @@ Normal text (Level 6)
 	## lower level Normal Head (Level 7)
 	## Normal Head with an end ##  and you can write after it,
 	that indicates you can't put a "##" in it.
-	## Normal Head can contain \
-	   multiple lines
-	## and can also \
-	   have an end ##
+	## Normal Head can contain
+	\ multiple lines
+	## and can also
+	\ have an end ##
 ### 3# doesn't work, it's strict
 ## the end is also strict # ### #### ######
 ## can have //comment line
-## even in //multiple line\
-mode //yeah *key ##
+## even in //multiple line
+\ mode //yeah *key ## Normal
 
 //Comment line
 Normal//Comment line
