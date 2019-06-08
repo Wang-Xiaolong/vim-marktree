@@ -13,16 +13,16 @@ Normal text (Level 6)
 ====== higher and higher level Dual-lane Head (Level 0)
 == Dual-lane Head with an end (you can't write after it)==
 == Dual-lane Heads divide =====================================================
-== Dual-lane Head can contain \
-   multiple lines
-== and can also \
-have an end ==
-== fold test(Level 2), the next line should also be Level 2 \
-==========
+== Dual-lane Head can contain
+\ multiple lines
+== and can also
+\ have an end ==
+== fold test(Level 2), the next line should also be Level 2
+\ ==========
 == and can contain "==" in it, and //comment line
-== For multiple lines //comment line \
-is like //this and (*key, <?issue>, <!!todo>region!>)\
-//this (*key, <??issue>region?> </!done>)====
+== For multiple lines //comment line
+\ is like //this and (*key, <?issue>, <!!todo>region!>)
+\ //this (*key, <??issue>region?> </!done>)====
 
 -- Single-lane Head (Level 3)
 ---- lower level Single-lane Head (Level 4)
