@@ -29,18 +29,18 @@ Normal text (Level 6)
 ------ lower and lower Single-lane Head (Level 5)
 -- Single-lane Head with an end (you can't write after it) --
 -- Single-lane Heads can also divide ------------------------------------------
--- Single-lane Head can also contain \
-   multiple lines
--- and can also \
-   have an end --
+-- Single-lane Head can also contain
+\ multiple lines
+-- and can also
+\ have an end --
 -- and can contain '--' in it
 -- Single-lane Head can *contain ?word !marks\
-and region marks like <*key region> <?issue region> </?solved region>\
-<!todo region> </!done region> </comment region> <//comment>region/>\
-<??issue>region?> </??solved>region?> <!!todo>region!> </!!done>region!>\
-<#tag region> <~link region> <_meat region> <_ meat>region_>\
-//comment line *key\
-//comment line --
+\ and region marks like <*key region> <?issue region> </?solved region>
+\ <!todo region> </!done region> </comment region> <//comment>region/>
+\ <??issue>region?> </??solved>region?> <!!todo>region!> </!!done>region!>
+\ <#tag region> <~link region> <_meat region> <_ meat>region_>
+\ //comment line *key
+\ //comment line --
 
 ## Normal Head, whose level is equal to normal text (Level 6)
 	## lower level Normal Head (Level 7)
