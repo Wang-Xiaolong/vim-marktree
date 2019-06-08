@@ -249,7 +249,7 @@ syn region MtHead matchgroup=MtFence start="^\t*###\@!" skip="\\$"
 syn region MtHead0CommentLine matchgroup=MtFence start="/\@<!///\@!" end="\\\=$"
   \ contained oneline keepend contains=@MtCommentLineMark
 syn match MtOption "<mt\S*>" contained
-syn region MtHead0 start="\%^" skip="\\$" end="$" keepend
+syn region MtHead0 start="\%^" end="\n\(\\\s\)\@!" keepend
   \ contains=@MtHeadMark,MtHeadCrSign,MtOption,MtHead0CommentLine
 
 hi def link MtHead0 MtHead

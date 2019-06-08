@@ -1,11 +1,11 @@
-*File Head <mt===---^option_in_1st_line> can \
-have multiple lines (Level 0) and put a ==, --, ?, *, ! or other element at \
-the beginning of it will not cause it hi like normal or head0/1. \
-File Head can contain *key <*key region> <#tag> <~link> ?issue <?issue region>\
-<??issue>region?> </?solved region> !todo <!todo region> <!!todo>region!>\
-still/!done ?natural_solved</commend region> !natual_done//comment line \
-still File Head ?natural_solved//comment line\
-still
+*File Head <mt===---^option_in_1st_line> can
+\ have multiple lines (Level 0) and put a ==, --, ?, *, ! or other element at
+\ the beginning of it will not cause it hi like normal or head0/1.
+\ File Head can contain *key <*key region> <#tag> <~link> ?issue <?issue region>
+\ <??issue>region?> </?solved region> !todo <!todo region> <!!todo>region!>
+\ still/!done ?natural_solved</commend region> !natual_done//comment line
+\ still File Head ?natural_solved//comment line
+\ still
 Normal text (Level 6)
 	Lower level by adding more heading tabs (Level 7)
 == Dual-lane Head (Level 2)
