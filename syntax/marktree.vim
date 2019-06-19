@@ -40,7 +40,8 @@ syn match MtEmail "[a-z0-9_\.-]\+@[0-9a-z\.-]\+\.[a-z\.]\{2,6}"
 
 syn cluster MtAutoLink contains=MtUrl,MtEmail
 
-hi def link MtEmail MtUrl
+hi def link MtUrl MtLink
+hi def link MtEmail MkLink
 
 " -- Signs of a list --
 syn match MtSign "\(^\t*\)\@<=\([*+\-]\|\d\+\.\|[a-zA-Z]\.\) \@="
@@ -179,6 +180,7 @@ syn region MtCodeBlock matchgroup=MtBlockFence start="\[|" end="|\]"
   \ contains=@MtLinet
 hi def link MtCommentBlock MtComment
 hi def link MtCodeBlock MtCode
+hi def link MtBlockFence MtFence
 
 " -- Special Code Blocks: line comment in code blocks for code review --
 " -- 1. // C, Java, Go, PHP ...
