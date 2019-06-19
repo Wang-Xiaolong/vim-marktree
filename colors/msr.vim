@@ -4,19 +4,19 @@
 hi Normal guifg=Black guibg=White ctermfg=Black ctermbg=White
 hi MtFence guifg=DarkYellow ctermfg=DarkYellow
 hi MtBlockFence guifg=Yellow ctermfg=DarkYellow 
-hi MtHead gui=bold guifg=Magenta ctermfg=DarkRed
-hi MtComment guifg=Cyan ctermfg=DarkCyan
-hi MtMeat gui=underline guifg=Green ctermfg=DarkGreen
-hi MtKey gui=underline,bold guibg=DarkGreen guifg=White
+hi MtHead guifg=DarkRed ctermfg=DarkRed
+hi MtComment guifg=DarkCyan ctermfg=DarkCyan
+hi MtMeat gui=underline guifg=DarkGreen ctermfg=DarkGreen
+hi MtKey gui=bold guibg=LightGreen guifg=Black
 \      ctermbg=DarkGreen ctermfg=White
-hi MtIssue guibg=DarkRed guifg=White ctermbg=DarkRed ctermfg=White
+hi MtIssue guibg=Red guifg=Black ctermbg=DarkRed ctermfg=White
 hi MtSolved guifg=Red ctermfg=DarkRed
-hi MtTodo guibg=DarkYellow guifg=Black ctermbg=DarkYellow ctermfg=Black
-hi MtDone guifg=Yellow ctermfg=DarkYellow
-hi MtTag guifg=Magenta ctermfg=DarkMagenta
-hi MtLink guifg=White guibg=DarkBlue ctermfg=DarkBlue
+hi MtTodo guibg=Yellow guifg=Black ctermbg=DarkYellow ctermfg=Black
+hi MtDone guifg=DarkYellow ctermfg=DarkYellow
+hi MtTag guifg=DarkMagenta ctermfg=DarkMagenta
+hi MtLink guifg=DarkBlue guibg=White ctermfg=DarkBlue
 hi MtUrl gui=underline guifg=DarkCyan ctermfg=DarkBlue
-hi MtSign guifg=Yellow ctermfg=DarkYellow
-hi MtJunk guifg=DarkGray ctermfg=Gray
-hi MtIndentTab guibg=Gray10
+hi MtSign guifg=DarkYellow ctermfg=DarkYellow
+hi MtJunk guifg=Gray ctermfg=Gray
+hi MtIndentTab guibg=Gray90
 hi MtWhiteTail guibg=DarkRed ctermbg=DarkRed
