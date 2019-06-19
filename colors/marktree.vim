@@ -2,23 +2,21 @@
 " xiaolong.wang@intel.com from Dec.2015
 
 if &background == "dark" " compatible to 8bit console, assume Grey on Black
-  hi Normal guifg=Gray guibg=Black ctermfg=Gray ctermbg=Black
-  hi Folded guifg=Black guibg=Gray40 ctermfg=Black ctermbg=DarkBlue
-  hi MtFence guifg=DarkYellow ctermfg=DarkYellow
-  hi MtHead guifg=Magenta ctermfg=Magenta
-  hi MtComment guifg=Cyan ctermfg=Cyan
-  hi MtMeat gui=underline ctermfg=Green
-  hi MtKey guifg=White guibg=DarkGreen
-\      ctermbg=DarkGreen ctermfg=Black
-  hi MtIssue guibg=DarkRed guifg=White ctermbg=DarkRed ctermfg=White
-  hi MtSolved guifg=Red ctermfg=Red
-  hi MtTodo guibg=DarkYellow guifg=White ctermbg=DarkYellow ctermfg=Black
-  hi MtDone guifg=Yellow ctermfg=Yellow
-  hi MtTag guifg=Magenta ctermfg=Magenta
-  hi MtLink guibg=DarkBlue ctermfg=Blue
-  hi MtUrl gui=underline guifg=Blue ctermfg=Blue
-  hi MtSign guifg=Yellow ctermfg=Yellow
-  hi MtJunk guifg=DarkGray ctermfg=DarkGray
+  hi Normal    guifg=Gray       guibg=Black      ctermfg=Gray       ctermbg=Black
+  hi Folded    guifg=Black      guibg=Gray40     ctermfg=Black      ctermbg=DarkBlue
+  hi MtFence   guifg=DarkYellow guibg=Black      ctermfg=DarkYellow ctermbg=Black
+  hi MtHead    guifg=Magenta    guibg=Black      ctermfg=Magenta    ctermbg=Black
+  hi MtComment guifg=Cyan       guibg=Black      ctermfg=Cyan       ctermbg=Black
+  hi MtMeat    guifg=Green      guibg=Black      ctermfg=Green      ctermbg=Black
+  hi MtKey     guifg=White      guibg=DarkGreen  ctermfg=White      ctermbg=DarkGreen
+  hi MtIssue   guifg=White      guibg=DarkRed    ctermfg=White      ctermbg=DarkRed
+  hi MtSolved  guifg=Red        guibg=Black      ctermfg=Red        ctermbg=Black
+  hi MtTodo    guifg=White      guibg=DarkYellow ctermfg=White      ctermbg=DarkYellow
+  hi MtDone    guifg=Yellow     guibg=Black      ctermfg=Yellow     ctermbg=Black
+  hi MtTag     guifg=Magenta    guibg=Black      ctermfg=Magenta    ctermbg=Black
+  hi MtLink    guifg=White      guibg=DarkBlue   ctermfg=White      ctermbg=DarkBlue
+  hi MtSign    guifg=Yellow     guibg=Black      ctermfg=Yellow     ctermbg=Black
+  hi MtJunk    guifg=DarkGray   guibg=Black      ctermfg=DarkGray   ctermbg=Black
   hi MtIndentTab guibg=Gray10
   hi MtWhiteTail guibg=DarkRed ctermbg=DarkRed
 else " light background, console should >=16 color, assume Black on White
