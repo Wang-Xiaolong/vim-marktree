@@ -243,8 +243,7 @@ syn match MtOption "<mt\S*>" contained
 syn region MtHead0 start="\%^" end="\n\(\\\s\)\@!" keepend
   \ contains=@MtHeadMark,MtFollowSign,MtOption,MtCommentLine
 
-hi def link MtHead0 MtHead
-hi def link MtHead1 MtHead
+hi def link MtHead0 MtHead1
 hi def link MtHead2 MtHead
 hi def link MtFollowSign MtFence
 hi def link MtOption MtSign

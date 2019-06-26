@@ -1,11 +1,13 @@
 " color/marktree.vim to highlight marktree leaves
 " xiaolong.wang@intel.com from Dec.2015
-
+hi clear
 if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi Normal    guifg=Gray       guibg=Black ctermfg=Gray       ctermbg=Black
   hi Folded    guifg=Black     guibg=Gray40 ctermfg=Black   ctermbg=DarkBlue
   hi MtFence   guifg=DarkYellow guibg=Black ctermfg=DarkYellow ctermbg=Black
   hi MtHead    guifg=Magenta    guibg=Black ctermfg=Magenta    ctermbg=Black
+  hi MtHead1   guifg=Magenta    guibg=Black ctermfg=Magenta    ctermbg=Black
+  hi MtHead1   gui=bold
   hi MtComment guifg=Cyan       guibg=Black ctermfg=Cyan       ctermbg=Black
   hi MtMeat    guifg=Green      guibg=Black ctermfg=Green      ctermbg=Black
   hi MtKey     guifg=White  guibg=DarkGreen ctermfg=White  ctermbg=DarkGreen
@@ -24,6 +26,8 @@ else " light background, console should >=16 color, assume Black on White
   hi Folded    guifg=Black      guibg=Gray70 ctermfg=Black    ctermbg=DarkBlue
   hi MtFence   guifg=DarkYellow  guibg=White ctermfg=DarkYellow  ctermbg=White
   hi MtHead    guifg=DarkMagenta guibg=White ctermfg=DarkMagenta ctermbg=White
+  hi MtHead1   guifg=DarkMagenta guibg=White ctermfg=DarkMagenta ctermbg=White
+  hi MtHead1   gui=bold
   hi MtComment guifg=DarkCyan    guibg=White ctermfg=DarkCyan    ctermbg=White
   hi MtMeat    guifg=DarkGreen   guibg=White ctermfg=DarkGreen   ctermbg=White
   hi MtKey     guifg=Black       guibg=Green ctermfg=Black       ctermbg=Green
