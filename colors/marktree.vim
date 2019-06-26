@@ -20,18 +20,21 @@ if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi MtIndentTab guibg=Gray10
   hi MtWhiteTail guibg=DarkRed ctermbg=DarkRed
 else " light background, console should >=16 color, assume Black on White
-  hi Normal guifg=DarkGray guibg=White ctermfg=DarkGray ctermbg=White
-  hi MtHead gui=bold guifg=DarkMagenta ctermfg=DarkMagenta
-  hi MtKey gui=underline,bold guifg=Orange ctermbg=Cyan
-  hi MtIssue guibg=Red guifg=White ctermfg=White ctermbg=Red
-  hi MtSolved guifg=Red ctermfg=DarkRed
-  hi MtTodo guibg=Yellow guifg=Black ctermbg=Yellow
-  hi MtDone guifg=DarkYellow ctermfg=DarkYellow
-  hi MtTag guifg=Magenta ctermfg=DarkMagenta
-  hi MtLink guifg=Blue ctermfg=Blue
-  hi MtUrl gui=underline guifg=DarkCyan ctermfg=Blue
-  hi MtSign guifg=DarkYellow ctermfg=DarkYellow
-  hi MtJunk guifg=Gray ctermfg=LightGray
+  hi Normal    guifg=Black       guibg=White ctermfg=Black       ctermbg=White
+  hi Folded    guifg=Black      guibg=Gray70 ctermfg=Black    ctermbg=DarkBlue
+  hi MtFence   guifg=DarkYellow  guibg=White ctermfg=DarkYellow  ctermbg=White
+  hi MtHead    guifg=DarkMagenta guibg=White ctermfg=DarkMagenta ctermbg=White
+  hi MtComment guifg=DarkCyan    guibg=White ctermfg=DarkCyan    ctermbg=White
+  hi MtMeat    guifg=DarkGreen   guibg=White ctermfg=DarkGreen   ctermbg=White
+  hi MtKey     guifg=Black       guibg=Green ctermfg=Black       ctermbg=Green
+  hi MtIssue   guifg=Black    guibg=lightRed ctermfg=Black         ctermbg=Red
+  hi MtSolved  guifg=Red         guibg=White ctermfg=Red         ctermbg=White
+  hi MtTodo    guifg=Black      guibg=Yellow ctermfg=Black      ctermbg=Yellow
+  hi MtDone    guifg=DarkYellow  guibg=White ctermfg=DarkYellow  ctermbg=White
+  hi MtTag     guifg=DarkMagenta guibg=White ctermfg=DarkMagenta ctermbg=White
+  hi MtLink    guifg=Black   guibg=LightBlue ctermfg=White        ctermbg=Blue
+  hi MtSign    guifg=DarkYellow  guibg=White ctermfg=DarkYellow  ctermbg=White
+  hi MtJunk    guifg=Gray        guibg=White ctermfg=Gray        ctermbg=White
   hi MtIndentTab guibg=Gray90
-  hi MtWhiteTail guibg=Blue ctermbg=Blue
+  hi MtWhiteTail guibg=lightRed ctermbg=Red
 endif
