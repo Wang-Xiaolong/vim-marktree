@@ -1,22 +1,22 @@
-" color/marktree.vim to highlight marktree leaves
-" xiaolong.wang@intel.com from Dec.2015
+" color/msr.vim to highlight marktree leaves for my monthly report.
+" just change head color to dark red upon light bg marktree scheme.
+" xiaolong.wang@intel.com from Jun.2019
 
-hi Normal guifg=Black guibg=White ctermfg=Black ctermbg=White
-hi MtFence guifg=DarkYellow ctermfg=DarkYellow
-hi MtBlockFence guifg=Yellow ctermfg=DarkYellow 
-hi MtHead guifg=DarkRed ctermfg=DarkRed
-hi MtComment guifg=DarkCyan ctermfg=DarkCyan
-hi MtMeat gui=underline guifg=DarkGreen ctermfg=DarkGreen
-hi MtKey gui=bold guibg=LightGreen guifg=Black
-\      ctermbg=DarkGreen ctermfg=White
-hi MtIssue guibg=Red guifg=Black ctermbg=DarkRed ctermfg=White
-hi MtSolved guifg=Red ctermfg=DarkRed
-hi MtTodo guibg=Yellow guifg=Black ctermbg=DarkYellow ctermfg=Black
-hi MtDone guifg=DarkYellow ctermfg=DarkYellow
-hi MtTag guifg=DarkMagenta ctermfg=DarkMagenta
-hi MtLink guifg=DarkBlue guibg=White ctermfg=DarkBlue
-hi MtUrl gui=underline guifg=DarkCyan ctermfg=DarkBlue
-hi MtSign guifg=DarkYellow ctermfg=DarkYellow
-hi MtJunk guifg=Gray ctermfg=Gray
+hi Normal    guifg=Black       guibg=White ctermfg=Black       ctermbg=White
+hi Folded    guifg=Black      guibg=Gray70 ctermfg=Black    ctermbg=DarkBlue
+hi MtFence   guifg=DarkYellow  guibg=White ctermfg=DarkYellow  ctermbg=White
+hi MtHead    guifg=DarkRed     guibg=White ctermfg=DarkRed     ctermbg=White
+hi MtComment guifg=DarkCyan    guibg=White ctermfg=DarkCyan    ctermbg=White
+hi MtMeat    guifg=DarkGreen   guibg=White ctermfg=DarkGreen   ctermbg=White
+hi MtKey     guifg=Black       guibg=Green ctermfg=Black       ctermbg=Green
+hi MtIssue   guifg=Black    guibg=lightRed ctermfg=Black         ctermbg=Red
+hi MtSolved  guifg=Red         guibg=White ctermfg=Red         ctermbg=White
+hi MtTodo    guifg=Black      guibg=Yellow ctermfg=Black      ctermbg=Yellow
+hi MtDone    guifg=DarkYellow  guibg=White ctermfg=DarkYellow  ctermbg=White
+hi MtTag     guifg=DarkMagenta guibg=White ctermfg=DarkMagenta ctermbg=White
+hi MtLink    guifg=Black   guibg=LightBlue ctermfg=White        ctermbg=Blue
+hi MtSign    guifg=DarkYellow  guibg=White ctermfg=DarkYellow  ctermbg=White
+hi MtJunk    guifg=Gray        guibg=White ctermfg=Gray        ctermbg=White
 hi MtIndentTab guibg=Gray90
-hi MtWhiteTail guibg=DarkRed ctermbg=DarkRed
+hi MtWhiteTail guibg=lightRed ctermbg=Red
+
