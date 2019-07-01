@@ -35,7 +35,7 @@ syn cluster MtLinet contains=MtIndent,MtWhiteTail
 hi def link MtTabAfterSpace MtWhiteTail
 
 " -- URL & Email --
-syn match MtUrl "[a-z]\{3,6}:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*"
+syn match MtUrl "[a-z]\{3,6}://\S*"
 syn match MtEmail "[a-z0-9_\.-]\+@[0-9a-z\.-]\+\.[a-z\.]\{2,6}"
 
 syn cluster MtAutoLink contains=MtUrl,MtEmail
