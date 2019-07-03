@@ -1,7 +1,7 @@
 " color/marktree.vim to highlight marktree leaves
 " xiaolong.wang@intel.com from Dec.2015
 hi clear
-if &background == "dark" " compatible to 8bit console, assume Grey on Black
+if &background == "dark" " compatible to 8bit console, assume Gray on Black
   hi Normal    guifg=Gray       guibg=Black ctermfg=Gray       ctermbg=Black
   hi Folded    guifg=Black     guibg=Gray40 ctermfg=Black   ctermbg=DarkBlue
   hi MtFence   guifg=DarkYellow             ctermfg=DarkYellow
@@ -22,7 +22,7 @@ if &background == "dark" " compatible to 8bit console, assume Grey on Black
   hi MtWhiteTail              guibg=DarkRed                  ctermbg=DarkRed
 else " light background, console should >=16 color, assume Black on White
   hi Normal    guifg=Black    guibg=White ctermfg=Black ctermbg=White
-  hi Folded                  guibg=Gray70            ctermbg=DarkBlue
+  hi Folded    guifg=Black     guibg=Gray ctermfg=Black  ctermbg=Gray
   hi MtFence   guifg=DarkYellow           ctermfg=DarkYellow
   hi MtHead    guifg=DarkMagenta          ctermfg=DarkMagenta
   hi MtHead1   guifg=DarkMagenta gui=bold ctermfg=DarkMagenta

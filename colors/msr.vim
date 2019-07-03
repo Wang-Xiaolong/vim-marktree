@@ -3,7 +3,7 @@
 " xiaolong.wang@intel.com from Jun.2019
 hi clear
 hi Normal    guifg=Black guibg=White ctermfg=Black ctermbg=White
-hi Folded               guibg=Gray70            ctermbg=DarkBlue
+hi Folded    guifg=Black  guibg=Gray ctermfg=Black  ctermbg=Gray
 hi MtFence   guifg=DarkYellow        ctermfg=DarkYellow
 hi MtHead    guifg=DarkRed           ctermfg=DarkRed
 hi MtHead1   guifg=DarkRed  gui=bold ctermfg=DarkRed
