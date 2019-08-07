@@ -188,7 +188,7 @@ syn region MtCode1Block matchgroup=MtBlockFence start="\[//|" end="|\]"
   \ contains=@MtLinet,MtCode1Comment
 syn match MtCode1Comment "//.*$" contains=@MtCommentLineMark contained
 syn region MtCode1Comment start="/\*" end="\*/"
-  \ contains=@MtStrictCommentRegionMark contained
+  \ contains=@MtLinet,@MtStrictCommentRegionMark contained
 
 hi def link MtCode1Block MtCode
 hi def link MtCode1Comment MtComment
