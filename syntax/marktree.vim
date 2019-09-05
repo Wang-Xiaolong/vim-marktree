@@ -68,6 +68,9 @@ if b:MtKeyWordEn
 	syn match MtKeyWordFence "*" contained
 	hi def link MtKeyWordFence MtFence
 	syn match MtKey "\*\@<!\*\k*\>" contains=MtKeyWordFence
+	syn match MtKeyLongWordFence "\*\*" contained
+	hi def link MtKeyLongWordFence MtFence
+	syn match MtKey "\*\@<!\*\*\*\@!\S*" contains=MtKeyLongWordFence
 endif
 if b:MtIssueWordEn
 	syn match MtIssueWordFence "?" contained

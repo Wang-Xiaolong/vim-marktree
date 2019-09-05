@@ -142,7 +142,8 @@ multiple lines!>
 </!!strict>Done region!>
 
 *Key_word Normal *another_Key_word a lone * no hi
-**2_stars doesn't work, strict!
+**K.e,y*-long-w+o)r|d **another**key-long-word
+***3_stars doesn't work, strict!
 <*Key region > >a >> a>> >>> -> => >=.> <<*not work> =<*not work>
 
 <#Tag region > >a >> a>> -> => >=.> <<#not work> =<#not work>
