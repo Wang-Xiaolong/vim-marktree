@@ -121,21 +121,21 @@ syn region MtJunk start="[<=]\@<!<\\"
 " Dual-sign
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
   \ contains=MtWhiteTail,@MtCommentLineMark oneline keepend
-syn region MtIssueLine matchgroup=MtFence start="?\@<!???\@!" end="$"
-  \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtSolvedLine matchgroup=MtFence start="/???\@!" end="$"
-  \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtSolvedLine matchgroup=MtFence start="/???\@!\|?\@<!???\@!"
-  \ end="\([</]/\)\@=" contains=MtKey oneline
-syn region MtTodoLine matchgroup=MtFence start="!\@<!!!!\@!" end="$"
-  \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtDoneLine matchgroup=MtFence start="/!!!\@!" end="$"
-  \ contains=WtWhiteTail,MtKey oneline keepend
-syn region MtDoneLine matchgroup=MtFence start="/!!!\@!\|!\@<!!!!\@!"
-  \ end="\([</]/\)\@=" contains=MtKey oneline
 syn region MtJunkLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
 " Single-sign
+syn region MtIssueLine matchgroup=MtFence start="\S\@<!?\s\@=" end="$"
+  \ contains=MtWhiteTail,MtKey oneline keepend
+syn region MtSolvedLine matchgroup=MtFence start="\S\@<!/?\s\@=" end="$"
+  \ contains=MtWhiteTail,MtKey oneline keepend
+syn region MtSolvedLine matchgroup=MtFence start="\S\@<!/\=?\s\@="
+  \ end="\([</]/\)\@=" contains=MtKey oneline
+syn region MtTodoLine matchgroup=MtFence start="\S\@<!!\s\@=" end="$"
+  \ contains=MtWhiteTail,MtKey oneline keepend
+syn region MtDoneLine matchgroup=MtFence start="\S\@<!/!\s\@=" end="$"
+  \ contains=WtWhiteTail,MtKey oneline keepend
+syn region MtDoneLine matchgroup=MtFence start="\S\@<!/\=!\s\@="
+  \ end="\([</]/\)\@=" contains=MtKey oneline
 syn region MtMeatLine matchgroup=MtFence start="\S\@<!_\s\@=" end="$"
   \ contains=@MtLinet,@MtMeatLineMark oneline keepend
 syn region MtLinkLine matchgroup=MtFence start="\(^\s*\)\@<=[~]\s\@=" end="$"

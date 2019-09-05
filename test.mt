@@ -85,22 +85,22 @@ like this/>
 /?solved_Issue_word, a lone /? should not be effecte.
 Normal/?solved_Issue_word//and Comment after it
 
-??Issue line
-Normal??Issue line
-??? 3? not work, it's strict
-??Issue line//can be natually solved by a Comment line after it
-???Issue line//3? no work, strict
-??Issue line</can be natually solved by a Comment region after it>
-???Issue line//3? no work, strict
-???Issue line</3? no work, strict>
-??It's</a little hack>that??you can</write>multiple??issue lines</in>one line.
-/??solved Issue line
-Nomral/??solved Issue line
-/???3? not work, strict
-/??solved Issue line//can also have Comment line after it
-/??solved Issue line</can also have Comment region after it>Normal
-/???solved Issue line//3? not work, strict
-/???solved Issue line</3? not work, strict>
+? Issue line
+Normal ? Issue line
+?? 2? not work, it's strict
+? Issue line//can be natually solved by a Comment line after it
+?? Issue line//2? no work, strict
+? Issue line</can be natually solved by a Comment region after it>
+?? Issue line//2? no work, strict
+?? Issue line</2? no work, strict>
+? It's</a little hack>that ? you can</write>multiple ? issue lines</in>one line.
+/? solved Issue line
+Nomral /? solved Issue line
+/?? 2? not work, strict
+/? solved Issue line//can also have Comment line after it
+/? solved Issue line</can also have Comment region after it>Normal
+/?? solved Issue line//2? not work, strict
+/?? solved Issue line</2? not work, strict>
 
 Normal<?Issue region, can have > >a >> >>> a>> -> => >= in it>Normal
 <<?not work>, =<?not work>, strict
@@ -118,22 +118,22 @@ like this/>
 /!Done_word, a lone /? should not be effecte.
 Normal/!Done_word//and Comment after it
 
-!!Todo line
-Normal!!Todo line
-!!! 3! not work, it's strict
-!!Todo line//can be natually solved by a Comment line after it
-!!!Issue line//3? no work, strict
-!!Todo line</can be natually solved by a Comment region after it>
-!!!Issue line//3? no work, strict
-!!!Issue line</3? no work, strict>
-!!It's</a little hack>that!!you can</write>multiple!!todo lines</in>one line.
-/!!Done line
-Nomral/!!Done line
-/!!!3! not work, strict
-/!!Done line//can also have Comment line after it
-/!!Done line</can also have Comment region after it>Normal
-/!!!Done line//3? not work, strict
-/!!!Done line</3? not work, strict>
+! Todo line
+Normal ! Todo line
+!! 2! not work, it's strict
+! Todo line//can be natually solved by a Comment line after it
+!! Todo line//2? no work, strict
+! Todo line</can be natually solved by a Comment region after it>
+!! Todo line//2? no work, strict
+!! Todo line</2? no work, strict>
+! It's</a little hack>that ! you can</write>multiple ! todo lines</in>one line.
+/! Done line
+Nomral /! Done line
+/!! 2! not work, strict
+/! Done line//can also have Comment line after it
+/! Done line</can also have Comment region after it>Normal
+/!! Done line//2? not work, strict
+/!! Done line</2? not work, strict>
 
 Normal<!Todo region, can have > >a >> a>> >>> -> => >= in it>Normal
 <!!strict Todo region is for a> a>b or
