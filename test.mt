@@ -104,10 +104,10 @@ Nomral /? solved Issue line
 
 Normal<?Issue region, can have > >a >> >>> a>> -> => >= in it>Normal
 <<?not work>, =<?not work>, strict
-<??strict Issue region is for where you need a>b|a>, or
+<? strict Issue region is for where you need a>b|a>, or
 expand to multiple lines?>
 </?solved Issue region>
-</??solved strict>Issue region?>
+</? solved strict>Issue region?>
 
 !Todo_word Normal !another_Todo_word a lone ! no hi
 !Todo_word//can be natually done by a Comment line after it
@@ -136,10 +136,10 @@ Nomral /! Done line
 /!! Done line</2? not work, strict>
 
 Normal<!Todo region, can have > >a >> a>> >>> -> => >= in it>Normal
-<!!strict Todo region is for a> a>b or
+<! strict Todo region is for a> a>b or
 multiple lines!>
 </!Done region>
-</!!strict>Done region!>
+</! strict>Done region!>
 
 *Key_word Normal *another_Key_word a lone * no hi
 **K.e,y*-long-w+o)r|d **another**key-long-word

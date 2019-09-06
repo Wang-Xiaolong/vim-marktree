@@ -157,13 +157,13 @@ hi def link MtCodeLine MtCode
 " For > using element, or big one with multi lines. May contain other marks.
 syn region MtComment matchgroup=MtFence start="<//" end="/>"
   \ contains=@MtLinet,@MtStrictCommentRegionMark
-syn region MtIssue matchgroup=MtFence start="<??"  end="?>"
+syn region MtIssue matchgroup=MtFence start="<?\s"  end="?>"
   \ contains=@MtLinet,MtKey
-syn region MtSolved matchgroup=MtFence start="</??" end="?>"
+syn region MtSolved matchgroup=MtFence start="</?\s" end="?>"
   \ contains=@MtLinet,MtKey
-syn region MtTodo matchgroup=MtFence start="<!!"  end="!>"
+syn region MtTodo matchgroup=MtFence start="<!\s"  end="!>"
   \ contains=@MtLinet,MtKey
-syn region MtDone matchgroup=MtFence start="</!!" end="!>"
+syn region MtDone matchgroup=MtFence start="</!\s" end="!>"
   \ contains=@MtLinet,MtKey
 syn region MtJunk start="<\\\\" end="\\>" contains=@MtLinet
 syn region MtMeat matchgroup=MtFence start="<_\s"  end="_>"
