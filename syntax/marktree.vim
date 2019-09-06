@@ -94,6 +94,9 @@ if b:MtTagWordEn
 	syn match MtTagWordFence "#" contained
 	hi def link MtTagWordFence MtFence
 	syn match MtTag "\S\@<!#\k*\>" contains=MtTagWordFence
+	syn match MtTagLooseWordFence "##" contained
+	hi def link MtTagLooseWordFence MtFence
+	syn match MtTag "\S\@<!###\@!\S*" contains=MtTagLooseWordFence
 endif
 if b:MtLinkWordEn
 	syn match MtLinkWordFence "[~]" contained

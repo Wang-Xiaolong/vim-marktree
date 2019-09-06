@@ -146,7 +146,7 @@ multiple lines!>
 ***3_stars doesn't work, strict!
 <*Key region > >a >> a>> >>> -> => >=.> <<*not work> =<*not work>
 
-#Tag_word
+#Tag_word ##Tag-loose/word
 ~Link_word
 <#Tag region > >a >> a>> -> => >=.> <<#not work> =<#not work>
 <~Link region > >a >> a>> -> => >=.> <<~not work> =<~not work>
