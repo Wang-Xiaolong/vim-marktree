@@ -26,6 +26,8 @@ if s:opt == ""
 	let b:MtKeyWordEn = 1
 	let b:MtIssueWordEn = 1
 	let b:MtTodoWordEn = 1
+	let b:MtTagWordEn = 1
+	let b:MtLinkWordEn = 1
 	exit
 endif
 
@@ -53,10 +55,14 @@ if s:opt =~ '\^'
 	let b:MtKeyWordEn = (s:opt !~ '*')
 	let b:MtIssueWordEn = (s:opt !~ '?')
 	let b:MtTodoWordEn = (s:opt !~ '!')
+	let b:MtTagWordEn = (s:opt !~ '#')
+	let b:MtLinkWordEn = (s:opt !~ '[~]')
 else
 	let b:MtKeyWordEn = (s:opt =~ '*')
 	let b:MtIssueWordEn = (s:opt =~ '?')
 	let b:MtTodoWordEn = (s:opt =~ '!')
+	let b:MtTagWordEn = (s:opt =~ '#')
+	let b:MtLinkWordEn = (s:opt =~ '[~]')
 endif
 " End of init
 

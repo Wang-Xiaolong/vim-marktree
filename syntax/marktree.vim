@@ -90,6 +90,16 @@ if b:MtTodoWordEn
 	hi def link MtDoneWordFence MtFence
 	syn match MtDone "/!\k*\>" contains=MtDoneWordFence
 endif
+if b:MtTagWordEn
+	syn match MtTagWordFence "#" contained
+	hi def link MtTagWordFence MtFence
+	syn match MtTag "\S\@<!#\k*\>" contains=MtTagWordFence
+endif
+if b:MtLinkWordEn
+	syn match MtLinkWordFence "[~]" contained
+	hi def link MtLinkWordFence MtFence
+	syn match MtLink "\S\@<![~]\k*\>" contains=MtLinkWordFence
+endif
 
 " -- Standard Region --------------------------------------------------------
 " For phrase and sentense, limited to oneline and pure (contain nothing)
