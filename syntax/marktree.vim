@@ -98,6 +98,15 @@ if b:MtTodoWordEn
 	syn match MtDoneWordFence "/!" contained
 	hi def link MtDoneWordFence MtFence
 	syn match MtDone "/!\k*\>" contains=MtDoneWordFence
+
+	syn match MtTodoLooseWordFence "!!" contained
+	hi def link MtTodoLooseWordFence MtFence
+	syn match MtTodo "!\@<!!!!\@!\S\+" contains=MtTodoLooseWordFence
+	syn match MtDoneLooseWordFence "/!!" contained
+	hi def link MtDoneLooseWordFence MtFence
+	syn match MtDone "/!!!\@!\S\+" contains=MtDoneLooseWordFence
+	syn match MtDone "\(!\@<!\|/\)!!!\@!\S\+\([</]/\)\@="
+	  \ contains=MtTodoLooseWordFence,MtDoneLooseWordFence
 endif
 if b:MtTagWordEn
 	syn match MtTagWordFence "#" contained

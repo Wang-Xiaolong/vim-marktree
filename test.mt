@@ -67,10 +67,10 @@ Normal//Comment line
 <//strict Comment region for a> a>b
 and multiple lines and can contain *keyword <?issue region> <!!todo>region!>
 _ meat line
-comment??issue line
-comment!!todo line
-comment??fix line//solution
-comment!!done line</solution>
+comment ? issue line
+comment ! todo line
+comment ? fix line//solution
+comment ! done line</solution>
 />
 [/Comment block (level 6)/]
 Normal [/Comment block can expand to multiple lines, (level 6)
@@ -112,14 +112,17 @@ expand to multiple lines?>
 </?fix region>
 </? strict fix>region?>
 
-!Todo_word Normal !another_Todo_word a lone ! no hi
+!Todo_word Normal !another_Todo_word !!loose/todo!word
 !Todo_word//can be natually done by a Comment line after it
+	!!Loose-todo~word//test
 !Todo_word</can be nutually done by a Comment region after it>
+	!!Loose}todo[word</test>
 !Todo_word<//and the strict Comment region can contain multiple lines,
 like this/>
 !multi</Done>!word</in>!one</line>
-/!Done_word, a lone /? should not be effecte.
+/!Done_word, /!!Loose/done!word
 Normal/!Done_word//and Comment after it
+	/!!Loose&done@word//test
 
 ! Todo line
 Normal ! Todo line
