@@ -102,6 +102,9 @@ if b:MtLinkWordEn
 	syn match MtLinkWordFence "[~]" contained
 	hi def link MtLinkWordFence MtFence
 	syn match MtLink "\S\@<![~]\k*\>" contains=MtLinkWordFence
+	syn match MtLinkLooseWordFence "[~][~]" contained
+	hi def link MtLinkLooseWordFence MtFence
+	syn match MtLink "\S\@<![~][~][~]\@!\S*" contains=MtLinkLooseWordFence
 endif
 
 " -- Standard Region --------------------------------------------------------

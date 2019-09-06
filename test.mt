@@ -147,7 +147,7 @@ multiple lines!>
 <*Key region > >a >> a>> >>> -> => >=.> <<*not work> =<*not work>
 
 #Tag_word ##Tag-loose/word
-~Link_word
+~Link_word ~~Link-loose/word
 <#Tag region > >a >> a>> -> => >=.> <<#not work> =<#not work>
 <~Link region > >a >> a>> -> => >=.> <<~not work> =<~not work>
 (#1) Note (~1) Link to note
