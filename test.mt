@@ -76,14 +76,17 @@ comment!!done line</solution>
 Normal [/Comment block can expand to multiple lines, (level 6)
 like this. (level 7)/]
 
-?Issue_word Normal ?another_Issue_word, a lone ? should not be effected.
+?Issue_word Normal ?another_Issue_word, ??a/loose?issu~word
 ?Issue_word//can be natually fix by a Comment line after it
+	??loose/issue?word//test
 ?Issue_word</can be natually fix by a Comment region after it>
+	??loose/issue?word</test>
 ?Issue_word<//and the Comment region can contain multiple lines,
 like this/>
 ?multi</issue>?word</in>?one</line>
-/?fix_word, a lone /? should not be effecte.
+/?fix_word, /??a\loose=fix|word
 Normal/?fix_word//and Comment after it
+	/??loose/fix?word//test
 
 ? Issue line
 Normal ? Issue line

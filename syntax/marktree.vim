@@ -80,6 +80,15 @@ if b:MtIssueWordEn
 	syn match MtFixWordFence "/?" contained
 	hi def link MtFixWordFence MtFence
 	syn match MtFix "/?\k*\>" contains=MtFixWordFence
+
+	syn match MtIssueLooseWordFence "??" contained
+	hi def link MtIssueLooseWordFence MtFence
+	syn match MtIssue "?\@<!???\@!\S\+" contains=MtIssueLooseWordFence
+	syn match MtFixLooseWordFence "/??" contained
+	hi def link MtFixLooseWordFence MtFence
+	syn match MtFix "/???\@!\S\+" contains=MtFixLooseWordFence
+	syn match MtFix "\(?\@<!\|/\)???\@!\S\+\([</]/\)\@="
+	  \ contains=MtIssueLooseWordFence,MtFixLooseWordFence
 endif
 if b:MtTodoWordEn
 	syn match MtTodoWordFence "!" contained
