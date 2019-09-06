@@ -2,9 +2,9 @@
 \ have multiple lines (Level 0) and put a ==, --, ?, *, ! or other element at
 \ the beginning of it will not cause it hi like normal or head0/1.
 \ File Head can contain *key <*key region> <#tag> <~link> ?issue <?issue region>
-\ <??issue>region?> </?solved region> !todo <!todo region> <!!todo>region!>
-\ still/!done ?natural_solved</commend region> !natual_done//comment line
-\ still File Head ?natural_solved//comment line
+\ <??issue>region?> </?fix region> !todo <!todo region> <!!todo>region!>
+\ still/!done ?natural_fix</commend region> !natual_done//comment line
+\ still File Head ?natural_fix//comment line
 \ still
 Normal text (Level 6)
 	Lower level by adding more heading tabs (Level 7)
@@ -35,9 +35,9 @@ Normal text (Level 6)
 \ have an end --
 -- and can contain '--' in it
 -- Single-lane Head can *contain ?word !marks\
-\ and region marks like <*key region> <?issue region> </?solved region>
+\ and region marks like <*key region> <?issue region> </?fix region>
 \ <!todo region> </!done region> </comment region> <//comment>region/>
-\ <??issue>region?> </??solved>region?> <!!todo>region!> </!!done>region!>
+\ <??issue>region?> </??fix>region?> <!!todo>region!> </!!done>region!>
 \ <#tag region> <~link region> <_meat region> <_ meat>region_>
 \ //comment line *key
 \ //comment line --
@@ -69,7 +69,7 @@ and multiple lines and can contain *keyword <?issue region> <!!todo>region!>
 _ meat line
 comment??issue line
 comment!!todo line
-comment??solved line//solution
+comment??fix line//solution
 comment!!done line</solution>
 />
 [/Comment block (level 6)/]
@@ -77,37 +77,37 @@ Normal [/Comment block can expand to multiple lines, (level 6)
 like this. (level 7)/]
 
 ?Issue_word Normal ?another_Issue_word, a lone ? should not be effected.
-?Issue_word//can be natually solved by a Comment line after it
-?Issue_word</can be natually solved by a Comment region after it>
+?Issue_word//can be natually fix by a Comment line after it
+?Issue_word</can be natually fix by a Comment region after it>
 ?Issue_word<//and the Comment region can contain multiple lines,
 like this/>
 ?multi</issue>?word</in>?one</line>
-/?solved_Issue_word, a lone /? should not be effecte.
-Normal/?solved_Issue_word//and Comment after it
+/?fix_word, a lone /? should not be effecte.
+Normal/?fix_word//and Comment after it
 
 ? Issue line
 Normal ? Issue line
 ?? 2? not work, it's strict
-? Issue line//can be natually solved by a Comment line after it
+? Issue line//can be natually fix by a Comment line after it
 ?? Issue line//2? no work, strict
-? Issue line</can be natually solved by a Comment region after it>
+? Issue line</can be natually fix by a Comment region after it>
 ?? Issue line//2? no work, strict
 ?? Issue line</2? no work, strict>
 ? It's</a little hack>that ? you can</write>multiple ? issue lines</in>one line.
-/? solved Issue line
-Nomral /? solved Issue line
+/? fix line
+Nomral /? fix line
 /?? 2? not work, strict
-/? solved Issue line//can also have Comment line after it
-/? solved Issue line</can also have Comment region after it>Normal
-/?? solved Issue line//2? not work, strict
-/?? solved Issue line</2? not work, strict>
+/? fix line//can also have Comment line after it
+/? fix line</can also have Comment region after it>Normal
+/?? fix line//2? not work, strict
+/?? fix line</2? not work, strict>
 
 Normal<?Issue region, can have > >a >> >>> a>> -> => >= in it>Normal
 <<?not work>, =<?not work>, strict
 <? strict Issue region is for where you need a>b|a>, or
 expand to multiple lines?>
-</?solved Issue region>
-</? solved strict>Issue region?>
+</?fix region>
+</? strict fix>region?>
 
 !Todo_word Normal !another_Todo_word a lone ! no hi
 !Todo_word//can be natually done by a Comment line after it
@@ -121,9 +121,9 @@ Normal/!Done_word//and Comment after it
 ! Todo line
 Normal ! Todo line
 !! 2! not work, it's strict
-! Todo line//can be natually solved by a Comment line after it
+! Todo line//can be natually fix by a Comment line after it
 !! Todo line//2? no work, strict
-! Todo line</can be natually solved by a Comment region after it>
+! Todo line</can be natually fix by a Comment region after it>
 !! Todo line//2? no work, strict
 !! Todo line</2? no work, strict>
 ! It's</a little hack>that ! you can</write>multiple ! todo lines</in>one line.
@@ -162,22 +162,22 @@ Normal_ no work
   _    work
   _	tab after, work
 	_ tab before, work, !done</comment region> still meat
-Normal _ Meat line *key ?solved//comment line
+Normal _ Meat line *key ?fix//comment line
 <_Meat region>
 <_ strict Meat region for a> a>b and
 multiple line
 and can contain </comment region> //comment line
 *key <?issue region> <!!todo>region!>
-??issue line
-??solved line//solution
+? issue line
+? fix line//solution
 still meat_>
 
-\\Junk line
-	\\ tab and Junk line
-	  \\ tab, space and Junk line
+\\Fade line
+	\\ tab and Fade line
+	  \\ tab, space and Fade line
 	  \\\ 3\ no work, strict
-Normal<\Junk region > >a >> a>> >>> -> => >=.>Normal
-<\\strict Junk region for a> a>b and
+Normal<\Fade region > >a >> a>> >>> -> => >=.>Normal
+<\\strict Fade region for a> a>b and
 multiple lines\>
 
 | Code line
@@ -189,16 +189,16 @@ multiple lines\>
 [|Code block is for
 multiple line|]
 C, Java, Go, PHP [//|
-Code //Comment line *key <?issue region> <!!todo>region!> ?solved//solution
+Code //Comment line *key <?issue region> <!!todo>region!> ?fix//solution
 Code /* Comment region *key <?issue region> <!!todo>region!>
-?solved</solution> !!done line//comment
+?fix</solution> !!done line//comment
 //comment line
 */ Code |]
 Shell, Perl, Python, Ruby, Power, PHP, Makefile [#|
-# comment line *key <?issue region> <!!todo>region!> ?solved//solution
+# comment line *key <?issue region> <!!todo>region!> ?fix//solution
 |]
 Assembly, Lisp [;|
-; comment line *key <?issue region> <!!todo>region!> ?solved//solution
+; comment line *key <?issue region> <!!todo>region!> ?fix//solution
 |]
 SQL, Ada, Lua, VHDL [--|
 -- comment line *key <?issue region> <!!todo>region!> !done//solution
