@@ -148,7 +148,7 @@ multiple lines!>
 
 #Tag_word ##Tag-loose/word
 ~Link_word ~~Link-loose/word
-<#Tag region > >a >> a>> -> => >=.> <<#not work> =<#not work>
+<#Tag region > >a >> a>> -> => >=.> <<#not work> =<#not work> <*#tag high>
 <~Link region > >a >> a>> -> => >=.> <<~not work> =<~not work>
 (#1) Note (~1) Link to note
 [#1] Bibl [~1] Link to Bibl

@@ -125,6 +125,8 @@ syn region MtDone matchgroup=MtFence start="[=<]\@<!</!"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtTag matchgroup=MtFence start="[<=]\@<!</\=#"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
+syn region MtTagHi matchgroup=MtFence start="[<=]\@<!<\*#"
+  \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtLink matchgroup=MtFence start="[<=]\@<!<[~]"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtCode matchgroup=MtFence start="[<=]\@<!<|"
