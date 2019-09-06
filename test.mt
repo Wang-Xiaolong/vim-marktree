@@ -142,7 +142,7 @@ multiple lines!>
 </! strict>Done region!>
 
 *Key_word Normal *another_Key_word a lone * no hi
-**K.e,y*-long-w+o)r|d **another**key-long-word
+**K.e,y*-loose-w+o)r|d **another**key-loose-word
 ***3_stars doesn't work, strict!
 <*Key region > >a >> a>> >>> -> => >=.> <<*not work> =<*not work>
 
