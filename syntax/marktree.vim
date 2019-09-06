@@ -167,23 +167,23 @@ syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
 syn region MtFadeLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
 " Single-sign
-syn region MtIssueLine matchgroup=MtFence start="\S\@<!?\s\@=" end="$"
+syn region MtIssueLine matchgroup=MtFence start="\S\@<!?\s\+" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtFixLine matchgroup=MtFence start="\S\@<!/?\s\@=" end="$"
+syn region MtFixLine matchgroup=MtFence start="\S\@<!/?\s\+" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtFixLine matchgroup=MtFence start="\S\@<!/\=?\s\@="
+syn region MtFixLine matchgroup=MtFence start="\S\@<!/\=?\s\+"
   \ end="\([</]/\)\@=" contains=MtKey oneline
-syn region MtTodoLine matchgroup=MtFence start="\S\@<!!\s\@=" end="$"
+syn region MtTodoLine matchgroup=MtFence start="\S\@<!!\s\+" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtDoneLine matchgroup=MtFence start="\S\@<!/!\s\@=" end="$"
+syn region MtDoneLine matchgroup=MtFence start="\S\@<!/!\s\+" end="$"
   \ contains=WtWhiteTail,MtKey oneline keepend
-syn region MtDoneLine matchgroup=MtFence start="\S\@<!/\=!\s\@="
+syn region MtDoneLine matchgroup=MtFence start="\S\@<!/\=!\s\+"
   \ end="\([</]/\)\@=" contains=MtKey oneline
-syn region MtMeatLine matchgroup=MtFence start="\S\@<!_\s\@=" end="$"
+syn region MtMeatLine matchgroup=MtFence start="\S\@<!_\s\+" end="$"
   \ contains=@MtLinet,@MtMeatLineMark oneline keepend
-syn region MtLinkLine matchgroup=MtFence start="\(^\s*\)\@<=[~]\s\@=" end="$"
+syn region MtLinkLine matchgroup=MtFence start="\(^\s*\)\@<=[~]\s\+" end="$"
   \ contains=@MtLinet oneline keepend
-syn region MtCodeLine matchgroup=MtFence start="\(^\t*\)\@<=|\s\@=" end="$"
+syn region MtCodeLine matchgroup=MtFence start="\(^\t*\)\@<=|\s\+" end="$"
   \ contains=@MtLinet oneline keepend
 
 hi def link MtCommentLine MtComment
