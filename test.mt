@@ -142,12 +142,12 @@ multiple lines!>
 </! strict>Done region!>
 
 *Key_word Normal *another_Key_word a lone * no hi
-**K.e,y*-loose-w+o)r|d **another**key-loose-word
+**K.e,y*-loose-w+o)r|d **another**key-loose-word * **
 ***3_stars doesn't work, strict!
 <*Key region > >a >> a>> >>> -> => >=.> <<*not work> =<*not work>
 
-#Tag_word ##Tag-loose/word *#Tag_hi_word *##tag-hi/loose\word
-~Link_word ~~Link-loose/word
+#Tag_word ##Tag-loose/word *#Tag_hi_word *##tag-hi/loose\word # ## *# *##
+~Link_word ~~Link-loose/word ~ ~~
 <#Tag region > >a >> a>> -> => >=.> <<#not work> =<#not work> <*#tag high>
 <~Link region > >a >> a>> -> => >=.> <<~not work> =<~not work>
 (#1) Note (~1) Link to note

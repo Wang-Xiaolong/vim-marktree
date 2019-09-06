@@ -70,7 +70,7 @@ if b:MtKeyWordEn
 	syn match MtKey "\*\@<!\*\k*\>" contains=MtKeyWordFence
 	syn match MtKeyLooseWordFence "\*\*" contained
 	hi def link MtKeyLooseWordFence MtFence
-	syn match MtKey "\*\@<!\*\*\*\@!\S*" contains=MtKeyLooseWordFence
+	syn match MtKey "\*\@<!\*\*\*\@!\S\+" contains=MtKeyLooseWordFence
 endif
 if b:MtIssueWordEn
 	syn match MtIssueWordFence "?" contained
@@ -96,14 +96,14 @@ if b:MtTagWordEn
 	syn match MtTag "\S\@<!#\k*\>" contains=MtTagWordFence
 	syn match MtTagLooseWordFence "##" contained
 	hi def link MtTagLooseWordFence MtFence
-	syn match MtTag "\S\@<!###\@!\S*" contains=MtTagLooseWordFence
+	syn match MtTag "\S\@<!###\@!\S\+" contains=MtTagLooseWordFence
 
 	syn match MtTagHiWordFence "\*#" contained
 	hi def link MtTagHiWordFence MtFence
 	syn match MtTagHi "\S\@<!\*#\k*\>" contains=MtTagHiWordFence
 	syn match MtTagHiLooseWordFence "\*##" contained
 	hi def link MtTagHiLooseWordFence MtFence
-	syn match MtTagHi "\S\@<!\*###\@!\S*" contains=MtTagHiLooseWordFence
+	syn match MtTagHi "\S\@<!\*###\@!\S\+" contains=MtTagHiLooseWordFence
 endif
 if b:MtLinkWordEn
 	syn match MtLinkWordFence "[~]" contained
@@ -111,7 +111,7 @@ if b:MtLinkWordEn
 	syn match MtLink "\S\@<![~]\k*\>" contains=MtLinkWordFence
 	syn match MtLinkLooseWordFence "[~][~]" contained
 	hi def link MtLinkLooseWordFence MtFence
-	syn match MtLink "\S\@<![~][~][~]\@!\S*" contains=MtLinkLooseWordFence
+	syn match MtLink "\S\@<![~][~][~]\@!\S\+" contains=MtLinkLooseWordFence
 endif
 
 " -- Standard Region --------------------------------------------------------
