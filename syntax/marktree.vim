@@ -113,7 +113,7 @@ syn region MtLink matchgroup=MtFence start="[<=]\@<!<[~]"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtCode matchgroup=MtFence start="[<=]\@<!<|"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
-syn region MtJunk start="[<=]\@<!<\\"
+syn region MtFade start="[<=]\@<!<\\"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 
 " -- Line -------------------------------------------------------------------
@@ -121,7 +121,7 @@ syn region MtJunk start="[<=]\@<!<\\"
 " Dual-sign
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
   \ contains=MtWhiteTail,@MtCommentLineMark oneline keepend
-syn region MtJunkLine start="^\s*\\\\\\\@!" end="$"
+syn region MtFadeLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
 " Single-sign
 syn region MtIssueLine matchgroup=MtFence start="\S\@<!?\s\@=" end="$"
@@ -150,7 +150,7 @@ hi def link MtTodoLine MtTodo
 hi def link MtDoneLine MtDone
 hi def link MtMeatLine MtMeat
 hi def link MtLinkLine MtLink
-hi def link MtJunkLine MtJunk
+hi def link MtFadeLine MtFade
 hi def link MtCodeLine MtCode
 
 " -- Strict Region ----------------------------------------------------------
@@ -165,7 +165,7 @@ syn region MtTodo matchgroup=MtFence start="<!\s"  end="!>"
   \ contains=@MtLinet,MtKey
 syn region MtDone matchgroup=MtFence start="</!\s" end="!>"
   \ contains=@MtLinet,MtKey
-syn region MtJunk start="<\\\\" end="\\>" contains=@MtLinet
+syn region MtFade start="<\\\\" end="\\>" contains=@MtLinet
 syn region MtMeat matchgroup=MtFence start="<_\s"  end="_>"
   \ contains=@MtLinet,@MtStrictMeatRegionMark
 syn region MtLink matchgroup=MtFence start="<[~]\s" end="[~]>"

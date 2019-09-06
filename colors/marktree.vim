@@ -17,7 +17,7 @@ if &background == "dark" " compatible to 8bit console, assume Gray on Black
   hi MtTag     guifg=Magenta                ctermfg=Magenta
   hi MtLink    guifg=White   guibg=DarkBlue ctermfg=White   ctermbg=DarkBlue
   hi MtSign    guifg=Yellow                 ctermfg=Yellow
-  hi MtJunk    guifg=DarkGray               ctermfg=DarkGray
+  hi MtFade    guifg=DarkGray               ctermfg=DarkGray
   hi MtIndentTab               guibg=Gray10
   hi MtWhiteTail              guibg=DarkRed                  ctermbg=DarkRed
 else " light background, console should >=16 color, assume Black on White
@@ -36,7 +36,7 @@ else " light background, console should >=16 color, assume Black on White
   hi MtTag     guifg=DarkMagenta          ctermfg=DarkMagenta
   hi MtLink               guibg=LightBlue ctermfg=White  ctermbg=Blue
   hi MtSign    guifg=DarkYellow           ctermfg=DarkYellow
-  hi MtJunk    guifg=Gray                 ctermfg=Gray
+  hi MtFade    guifg=Gray                 ctermfg=Gray
   hi MtIndentTab             guibg=Gray90
   hi MtWhiteTail           guibg=lightRed                 ctermbg=Red
 endif
