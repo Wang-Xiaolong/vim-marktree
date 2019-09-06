@@ -42,19 +42,19 @@ Normal text (Level 6)
 \ //comment line *key
 \ //comment line --
 
-## Normal Head, whose level is equal to normal text (Level 6)
-	## lower level Normal Head (Level 7)
-	## Normal Head with an end ##  and you can write after it,
-	that indicates you can't put a "##" in it.
-	## Normal Head can contain
+# Normal Head, whose level is equal to normal text (Level 6)
+	# lower level Normal Head (Level 7)
+	# Normal #Head with# an end #  and you can write after it,
+	that indicates you can't put a lone # in it.
+	# Normal Head can contain
 	\ multiple lines
-	## and can also
-	\ have an end ##
-### 3# doesn't work, it's strict
-## the end is also strict # ### #### ######
-## can have //comment line
-## even in //multiple line
-\ mode //yeah *key ## Normal
+	# and can also
+	\ have an end # Normal
+## 2# doesn't work, it's strict
+# the end is also strict # ## ### #####
+# can have //comment line
+# even in //multiple line
+\ mode //yeah *key # Normal
 
 //Comment line
 Normal//Comment line
@@ -209,7 +209,7 @@ SQL, Ada, Lua, VHDL [--|
 Marktree [marktree|
 == Head1
 -- Head2
-## Head3
+# Head3
 |]
 Block folding test
 Level 6 [/
