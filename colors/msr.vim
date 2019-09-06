@@ -11,7 +11,7 @@ hi MtComment guifg=DarkCyan          ctermfg=DarkCyan
 hi MtMeat    guifg=DarkGreen         ctermfg=DarkGreen
 hi MtKey                 guibg=Green               ctermbg=Green
 hi MtIssue            guibg=lightRed                 ctermbg=Red
-hi MtSolved  guifg=Red               ctermfg=Red
+hi MtFix     guifg=Red               ctermfg=Red
 hi MtTodo               guibg=Yellow              ctermbg=Yellow
 hi MtDone    guifg=DarkYellow        ctermfg=DarkYellow
 hi MtTag     guifg=DarkMagenta       ctermfg=DarkMagenta

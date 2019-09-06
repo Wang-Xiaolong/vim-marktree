@@ -7,12 +7,12 @@ syn sync maxlines=500
 
 " == Clusters ===============================================================
 syn cluster MtGeneralMark
-  \ contains=MtKey,MtIssue,MtSolved,MtTodo,MtDone,MtTag,MtLink,@MtAudoLink
+  \ contains=MtKey,MtIssue,MtFix,MtTodo,MtDone,MtTag,MtLink,@MtAudoLink
 syn cluster MtCommentLineMark contains=@MtGeneralMark,MtMeat
 syn cluster MtMeatLineMark contains=@MtGeneralMark,
   \ MtComment,MtCommentLine,MtCommentBlock
 syn cluster MtGeneralLine
-  \ contains=MtIssueLine,MtSolvedLine,MtTodoLine,MtDoneLine,MtLinkLine
+  \ contains=MtIssueLine,MtFixLine,MtTodoLine,MtDoneLine,MtLinkLine
 syn cluster MtStrictCommentRegionMark contains=@MtGeneralMark,@MtGeneralLine,
   \ MtMeat,MtMeatLine,MtComment,MtCommentLine
 syn cluster MtStrictMeatRegionMark contains=@MtGeneralMark,@MtGeneralLine,
@@ -76,10 +76,10 @@ if b:MtIssueWordEn
 	syn match MtIssueWordFence "?" contained
 	hi def link MtIssueWordFence MtFence
 	syn match MtIssue "?\@<!?\k*\>" contains=MtIssueWordFence
-	syn match MtSolved "?\@<!?\k*\([</]/\)\@=" contains=MtIssueWordFence
-	syn match MtSolvedWordFence "/?" contained
-	hi def link MtSolvedWordFence MtFence
-	syn match MtSolved "/?\k*\>" contains=MtSolvedWordFence
+	syn match MtFix "?\@<!?\k*\([</]/\)\@=" contains=MtIssueWordFence
+	syn match MtFixWordFence "/?" contained
+	hi def link MtFixWordFence MtFence
+	syn match MtFix "/?\k*\>" contains=MtFixWordFence
 endif
 if b:MtTodoWordEn
 	syn match MtTodoWordFence "!" contained
@@ -101,7 +101,7 @@ syn region MtKey matchgroup=MtFence start="[=<]\@<!<\*"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtIssue matchgroup=MtFence start="[=<]\@<!<?"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
-syn region MtSolved matchgroup=MtFence start="[=<]\@<!</?"
+syn region MtFix matchgroup=MtFence start="[=<]\@<!</?"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
 syn region MtTodo matchgroup=MtFence start="[=<]\@<!<!"
   \ skip="[-= ]>\|>=" end=">\@<!>>\@!" oneline
@@ -126,9 +126,9 @@ syn region MtFadeLine start="^\s*\\\\\\\@!" end="$"
 " Single-sign
 syn region MtIssueLine matchgroup=MtFence start="\S\@<!?\s\@=" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtSolvedLine matchgroup=MtFence start="\S\@<!/?\s\@=" end="$"
+syn region MtFixLine matchgroup=MtFence start="\S\@<!/?\s\@=" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
-syn region MtSolvedLine matchgroup=MtFence start="\S\@<!/\=?\s\@="
+syn region MtFixLine matchgroup=MtFence start="\S\@<!/\=?\s\@="
   \ end="\([</]/\)\@=" contains=MtKey oneline
 syn region MtTodoLine matchgroup=MtFence start="\S\@<!!\s\@=" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
@@ -145,7 +145,7 @@ syn region MtCodeLine matchgroup=MtFence start="\(^\t*\)\@<=|\s\@=" end="$"
 
 hi def link MtCommentLine MtComment
 hi def link MtIssueLine MtIssue
-hi def link MtSolvedLine MtSolved
+hi def link MtFixLine MtFix
 hi def link MtTodoLine MtTodo
 hi def link MtDoneLine MtDone
 hi def link MtMeatLine MtMeat
@@ -159,7 +159,7 @@ syn region MtComment matchgroup=MtFence start="<//" end="/>"
   \ contains=@MtLinet,@MtStrictCommentRegionMark
 syn region MtIssue matchgroup=MtFence start="<?\s"  end="?>"
   \ contains=@MtLinet,MtKey
-syn region MtSolved matchgroup=MtFence start="</?\s" end="?>"
+syn region MtFix matchgroup=MtFence start="</?\s" end="?>"
   \ contains=@MtLinet,MtKey
 syn region MtTodo matchgroup=MtFence start="<!\s"  end="!>"
   \ contains=@MtLinet,MtKey
