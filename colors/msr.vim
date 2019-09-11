@@ -15,7 +15,7 @@ hi MtFix     guifg=Red               ctermfg=Red
 hi MtTodo               guibg=Yellow              ctermbg=Yellow
 hi MtDone    guifg=DarkYellow        ctermfg=DarkYellow
 hi MtTag     guifg=DarkMagenta       ctermfg=DarkMagenta
-hi MtTagHi             guibg=Magenta             ctermbg=Magenta
+hi MtTagHi        guibg=LightMagenta             ctermbg=Magenta
 hi MtLink            guibg=LightBlue ctermfg=White  ctermbg=Blue
 hi MtSign    guifg=DarkYellow        ctermfg=DarkYellow
 hi MtFade    guifg=Gray              ctermfg=Gray
