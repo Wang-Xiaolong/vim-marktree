@@ -41,7 +41,7 @@ syn match MtEmail "[a-z0-9_\.-]\+@[0-9a-z\.-]\+\.[a-z\.]\{2,6}"
 syn cluster MtAutoLink contains=MtUrl,MtEmail
 
 hi def link MtUrl MtLink
-hi def link MtEmail MkLink
+hi def link MtEmail MtLink
 
 " -- Signs of a list --
 syn match MtSign "\(^\t*\)\@<=\([*+\-]\|\d\+\.\|[a-zA-Z]\.\) \@="
