@@ -7,7 +7,7 @@ syn sync maxlines=500
 
 " == Clusters ===============================================================
 syn cluster MtGeneralMark
-  \ contains=MtKey,MtIssue,MtFix,MtTodo,MtDone,MtTag,MtTagHi,MtLink,@MtAudoLink
+  \ contains=MtKey,MtIssue,MtFix,MtTodo,MtDone,MtTag,MtTagHi,MtLink
 syn cluster MtCommentLineMark contains=@MtGeneralMark,MtMeat
 syn cluster MtMeatLineMark contains=@MtGeneralMark,
   \ MtComment,MtCommentLine,MtCommentBlock
