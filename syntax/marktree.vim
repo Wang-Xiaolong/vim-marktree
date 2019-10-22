@@ -6,18 +6,17 @@ syn sync fromstart
 syn sync maxlines=500
 
 " == Clusters ===============================================================
-syn cluster MtGeneralMark
-  \ contains=MtKey,MtIssue,MtFix,MtTodo,MtDone,MtTag,MtTagHi,MtLink
-syn cluster MtCommentLineMark contains=@MtGeneralMark,MtMeat
+syn cluster MtGeneralMark contains=MtMeat,MtKey,MtIssue,MtFix,MtTodo,MtDone,
+  \ MtTag,MtTagHi,MtLink,MtFade
 syn cluster MtMeatLineMark contains=@MtGeneralMark,
   \ MtComment,MtCommentLine,MtCommentBlock
-syn cluster MtGeneralLine
-  \ contains=MtIssueLine,MtFixLine,MtTodoLine,MtDoneLine,MtLinkLine
+syn cluster MtGeneralLine contains=MtMeadLine,MtIssueLine,MtFixLine,
+  \ MtTodoLine,MtDoneLine,MtLinkLine,MtFadeLine
 syn cluster MtStrictCommentRegionMark contains=@MtGeneralMark,@MtGeneralLine,
-  \ MtMeat,MtMeatLine,MtComment,MtCommentLine
+  \ MtComment,MtCommentLine
 syn cluster MtStrictMeatRegionMark contains=@MtGeneralMark,@MtGeneralLine,
   \ MtComment,MtCommentLine,MtCommentBlock
-syn cluster MtHeadMark contains=@MtGeneralMark,MtMeat,MtComment
+syn cluster MtHeadMark contains=@MtGeneralMark,MtComment
 
 " == Small Stuff ============================================================
 " It is here before the Lines and Regions because if not so,
@@ -161,7 +160,7 @@ syn region MtFade start="[<=]\@<!<\\"
 " For single line element, probably a sentense. May contain other marks.
 " Dual-sign
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
-  \ contains=MtWhiteTail,@MtCommentLineMark oneline keepend
+  \ contains=MtWhiteTail,@MtGeneralMark oneline keepend
 syn region MtFadeLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
 " Single-sign
