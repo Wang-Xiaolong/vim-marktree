@@ -16,7 +16,6 @@ syn cluster MtStrictCommentRegionMark contains=@MtGeneralMark,@MtGeneralLine,
   \ MtComment,MtCommentLine
 syn cluster MtStrictMeatRegionMark contains=@MtGeneralMark,@MtGeneralLine,
   \ MtComment,MtCommentLine,MtCommentBlock
-syn cluster MtHeadMark contains=@MtGeneralMark,MtComment
 
 " == Small Stuff ============================================================
 " It is here before the Lines and Regions because if not so,
@@ -274,6 +273,7 @@ syn region MtMarktreeBlock matchgroup=MtBlockFence start="\[marktree|" end="|\]"
   \ contains=ALL
 
 " == Headings =================================================================
+syn cluster MtHeadMark contains=@MtGeneralMark,MtComment
 syn match MtFollowSign "\(^\t*\)\@<=\\\s\@=" contained
 syn region MtHead1 matchgroup=MtFence start="^==\+[^=]\@=" end="=*\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
