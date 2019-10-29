@@ -273,7 +273,7 @@ syn region MtMarktreeBlock matchgroup=MtBlockFence start="\[marktree|" end="|\]"
   \ contains=ALL
 
 " == Headings =================================================================
-syn cluster MtHeadMark contains=@MtGeneralMark,MtComment
+syn cluster MtHeadMark contains=@MtGeneralMark,MtComment,@MtLinet
 syn match MtFollowSign "\(^\t*\)\@<=\\\s\@=" contained
 syn region MtHead1 matchgroup=MtFence start="^==\+[^=]\@=" end="=*\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
