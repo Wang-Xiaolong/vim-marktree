@@ -279,10 +279,10 @@ syn region MtHead1 matchgroup=MtFence start="^==\+[^=]\@=" end="=*\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
 syn region MtHead2 matchgroup=MtFence start="^--\+[^-]\@=" end="-*\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
-syn region MtHead matchgroup=MtFence start="^\t*#\s\+"
+syn region MtHead matchgroup=MtFence start="\(^\t*\)\@<=#\s\+"
   \ end="\s\+#\S\@!\|\n\(\t*\\\s\)\@!" keepend
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine
-syn region MtHeadHi matchgroup=MtFence start="^\t*\*#\s\+"
+syn region MtHeadHi matchgroup=MtFence start="\(^\t*\)\@<=\*#\s\+"
   \ end="\s\+#\S\@!\|\n\(\t*\\\s\)\@!" keepend
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine
 syn match MtOption "<mt\S*>" contained
