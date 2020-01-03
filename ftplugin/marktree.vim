@@ -117,5 +117,5 @@ endfunction
 
 command! MTT :call MtSearchTodo()
 function! MtSearchTodo()
-	vimgrep "[<!/]\@<!!\k\+\>\([</]/\)\@!\|[!</]\@<!!!!\@!\(.*[</]/\)\@!\|[<=]\@<!<!!\@!\|<!!" %
+	vimgrep "[<!/]\@<!!\k\+\>\([</]/\)\@!\|\S\@<!!\s\(.*[</]/\)\@!\|[<=]\@<!<!!\@!\|<!\s" %
 endfunction
