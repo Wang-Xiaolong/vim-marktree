@@ -277,7 +277,11 @@ syn cluster MtHeadMark contains=@MtGeneralMark,MtComment,@MtLinet
 syn match MtFollowSign "\(^\t*\)\@<=\\\s\@=" contained
 syn region MtHead1 matchgroup=MtFence start="^==\+[^=]\@=" end="=*\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
+syn region MtHead1Hi matchgroup=MtFence start="^*==\+[^=]\@=" end="=*\n\(\\\s\)\@!"
+  \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
 syn region MtHead2 matchgroup=MtFence start="^--\+[^-]\@=" end="-*\n\(\\\s\)\@!"
+  \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
+syn region MtHead2Hi matchgroup=MtFence start="^*--\+[^-]\@=" end="-*\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
 syn region MtHead matchgroup=MtFence start="\(^\t*\)\@<=#\s\+"
   \ end="\s\+#\S\@!\|\n\(\t*\\\s\)\@!" keepend
@@ -292,6 +296,8 @@ syn region MtHead0 start="\%^" end="\n\(\\\s\)\@!" keepend
 hi def link MtHead0 MtHead1
 hi def link MtHead2 MtHead
 hi def link MtHeadHi MtTagHi
+hi def link MtHead1Hi MtTagHi
+hi def link MtHead2Hi MtTagHi
 hi def link MtFollowSign MtFence
 hi def link MtOption MtSign
 

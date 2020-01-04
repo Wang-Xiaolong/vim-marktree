@@ -79,8 +79,11 @@ function! MtFold(lnum)
 	let s:synroot = synIDattr(s:synstack[0], "name")
 	if s:synroot == "MtHead0"
 		return 0
-	elseif s:synroot == "MtHead1"
+	elseif s:synroot =~ "^MtHead1"
 		if len(s:synstack) == 2 && synIDattr(s:synstack[1], "name") == "MtFence" "1st line
+			if s:synroot == "MtHead1Hi"
+				let s:line = strpart(s:line, 1) "trim *
+			endif
 			let s:idx = match(s:line, '[^=]') / 2 "Count of ==
 			if s:idx < 1 "odd corner case
 				return '='
@@ -91,8 +94,11 @@ function! MtFold(lnum)
 			return b:H1Levels - s:idx
 		endif
 		return '='
-	elseif s:synroot == "MtHead2"
+	elseif s:synroot =~ "^MtHead2"
 		if len(s:synstack) == 2 && synIDattr(s:synstack[1], "name") == "MtFence" "1st line
+			if s:synroot == "MtHead2Hi"
+				let s:line = strpart(s:line, 1) "trim *
+			endif
 			let s:idx = match(s:line, '[^-]') / 2 "Count of --
 			if s:idx < 1 "odd corner case
 				return '='
