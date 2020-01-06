@@ -275,13 +275,13 @@ syn region MtMarktreeBlock matchgroup=MtBlockFence start="\[marktree|" end="|\]"
 " == Headings =================================================================
 syn cluster MtHeadMark contains=@MtGeneralMark,MtComment,@MtLinet
 syn match MtFollowSign "\(^\t*\)\@<=\\\s\@=" contained
-syn region MtHead1 matchgroup=MtFence start="^==\+[^=]\@=" end="=*\n\(\\\s\)\@!"
+syn region MtHead1 matchgroup=MtFence start="^==\+[^=]\@=" end="\(==\+\)\=\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
-syn region MtHead1Hi matchgroup=MtFence start="^*==\+[^=]\@=" end="=*\n\(\\\s\)\@!"
+syn region MtHead1Hi matchgroup=MtFence start="^*==\+[^=]\@=" end="\(==\+\)\=\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
-syn region MtHead2 matchgroup=MtFence start="^--\+[^-]\@=" end="-*\n\(\\\s\)\@!"
+syn region MtHead2 matchgroup=MtFence start="^--\+[^-]\@=" end="\(--\+\)\=\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
-syn region MtHead2Hi matchgroup=MtFence start="^*--\+[^-]\@=" end="-*\n\(\\\s\)\@!"
+syn region MtHead2Hi matchgroup=MtFence start="^*--\+[^-]\@=" end="\(--\+\)\=\n\(\\\s\)\@!"
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine keepend
 syn region MtHead matchgroup=MtFence start="\(^\t*\)\@<=#\s\+"
   \ end="\s\+#\S\@!\|\n\(\t*\\\s\)\@!" keepend
