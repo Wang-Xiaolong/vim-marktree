@@ -64,10 +64,10 @@ hi def link MtQuotePrefix MtFence
 if b:MtKeyWordEn
 	syn match MtKeyWordFence "*" contained
 	hi def link MtKeyWordFence MtFence
-	syn match MtKey "\*\@<!\*\k*\>" contains=MtKeyWordFence
+	syn match MtKey "[\*]\@<!\*\k*\>" contains=MtKeyWordFence
 	syn match MtKeyLooseWordFence "\*\*" contained
 	hi def link MtKeyLooseWordFence MtFence
-	syn match MtKey "\*\@<!\*\*\*\@!\S\+" contains=MtKeyLooseWordFence
+	syn match MtKey "[\*]\@<!\*\*\*\@!\S\+" contains=MtKeyLooseWordFence
 endif
 if b:MtIssueWordEn
 	syn match MtIssueWordFence "?" contained
