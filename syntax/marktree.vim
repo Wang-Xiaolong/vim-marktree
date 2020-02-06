@@ -8,6 +8,7 @@ syn sync maxlines=500
 " == Clusters ===============================================================
 syn cluster MtGeneralMark contains=MtMeat,MtKey,MtIssue,MtFix,MtTodo,MtDone,
   \ MtTag,MtTagHi,MtLink,MtFade
+syn cluster MtCommentLineMark contains=@MtGeneralMark,MtWhiteTail
 syn cluster MtMeatLineMark contains=@MtGeneralMark,
   \ MtComment,MtCommentLine,MtCommentBlock
 syn cluster MtGeneralLine contains=MtMeadLine,MtIssueLine,MtFixLine,
@@ -159,7 +160,7 @@ syn region MtFade start="[<=]\@<!<\\"
 " For single line element, probably a sentense. May contain other marks.
 " Dual-sign
 syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
-  \ contains=MtWhiteTail,@MtGeneralMark oneline keepend
+  \ contains=@MtCommentLineMark oneline keepend
 syn region MtFadeLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
 " Single-sign
