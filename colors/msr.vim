@@ -2,6 +2,15 @@
 " just change head color to dark red upon light bg marktree scheme.
 " xiaolong.wang@intel.com from Jun.2019
 hi clear
+
+" include extensions parsed from the option in ftplugin
+for s:ext in b:MtExtList
+	let s:extpath = b:MtPath.'/syntax/marktree.'.s:ext.'.color.vim'
+	if filereadable(s:extpath)
+		execute 'source '.s:extpath
+	endif
+endfor
+
 hi Normal    guifg=Black guibg=White ctermfg=Black ctermbg=White
 hi Folded    guifg=Black  guibg=Gray ctermfg=Black  ctermbg=Gray
 hi MtFence   guifg=DarkYellow        ctermfg=DarkYellow
