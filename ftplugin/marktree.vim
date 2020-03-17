@@ -66,52 +66,52 @@ endif
 " End of init
 
 function! MtFold(lnum)
-	let s:line = getline(a:lnum)
-	if match(s:line, '\S') == -1 "Blank line
+	let l:line = getline(a:lnum)
+	if match(l:line, '\S') == -1 "Blank line
 		return '='
 	endif	
 
-	let s:synstack = synstack(a:lnum, 1)
-	if len(s:synstack) == 0 "Normal
-		return b:H1Levels + b:H2Levels + match(s:line, '[^\t]')
+	let l:synstack = synstack(a:lnum, 1)
+	if len(l:synstack) == 0 "Normal
+		return b:H1Levels + b:H2Levels + match(l:line, '[^\t]')
 	endif
-	let s:synroot = synIDattr(s:synstack[0], "name")
-	if s:synroot == "MtHead0"
+	let l:synroot = synIDattr(l:synstack[0], "name")
+	if l:synroot == "MtHead0"
 		return 0
-	elseif s:synroot =~ "^MtHead1"
-		if len(s:synstack) == 2 && synIDattr(s:synstack[1], "name") == "MtFence" "1st line
-			if s:synroot == "MtHead1Hi"
-				let s:line = strpart(s:line, 1) "trim *
+	elseif l:synroot =~ "^MtHead1"
+		if len(l:synstack) == 2 && synIDattr(l:synstack[1], "name") == "MtFence" "1st line
+			if l:synroot == "MtHead1Hi"
+				let l:line = strpart(l:line, 1) "trim *
 			endif
-			let s:idx = match(s:line, '[^=]') / 2 "Count of ==
-			if s:idx < 1 "odd corner case
+			let l:idx = match(l:line, '[^=]') / 2 "Count of ==
+			if l:idx < 1 "odd corner case
 				return '='
 			endif
-			if b:H1Levels < s:idx
-				let b:H1Levels = s:idx
+			if b:H1Levels < l:idx
+				let b:H1Levels = l:idx
 			endif
-			return b:H1Levels - s:idx
+			return b:H1Levels - l:idx
 		endif
 		return '='
-	elseif s:synroot =~ "^MtHead2"
-		if len(s:synstack) == 2 && synIDattr(s:synstack[1], "name") == "MtFence" "1st line
-			if s:synroot == "MtHead2Hi"
-				let s:line = strpart(s:line, 1) "trim *
+	elseif l:synroot =~ "^MtHead2"
+		if len(l:synstack) == 2 && synIDattr(l:synstack[1], "name") == "MtFence" "1st line
+			if l:synroot == "MtHead2Hi"
+				let l:line = strpart(l:line, 1) "trim *
 			endif
-			let s:idx = match(s:line, '[^-]') / 2 "Count of --
-			if s:idx < 1 "odd corner case
+			let l:idx = match(l:line, '[^-]') / 2 "Count of --
+			if l:idx < 1 "odd corner case
 				return '='
 			endif
-			if b:H2Levels < s:idx
-				let b:H2Levels = s:idx
+			if b:H2Levels < l:idx
+				let b:H2Levels = l:idx
 			endif
-			return b:H1Levels + s:idx - 1
+			return b:H1Levels + l:idx - 1
 		endif
 		return '='
-	elseif s:synroot =~ 'Mt\w\+Block$' || s:synroot == "MtBlockFence" || s:synroot == "MtFence"
+	elseif l:synroot =~ 'Mt\w\+Block$' || l:synroot == "MtBlockFence" || l:synroot == "MtFence"
 		return '='
 	else
-		return b:H1Levels + b:H2Levels + match(s:line, '[^\t]')
+		return b:H1Levels + b:H2Levels + match(l:line, '[^\t]')
 	endif
 endfunction
 
