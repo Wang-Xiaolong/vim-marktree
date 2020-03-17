@@ -3,12 +3,14 @@
 hi clear
 
 " include extensions parsed from the option in ftplugin
-for s:ext in b:MtExtList
-	let s:extpath = b:MtPath.'/syntax/marktree.'.s:ext.'.color.vim'
-	if filereadable(s:extpath)
-		execute 'source '.s:extpath
-	endif
-endfor
+if exists('b:MtExtList')
+	for s:ext in b:MtExtList
+		let s:extpath = b:MtPath.'/syntax/marktree.'.s:ext.'.color.vim'
+		if filereadable(s:extpath)
+			execute 'source '.s:extpath
+		endif
+	endfor
+endif
 
 if &background == "dark" " compatible to 8bit console, assume Gray on Black
   hi Normal    guifg=Gray        guibg=Black ctermfg=Gray        ctermbg=Black
