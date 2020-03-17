@@ -7,3 +7,11 @@ if b:MtIssueWordEn
 	hi def link MtFixWordFenceZh MtFence
 	syn match MtFix "/？\k*\>" contains=MtFixWordFenceZh
 endif
+
+syn region MtIssueLine matchgroup=MtFence start="\S\@<!？\s\+" end="$"
+  \ contains=MtWhiteTail,MtKey oneline keepend
+syn region MtFixLine matchgroup=MtFence start="\S\@<!/？\s\+" end="$"
+  \ contains=MtWhiteTail,MtKey oneline keepend
+syn region MtFixLine matchgroup=MtFence start="\S\@<!/\=？\s\+"
+  \ end="\([</]/\)\@=" contains=MtKey oneline
+
