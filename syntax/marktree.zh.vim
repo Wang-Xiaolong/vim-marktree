@@ -23,4 +23,10 @@ syn region MtFixLine matchgroup=MtFence start="\S\@<!/？\s\+" end="$"
   \ contains=MtWhiteTail,MtKey oneline keepend
 syn region MtFixLine matchgroup=MtFence start="\S\@<!/\=？\s\+"
   \ end="\([</]/\)\@=" contains=MtKey oneline
+syn region MtTodoLine matchgroup=MtFence start="\S\@<!！\s\+" end="$"
+  \ contains=MtWhiteTail,MtKey oneline keepend
+syn region MtDoneLine matchgroup=MtFence start="\S\@<!/！\s\+" end="$"
+  \ contains=WtWhiteTail,MtKey oneline keepend
+syn region MtDoneLine matchgroup=MtFence start="\S\@<!/\=！\s\+"
+  \ end="\([</]/\)\@=" contains=MtKey oneline
 
