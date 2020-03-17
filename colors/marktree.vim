@@ -1,6 +1,15 @@
 " color/marktree.vim to highlight marktree leaves
 " xiaolong.wang@intel.com from Dec.2015
 hi clear
+
+" include extensions parsed from the option in ftplugin
+for s:ext in b:MtExtList
+	let s:extpath = b:MtPath.'/syntax/marktree.'.s:ext.'.color.vim'
+	if filereadable(s:extpath)
+		execute 'source '.s:extpath
+	endif
+endfor
+
 if &background == "dark" " compatible to 8bit console, assume Gray on Black
   hi Normal    guifg=Gray        guibg=Black ctermfg=Gray        ctermbg=Black
   hi Folded    guifg=Black      guibg=Gray40 ctermfg=Black    ctermbg=DarkBlue
