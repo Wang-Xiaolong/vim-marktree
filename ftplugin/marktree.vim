@@ -38,9 +38,8 @@ while 1
 	if s:ext == ""
 		break
 	endif
-	let s:extpath = b:MtPath . '/syntax/marktree.ext/' . s:ext . '.vim'
+	let s:extpath = b:MtPath.'/syntax/marktree.'.s:ext.'.vim'
 	if filereadable(s:extpath)
-		execute 'source '.s:extpath
 		call add(b:MtExtList, s:ext)
 	else
 		echo "File not found: " . s:extpath

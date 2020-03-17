@@ -1,6 +1,12 @@
 " syn/marktree.vim to define marktree leaves
 " xiaolong.wang@intel.com from Dec.2015
 
+" include extensions parsed from the option in ftplugin
+for s:ext in b:MtExtList
+	let s:extpath = b:MtPath.'/syntax/marktree.'.s:ext.'.vim'
+	execute 'source '.s:extpath
+endfor
+
 " sync from start to correctly highlight long blocks
 syn sync fromstart
 syn sync maxlines=500
