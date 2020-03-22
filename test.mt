@@ -192,42 +192,43 @@ multiple lines\>
 	|snap to | no work
 	|	tab after | also work
 <|Code region > >a >> a>> -> => >= ;>
-[|Code block is for
-multiple line|]
-C, Java, Go, PHP [//|
+Code block <|
+is for
+multiple line|>
+C, Java, Go, PHP <//
 Code //Comment line *key <?issue region> <!!todo>region!> ?fix//solution
 Code /* Comment region *key <?issue region> <!!todo>region!>
 ?fix</solution> !!done line//comment
 //comment line
-*/ Code |]
-Shell, Perl, Python, Ruby, Power, PHP, Makefile [#|
+*/ Code //>
+Shell, Perl, Python, Ruby, Power, PHP, Makefile <#
 # comment line *key <?issue region> <!!todo>region!> ?fix//solution
-|]
-Assembly, Lisp [;|
+#>
+Assembly, Lisp <;
 ; comment line *key <?issue region> <!!todo>region!> ?fix//solution
-|]
-SQL, Ada, Lua, VHDL [--|
+;>
+SQL, Ada, Lua, VHDL <--
 -- comment line *key <?issue region> <!!todo>region!> !done//solution
-|]
-	Vim ["|
+-->
+Vim <"
 " comment line *key <?issue region> <!!todo>region!> !done//solution
-|]
-Marktree [marktree|
+">
+Marktree <marktree|
 == Head1
 -- Head2
 # Head3
-|]
+|>
 Block folding test
-Level 6 [/
+Level 6 </
 Level 6
-/] Level 6
-	Level 7 [/
+/> Level 6
+	Level 7 </
 Level 7
 		Level 7
-/] Level 7
-		Level 8
-[| Level 8
-	|] Level 8
+/> Level 7
+		Level 8 <|
+			Level 8
+	|> Level 8
 
 > Quote prefix
 	> can be after tabs
