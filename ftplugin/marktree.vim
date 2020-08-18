@@ -28,7 +28,6 @@ if s:opt == ""
 	let b:MtTodoWordEn = 1
 	let b:MtTagWordEn = 1
 	let b:MtLinkWordEn = 1
-	exit
 endif
 
 let b:MtExtList = []
