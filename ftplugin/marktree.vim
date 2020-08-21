@@ -20,6 +20,7 @@ setlocal foldlevel=10
 " init: get options from the 1st line and parse
 let b:MtPath = expand('<sfile>:p:h:h')
 let s:opt = matchstr(getline(1), '<mt\S*>')
+let b:MtExtList = []
 if s:opt == ""
 	let b:H1Levels = 0
 	let b:H2Levels = 0
@@ -28,39 +29,38 @@ if s:opt == ""
 	let b:MtTodoWordEn = 1
 	let b:MtTagWordEn = 1
 	let b:MtLinkWordEn = 1
-endif
-
-let b:MtExtList = []
-let s:idx = 1
-while 1
-	let s:ext = matchstr(s:opt, '+\zs\w\+', 0, s:idx)
-	if s:ext == ""
-		break
-	endif
-	let s:extpath = b:MtPath.'/syntax/marktree.'.s:ext.'.vim'
-	if filereadable(s:extpath)
-		call add(b:MtExtList, s:ext)
-	else
-		echo "File not found: " . s:extpath
-	endif
-	let s:idx += 1
-endwhile
-
-let s:opt = substitute(s:opt, '+\w\+', '', 'g')
-let b:H1Levels = strlen(substitute(s:opt, "[^=]", "", "g"))
-let b:H2Levels = strlen(substitute(s:opt, "[^-]", "", "g"))
-if s:opt =~ '\^'
-	let b:MtKeyWordEn = (s:opt !~ '*')
-	let b:MtIssueWordEn = (s:opt !~ '?')
-	let b:MtTodoWordEn = (s:opt !~ '!')
-	let b:MtTagWordEn = (s:opt !~ '#')
-	let b:MtLinkWordEn = (s:opt !~ '[~]')
 else
-	let b:MtKeyWordEn = (s:opt =~ '*')
-	let b:MtIssueWordEn = (s:opt =~ '?')
-	let b:MtTodoWordEn = (s:opt =~ '!')
-	let b:MtTagWordEn = (s:opt =~ '#')
-	let b:MtLinkWordEn = (s:opt =~ '[~]')
+	let s:idx = 1
+	while 1
+		let s:ext = matchstr(s:opt, '+\zs\w\+', 0, s:idx)
+		if s:ext == ""
+			break
+		endif
+		let s:extpath = b:MtPath.'/syntax/marktree.'.s:ext.'.vim'
+		if filereadable(s:extpath)
+			call add(b:MtExtList, s:ext)
+		else
+			echo "File not found: " . s:extpath
+		endif
+		let s:idx += 1
+	endwhile
+
+	let s:opt = substitute(s:opt, '+\w\+', '', 'g')
+	let b:H1Levels = strlen(substitute(s:opt, "[^=]", "", "g"))
+	let b:H2Levels = strlen(substitute(s:opt, "[^-]", "", "g"))
+	if s:opt =~ '\^'
+		let b:MtKeyWordEn = (s:opt !~ '*')
+		let b:MtIssueWordEn = (s:opt !~ '?')
+		let b:MtTodoWordEn = (s:opt !~ '!')
+		let b:MtTagWordEn = (s:opt !~ '#')
+		let b:MtLinkWordEn = (s:opt !~ '[~]')
+	else
+		let b:MtKeyWordEn = (s:opt =~ '*')
+		let b:MtIssueWordEn = (s:opt =~ '?')
+		let b:MtTodoWordEn = (s:opt =~ '!')
+		let b:MtTagWordEn = (s:opt =~ '#')
+		let b:MtLinkWordEn = (s:opt =~ '[~]')
+	endif
 endif
 " End of init
 
