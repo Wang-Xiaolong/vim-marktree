@@ -27,7 +27,7 @@ hi MtTodo               guibg=Yellow              ctermbg=Yellow
 hi MtDone    guifg=DarkYellow        ctermfg=DarkYellow
 hi MtTag     guifg=DarkMagenta       ctermfg=DarkMagenta
 hi MtTagHi        guibg=LightMagenta             ctermbg=Magenta
-hi MtLink            guibg=LightBlue ctermfg=White  ctermbg=Blue
+hi MtLink    guifg=DarkBlue          ctermfg=DarkBlue
 hi MtSign    guifg=DarkYellow        ctermfg=DarkYellow
 hi MtFade    guifg=Gray              ctermfg=Gray
 hi MtIndentTab          guibg=Gray90
