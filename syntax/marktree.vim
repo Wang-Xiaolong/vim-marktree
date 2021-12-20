@@ -41,7 +41,7 @@ hi def link MtTabAfterSpace MtWhiteTail
 
 " -- URL & Email --
 syn match MtUrl "[a-z]\{3,6}://\S*"
-syn match MtEmail "[a-z0-9_\.-]\+@[0-9a-z\.-]\+\.[a-z\.]\{2,6}"
+syn match MtEmail "[A-Za-z0-9_\.-]\+@[0-9a-z\.-]\+\.[a-z\.]\{2,6}"
 
 hi def link MtUrl MtLink
 hi def link MtEmail MtLink
