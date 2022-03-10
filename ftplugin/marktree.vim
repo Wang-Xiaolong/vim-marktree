@@ -19,7 +19,7 @@ setlocal foldlevel=10
 
 " init: get options from the 1st line and parse
 let b:MtPath = expand('<sfile>:p:h:h')
-let s:opt = matchstr(getline(1), '<mt\S*>')
+let s:opt = matchstr(getline(1), '<mt[^.]\S*>')
 let b:MtExtList = []
 if s:opt == ""
 	let b:H1Levels = 0
