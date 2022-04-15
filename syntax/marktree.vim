@@ -297,7 +297,7 @@ syn region MtHead matchgroup=MtFence start="\(^\t*\)\@<=#\s\+"
 syn region MtHeadHi matchgroup=MtFence start="\(^\t*\)\@<=\*#\s\+"
   \ end="\s\+#\S\@!\|\n\(\t*\\\s\)\@!" keepend
   \ contains=@MtHeadMark,MtFollowSign,MtCommentLine
-syn match MtOption "<mt\S*>\|\%^(\S*)" contained
+syn match MtOption "<mt\S\{-}>\|\%^(\S\{-})" contained
 syn region MtHead0 start="\%^" end="\n\(\\\s\)\@!" keepend
   \ contains=@MtHeadMark,MtFollowSign,MtOption,MtCommentLine
 
