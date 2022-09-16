@@ -47,7 +47,7 @@ hi def link MtUrl MtLink
 hi def link MtEmail MtLink
 
 " -- Signs of a list --
-syn match MtSign "\(^\t*\)\@<=\([*+\-]\|\d\+\.\|[a-zA-Z]\.\) \@="
+syn match MtSign "\(^\t*\)\@<=\([*+\-]\|\d\+[.)]\|[a-zA-Z][.)]\) \@="
 
 " -- Note & Bibl --
 syn match MtNote "\(^\t*\)\@<=(#\d\+)"
