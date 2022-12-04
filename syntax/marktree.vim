@@ -166,7 +166,7 @@ syn region MtFade start="[<=]\@<!<\\"
 " -- Line -------------------------------------------------------------------
 " For single line element, probably a sentense. May contain other marks.
 " Dual-sign
-syn region MtCommentLine matchgroup=MtFence start="/\@<!///\@!" end="$"
+syn region MtCommentLine matchgroup=MtFence start="[/:]\@<!///\@!" end="$"
   \ contains=@MtCommentLineMark oneline keepend
 syn region MtFadeLine start="^\s*\\\\\\\@!" end="$"
   \ contains=@MtLinet oneline keepend
