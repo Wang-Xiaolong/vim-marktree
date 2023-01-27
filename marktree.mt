@@ -35,17 +35,17 @@ Marktree is different: it recommends a code-like style:
 == Marks ==
 -- Standard and Strict Marks --
 Mark	Standard	Strict		Contains
-Meat	<_Meat>		<<_Meat_>>	All except Ref & Code
+Meat	<_Meat>		<_ Meat_>	All except Ref & Code
 Key	<*Key>
-Junk	<\Junk>		<<\Junk\>>
-Issue	<?Issue>	<<?Issue?>>	Key
-Solved	</?Solved>	<</?Solved?>>	Key
-Todo	<!Todo>		<<!Todo!>>	Key
-Done	</!Done>	<</!Done!>>	Key
+Junk	<\Junk>		<\\Junk\>
+Issue	<?Issue>	<? Issue?>	Key
+Solved	</?Solved>	</? Solved?>	Key
+Todo	<!Todo>		<! Todo!>	Key
+Done	</!Done>	</! Done!>	Key
 Tag	<#Tag>
-Link	<~Link>		<<~Link~>>
-Comment </Comment>	<</Comment/>>	All except Ref & Code
-Code	<|code>		<<|Code|>>
+Link	<~Link>		<~ Link~>
+Comment </Comment>	<//Comment/>	All except Ref & Code
+Code	<|Code>		<| Code|>
 
 <*Key > -> => >> >= >>> =>>> ->>>> >>>> >>>>= end>
 <?Issue > -> => >> >= *key end>
@@ -56,16 +56,19 @@ Code	<|code>		<<|Code|>>
 -- Lines --
 	_ Meat Line
 	\\Junk Line
-Normal??Issue Line contains *key
-Normal/??Solved Line contains *key
-Normal??Solved Line contains *key//Comment
-Normal!!Todo Line contains *key
-Normal/!!Done Line contains *key
-Normal!!Done Line contains *key//Comment
+Normal ? Issue Line contains *key
+Normal /? Solved Line contains *key
+Normal ? Solved Line contains *key//Comment
+Normal ! Todo Line contains *key
+Normal /! Done Line contains *key
+Normal ! Done Line contains *key//Comment
 	~ Link Line
 Normal//Comment Line contains *key ?issue !todo
 | Code Line
 -- Words --
 Normal *Key ?Issue /?Solved1 ?Solved</2>Normal> !Todo /!Done1 !Done</2>Normal>
 
-
+-- URL --
+URL in a normal sentense: http://www.intel.com
+Punctuation is allowed before and after a URL:http://www.intel.com!
+forget_a_space_herehttp://abc.com

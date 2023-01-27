@@ -21,8 +21,10 @@ Normal text (Level 6)
 \ ==========
 == and can contain "==" in it, and //comment line
 == For multiple lines //comment line
-\ is like //this and (*key, <?issue>, <!!todo>region!>)
-\ //this (*key, <??issue>region?> </!done>)====
+\ is like //this and (*key, <?issue>, <! todo>region!>)
+\ //this (*key, <? issue>region?> </!done>)====
+====== </Use white space/comment only heads to go back to lower levels> ======
+This sentence is under Head0 (file head) after the Normal text above
 
 -- Single-lane Head (Level 3)
 ---- lower level Single-lane Head (Level 4)
@@ -41,6 +43,7 @@ Normal text (Level 6)
 \ <#tag region> <~link region> <_meat region> <_ meat>region_>
 \ //comment line *key
 \ //comment line --
+-- </Use white space/comment only heads to go back to lower levels> --
 
 # Normal Head, whose level is equal to normal text (Level 6)
 	# lower level Normal Head (Level 7)
