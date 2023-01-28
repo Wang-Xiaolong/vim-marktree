@@ -64,6 +64,9 @@ hi def link MtLinkToBibl MtLink
 syn match MtQuotePrefix "\(^\t*\)\@<=>\+\( \|$\)\@="
 hi def link MtQuotePrefix MtFence
 
+" -- Fence --
+syn match MtFence "^\t*\(\([*+-=]\)\t\)\{2,}\2$" contains=MtIndent
+
 " == Marks ==================================================================
 " -- Word -------------------------------------------------------------------
 " Very light marks for only 1 word. All optional.
