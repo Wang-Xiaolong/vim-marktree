@@ -123,6 +123,7 @@ if b:MtTagWordEn
 	syn match MtTagHiWordFence "\*#" contained
 	hi def link MtTagHiWordFence MtFence
 	syn match MtTagHi "\S\@<!\*#\k*\>" contains=MtTagHiWordFence
+	syn match MtTagHi "\S\@<!\*#\d\+\([-./]\d\+\)\+" contains=MtTagHiWordFence
 	syn match MtTagHiLooseWordFence "\*##" contained
 	hi def link MtTagHiLooseWordFence MtFence
 	syn match MtTagHi "\S\@<!\*###\@!\S\+" contains=MtTagHiLooseWordFence
