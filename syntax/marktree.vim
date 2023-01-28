@@ -112,13 +112,13 @@ if b:MtTodoWordEn
 	  \ contains=MtTodoLooseWordFence,MtDoneLooseWordFence
 endif
 if b:MtTagWordEn
-	syn match MtTagWordFence "#" contained
+	syn match MtTagWordFence "/\=#" contained
 	hi def link MtTagWordFence MtFence
-	syn match MtTag "\S\@<!#\k*\>" contains=MtTagWordFence
-	syn match MtTag "\S\@<!#\d\+\([-./]\d\+\)\+" contains=MtTagWordFence
-	syn match MtTagLooseWordFence "##" contained
+	syn match MtTag "\S\@<!/\=#\k*\>" contains=MtTagWordFence
+	syn match MtTag "\S\@<!/\=#\d\+\([-./]\d\+\)\+" contains=MtTagWordFence
+	syn match MtTagLooseWordFence "/\=##" contained
 	hi def link MtTagLooseWordFence MtFence
-	syn match MtTag "\S\@<!###\@!\S\+" contains=MtTagLooseWordFence
+	syn match MtTag "\S\@<!/\=###\@!\S\+" contains=MtTagLooseWordFence
 
 	syn match MtTagHiWordFence "\*#" contained
 	hi def link MtTagHiWordFence MtFence
