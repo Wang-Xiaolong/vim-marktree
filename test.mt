@@ -25,6 +25,9 @@ Normal text (Level 6)
 \ //this (*key, <? issue>region?> </!done>)====
 ====== </Use white space/comment only heads to go back to lower levels> ======
 This sentence is under Head0 (file head) after the Normal text above
+*==High lighted Head==
+*====and can also
+\ expand to multiple lines==
 
 -- Single-lane Head (Level 3)
 ---- lower level Single-lane Head (Level 4)
@@ -44,6 +47,9 @@ This sentence is under Head0 (file head) after the Normal text above
 \ //comment line *key
 \ //comment line --
 -- </Use white space/comment only heads to go back to lower levels> --
+*----High lighted head--
+*--and can also
+\ expand to mutiple lines--
 
 # Normal Head, whose level is equal to normal text (Level 6)
 	# lower level Normal Head (Level 7)
@@ -58,6 +64,9 @@ This sentence is under Head0 (file head) after the Normal text above
 # can have //comment line
 # even in //multiple line
 \ mode //yeah *key # Normal
+*# High lighted head # Normal
+	*# Multiple line
+	\ high lighted head #
 
 //Comment line
 Normal//Comment line
