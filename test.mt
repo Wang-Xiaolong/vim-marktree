@@ -159,6 +159,7 @@ multiple lines!>
 ~Link_word ~~Link-loose/word ~ ~~
 <#Tag region > >a >> a>> -> => >=.> <<#not work> =<#not work> <*#tag high>
 <~Link region > >a >> a>> -> => >=.> <<~not work> =<~not work>
+#12/25 /#12/25/2023 *#1.2.3-4/5 special tag for date & doc part num
 (#1) Note (~1) Link to note
 [#1] Bibl [~1] Link to Bibl
 ~ link line
@@ -247,3 +248,17 @@ Level 7
 	- _ meet line ok
 (#1) (~1)
 [#1] [~1]
+Fence: Sparse separate lines
+*	*	*
+-	-	-	-
++	+	+	+	+
+=	=	=	=	=	=
+*	*	* no tailing text
+*	*
+Only 2 is not enough
+	*	-	+	+
+	Can be tab to lower level
+	+	*	*
+	*	+	*
+	=	=	-	*	*
+	Can be different ... but the last 2 signs need to be identical
