@@ -114,12 +114,22 @@ function! MtFold(lnum)
 	endif
 endfunction
 
-command! MTI :call MtSearchIssue()
+command! Mtsi :call MtSearchIssue()
 function! MtSearchIssue()
 	vimgrep "[<?/]\@<!?\k\+\>\([</]/\)\@!\|\S\@<!?\s\(.*[</]/\)\@!\|[<=]\@<!<??\@!\|<?\s" %
 endfunction
 
-command! MTT :call MtSearchTodo()
+command! Mtst :call MtSearchTodo()
 function! MtSearchTodo()
 	vimgrep "[<!/]\@<!!\k\+\>\([</]/\)\@!\|\S\@<!!\s\(.*[</]/\)\@!\|[<=]\@<!<!!\@!\|<!\s" %
+endfunction
+
+command! Mtid :call MtInsertDate()
+function! MtInsertDate()
+	put =strftime('-- %Y%m%d%a --')
+endfunction
+
+command! Mtit :call MtInsertTime()
+function! MtInsertTime()
+	put =strftime('# %Y%m%d%a%H:%M:%S%Z #')
 endfunction
