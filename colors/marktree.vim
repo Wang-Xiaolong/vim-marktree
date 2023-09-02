@@ -20,8 +20,8 @@ if &background == "dark" " compatible to 8bit console, assume Gray on Black
   hi MtHead1   guifg=Magenta        gui=bold ctermfg=Magenta
   hi MtComment guifg=Cyan                    ctermfg=Cyan
   hi MtMeat    guifg=Green                   ctermfg=Green
-  hi MtKey     guifg=White   guibg=DarkGreen ctermfg=Black       ctermbg=Green
-  hi MtIssue   guifg=White     guibg=DarkRed ctermfg=Black         ctermbg=Red
+  hi MtKey     guifg=White   guibg=DarkGreen ctermfg=Black   ctermbg=DarkGreen
+  hi MtIssue   guifg=White     guibg=DarkRed ctermfg=Black     ctermbg=DarkRed
   hi MtFix     guifg=Red                     ctermfg=Red
   hi MtTodo    guifg=White  guibg=DarkYellow ctermfg=Black  ctermbg=DarkYellow
   hi MtDone    guifg=Yellow                  ctermfg=Yellow
